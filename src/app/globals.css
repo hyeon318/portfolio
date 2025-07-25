@@ -69,8 +69,15 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 스크롤 마진 조정 - 네비게이션 높이 고려 */
 section {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 1024px) {
+  section {
+    scroll-margin-top: 8rem;
+  }
 }
 
 /* 개선된 타이포그래피 시스템 */

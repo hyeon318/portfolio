@@ -21,7 +21,7 @@ export default function TechTag({ tech }: TechTagProps) {
   if (isHighlighted) {
     // 주요 기술 - 강조 스타일
     return (
-      <span className="text-xs font-semibold rounded-full px-3 py-1.5 border-2 transition-all duration-300 hover:scale-105 hover:shadow-lg bg-gradient-to-r from-primary to-primary-light text-background border-primary hover:border-primary-light cursor-default font-en">
+      <span className="text-xs font-semibold rounded-full px-2.5 py-1 border-2 transition-all duration-300 hover:scale-105 hover:shadow-lg bg-gradient-to-r from-primary to-primary-light text-background border-primary hover:border-primary-light cursor-default font-en">
         {tech}
       </span>
     );
@@ -30,7 +30,7 @@ export default function TechTag({ tech }: TechTagProps) {
   if (isFramework) {
     // 프레임워크 - 블루 계열
     return (
-      <span className="text-xs font-medium rounded-full px-3 py-1.5 border transition-all duration-300 hover:scale-105 bg-accent/10 text-accent border-accent/30 hover:bg-accent/20 hover:border-accent cursor-default font-en">
+      <span className="text-xs font-medium rounded-full px-2.5 py-1 border transition-all duration-300 hover:scale-105 bg-accent/10 text-accent border-accent/30 hover:bg-accent/20 hover:border-accent cursor-default font-en">
         {tech}
       </span>
     );
@@ -39,7 +39,7 @@ export default function TechTag({ tech }: TechTagProps) {
   if (isLanguage) {
     // 언어 - 크림 계열
     return (
-      <span className="text-xs font-medium rounded-full px-3 py-1.5 border transition-all duration-300 hover:scale-105 bg-foreground/10 text-foreground border-foreground/30 hover:bg-foreground/20 hover:border-foreground cursor-default font-en">
+      <span className="text-xs font-medium rounded-full px-2.5 py-1 border transition-all duration-300 hover:scale-105 bg-foreground/10 text-foreground border-foreground/30 hover:bg-foreground/20 hover:border-foreground cursor-default font-en">
         {tech}
       </span>
     );
@@ -47,7 +47,7 @@ export default function TechTag({ tech }: TechTagProps) {
 
   // 일반 기술 - 기본 스타일
   return (
-    <span className="text-xs font-medium rounded-full px-3 py-1.5 border transition-all duration-300 hover:scale-105 bg-card text-muted border-border hover:bg-card-hover hover:border-accent/50 hover:text-accent cursor-default font-en">
+    <span className="text-xs font-medium rounded-full px-2.5 py-1 border transition-all duration-300 hover:scale-105 bg-card text-muted border-border hover:bg-card-hover hover:border-accent/50 hover:text-accent cursor-default font-en">
       {tech}
     </span>
   );

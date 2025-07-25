@@ -36,7 +36,7 @@ export default function ProjectCard({
     const cardContent = (
       <div className="h-full flex flex-col card group hover:glow transition-all duration-500">
         <div
-          className="relative h-44 md:h-56 overflow-hidden cursor-pointer flex-shrink-0 bg-background-secondary"
+          className="relative h-40 md:h-48 overflow-hidden cursor-pointer flex-shrink-0 bg-background-secondary"
           onClick={handleImageClick}
         >
           {image ? (
@@ -55,9 +55,9 @@ export default function ProjectCard({
               className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${gradientClass} group-hover:from-accent/30 group-hover:to-primary/30 transition-all duration-500`}
             >
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-2xl flex items-center justify-center bg-accent/10 group-hover:bg-accent/20 border border-accent/20 group-hover:border-accent/40 transition-all duration-300">
+                <div className="w-16 h-16 mx-auto mb-3 rounded-xl flex items-center justify-center bg-accent/10 group-hover:bg-accent/20 border border-accent/20 group-hover:border-accent/40 transition-all duration-300">
                   <svg
-                    className="w-10 h-10 text-accent group-hover:text-accent-light transition-colors duration-300"
+                    className="w-8 h-8 text-accent group-hover:text-accent-light transition-colors duration-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -70,7 +70,7 @@ export default function ProjectCard({
                     />
                   </svg>
                 </div>
-                <p className="text-sm font-medium tracking-wider uppercase text-muted group-hover:text-accent transition-colors duration-300 font-en">
+                <p className="text-xs font-medium tracking-wider uppercase text-muted group-hover:text-accent transition-colors duration-300 font-en">
                   View Project
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function ProjectCard({
               transition={{ duration: 0.3 }}
             >
               <motion.span
-                className="text-sm font-semibold px-6 py-3 rounded-full bg-accent text-background border-2 border-accent-light shadow-lg font-en"
+                className="text-xs font-semibold px-4 py-2 rounded-full bg-accent text-background border-2 border-accent-light shadow-lg font-en"
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileHover={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.2 }}
@@ -98,33 +98,33 @@ export default function ProjectCard({
           )}
         </div>
 
-        <div className="flex-1 flex flex-col p-6 space-y-6">
-          <div className="space-y-4">
-            <h3 className="text-xl lg:text-2xl font-bold leading-tight text-title group-hover:text-accent transition-colors duration-300 font-kr">
+        <div className="flex-1 flex flex-col p-5 space-y-4">
+          <div className="space-y-3">
+            <h3 className="text-lg lg:text-xl font-bold leading-tight text-title group-hover:text-accent transition-colors duration-300 font-kr">
               {title}
             </h3>
-            <p className="text-base leading-relaxed text-text-body group-hover:text-foreground-muted transition-colors duration-300 font-kr">
+            <p className="text-sm leading-relaxed text-text-body group-hover:text-foreground-muted transition-colors duration-300 font-kr">
               {description}
             </p>
           </div>
 
-          <div className="flex-1 flex flex-col justify-end space-y-6">
-            <div className="flex flex-wrap gap-3 mt-4">
+          <div className="flex-1 flex flex-col justify-end space-y-4">
+            <div className="flex flex-wrap gap-2 mt-3">
               {tags.map((tag, index) => (
                 <TechTag key={index} tech={tag} />
               ))}
             </div>
 
-            <div className="flex gap-8 text-sm pt-4 border-t border-border/50 group-hover:border-accent/30 transition-colors duration-300">
+            <div className="flex gap-6 text-xs pt-3 border-t border-border/50 group-hover:border-accent/30 transition-colors duration-300">
               {githubUrl && (
                 <a
                   href={githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium flex items-center gap-3 tracking-wider uppercase transition-all duration-300 text-muted hover:text-accent hover:scale-105 font-en"
+                  className="font-medium flex items-center gap-2 tracking-wider uppercase transition-all duration-300 text-muted hover:text-accent hover:scale-105 font-en"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -138,10 +138,10 @@ export default function ProjectCard({
                   href={liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium flex items-center gap-3 tracking-wider uppercase transition-all duration-300 text-muted hover:text-primary hover:scale-105 font-en"
+                  className="font-medium flex items-center gap-2 tracking-wider uppercase transition-all duration-300 text-muted hover:text-primary hover:scale-105 font-en"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -173,7 +173,7 @@ export default function ProjectCard({
       <motion.div
         className="hidden md:block"
         whileHover={{
-          y: -8,
+          y: -6,
           scale: 1.02,
         }}
         transition={{ duration: 0.4, ease: "easeOut" }}

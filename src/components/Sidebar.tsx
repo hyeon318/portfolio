@@ -48,7 +48,7 @@ export default function TopNav() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border/30 z-50 hidden lg:block">
+    <nav className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-lg z-50 hidden lg:block">
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -65,7 +65,7 @@ export default function TopNav() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
-              홍지<span className="text-accent highlight">현</span>
+              안현<span className="text-accent highlight">지</span>
             </a>
           </motion.div>
 
