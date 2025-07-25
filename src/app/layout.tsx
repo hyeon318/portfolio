@@ -22,9 +22,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "홍지현 | Frontend Developer",
+  title: "안현지 | Frontend Developer",
   description:
-    "사용자 경험을 중심으로 생각하는 프론트엔드 개발자 홍지현의 포트폴리오입니다.",
+    "사용자 경험을 중심으로 생각하는 프론트엔드 개발자 안현지의 포트폴리오입니다.",
 };
 
 export default function RootLayout({

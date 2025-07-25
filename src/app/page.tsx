@@ -32,7 +32,7 @@ export default function Home() {
                 </div>
                 <h1 className="text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight font-kr">
                   <span className="text-foreground">저는 </span>
-                  <span className="highlight-bg">홍지현</span>
+                  <span className="highlight-bg">안현지</span>
                   <span className="text-foreground">이고,</span>
                   <br />
                   <span className="text-accent">사용자 경험</span>을 사랑하는
@@ -183,7 +183,7 @@ export default function Home() {
             <div className="text-center space-y-4">
               <p className="text-base text-muted font-kr">
                 Designed & built by{" "}
-                <span className="font-semibold highlight">홍지현</span>
+                <span className="font-semibold highlight">안현지</span>
               </p>
               <div className="flex justify-center items-center gap-3 text-sm text-muted">
                 <span className="font-kr">Built with</span>
@@ -214,7 +214,7 @@ export default function Home() {
               </div>
               <h1 className="text-3xl md:text-5xl font-bold leading-tight font-kr">
                 <span className="text-foreground">저는 </span>
-                <span className="highlight-bg">홍지현</span>
+                <span className="highlight-bg">안현지</span>
                 <span className="text-foreground">이고,</span>
                 <br />
                 <span className="text-accent">사용자 경험</span>을 사랑하는
@@ -342,7 +342,7 @@ export default function Home() {
             <div className="text-center space-y-4">
               <p className="text-base text-muted font-kr">
                 Designed & built by{" "}
-                <span className="font-semibold highlight">홍지현</span>
+                <span className="font-semibold highlight">안현지</span>
               </p>
               <div className="flex justify-center items-center gap-3 text-sm text-muted">
                 <span className="font-kr">Built with</span>

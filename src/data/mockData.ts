@@ -2,7 +2,7 @@ import { AboutData, ExperienceItem, ProjectItem, ContactData } from "@/types";
 
 export const aboutData: AboutData = {
   intro: [
-    "안녕하세요! 사용자 경험을 중심으로 생각하는 프론트엔드 개발자 홍지현입니다.",
+    "안녕하세요! 사용자 경험을 중심으로 생각하는 프론트엔드 개발자 안현지입니다.",
     "React와 TypeScript를 주로 사용하여 현대적이고 접근성 있는 웹 애플리케이션을 구축하는 것을 좋아합니다. 복잡한 문제를 단순하고 직관적인 솔루션으로 해결하는 것에 관심이 많습니다.",
     "현재는 Next.js와 Tailwind CSS를 활용한 풀스택 개발에 집중하고 있으며, 성능 최적화와 사용자 경험 개선에 특히 관심을 가지고 있습니다.",
     "새로운 기술을 배우고 적용하는 것을 즐기며, 팀원들과의 협업을 통해 더 나은 결과물을 만들어내는 것을 중요하게 생각합니다.",
