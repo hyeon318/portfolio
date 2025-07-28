@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import TechTag from "./TechTag";
 
 interface ProjectModalProps {
@@ -141,13 +142,46 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           )}
         </div>
 
-        {/* 닫기 버튼 */}
-        <button
-          onClick={onClose}
-          className="w-full mt-6 px-6 py-3 text-sm font-medium text-muted hover:text-foreground transition-colors duration-200 border border-border rounded-lg hover:bg-card-hover"
-        >
-          닫기
-        </button>
+        {/* 액션 버튼들 */}
+        <div className="flex flex-col gap-3 pt-4">
+          <Link
+            href={`/projects/${project.title
+              .toLowerCase()
+              .replace(/\s+/g, "-")}`}
+            className="liquid-glass-button btn-primary inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-kr"
+            aria-label={`${project.title} 상세보기 페이지로 이동`}
+          >
+            <svg
+              className="w-4 h-4 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+            자세히 보기
+          </Link>
+
+          {/* 닫기 버튼 */}
+          <button
+            onClick={onClose}
+            className="w-full px-6 py-3 text-sm font-medium text-muted hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-card-hover"
+            style={{ border: "1.5px solid rgba(255, 255, 255, 0.40)" }}
+          >
+            닫기
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -24,7 +24,6 @@ export default function ProjectsSection() {
     setIsModalOpen(false);
     setSelectedProject(null);
   };
-
   return (
     <>
       {/* Desktop Projects Section */}
@@ -44,7 +43,7 @@ export default function ProjectsSection() {
             </p>
           </div>
           <section
-            className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-6xl w-full"
+            className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-5xl w-full"
             aria-label="프로젝트 목록"
           >
             {projectsData.map((project, index) => (

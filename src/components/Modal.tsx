@@ -88,7 +88,7 @@ export default function Modal({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 border-1 border-gray-900/15"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -100,7 +100,7 @@ export default function Modal({
         >
           {/* 배경 오버레이 */}
           <motion.div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-[var(--background)]/85 backdrop-blur-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -110,7 +110,12 @@ export default function Modal({
           {/* 모달 컨텐츠 */}
           <motion.div
             ref={modalRef}
-            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-background border border-border rounded-2xl shadow-2xl"
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-background rounded-2xl shadow-2xl"
+            style={{
+              border: "1.5px solid rgba(255, 255, 255, 0.40)",
+              boxShadow:
+                "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)",
+            }}
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -119,7 +124,12 @@ export default function Modal({
           >
             {/* 헤더 */}
             {title && (
-              <div className="flex items-center justify-between p-6 border-b border-border">
+              <div
+                className="flex items-center justify-between p-6 "
+                style={{
+                  borderBottom: "1.5px solid rgba(255, 255, 255, 0.40)",
+                }}
+              >
                 <h2
                   id="modal-title"
                   className="text-xl font-bold text-title font-kr"
@@ -129,6 +139,7 @@ export default function Modal({
                 <button
                   onClick={onClose}
                   className="p-2 text-muted hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-card-hover"
+                  style={{ border: "1.5px solid rgba(255, 255, 255, 0.40)" }}
                   aria-label="모달 닫기"
                 >
                   <svg

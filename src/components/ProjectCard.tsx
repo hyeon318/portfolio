@@ -32,11 +32,9 @@ export default function ProjectCard({
   liveUrl,
   onCardClick,
 }: ProjectCardProps) {
-  const handleImageClick = () => {
+  const handleCardClick = () => {
     if (onCardClick) {
       onCardClick();
-    } else if (liveUrl) {
-      window.open(liveUrl, "_blank");
     }
   };
 
@@ -45,26 +43,26 @@ export default function ProjectCard({
 
   const renderCard = (isMobile: boolean = false) => {
     const cardContent = (
-      <article className="h-full flex flex-col liquid-glass-card group hover:glow transition-all duration-500">
-        <figure
-          className="relative h-40 md:h-48 overflow-hidden cursor-pointer flex-shrink-0 bg-background-secondary"
-          onClick={handleImageClick}
-          role="button"
-          tabIndex={0}
-          onKeyDown={e => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              handleImageClick();
-            }
-          }}
-          aria-label={`${title} 프로젝트 상세 보기`}
-        >
+      <article
+        className="h-full flex flex-col project-glass-card group hover:glow transition-all duration-500 cursor-pointer"
+        onClick={handleCardClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={e => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleCardClick();
+          }
+        }}
+        aria-label={`${title} 프로젝트 상세 보기`}
+      >
+        <figure className="relative h-40 md:h-48 overflow-hidden flex-shrink-0 bg-background-secondary">
           {image ? (
             <Image
               src={image}
               alt={`${title} 프로젝트 이미지`}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-cover transition-transform duration-500"
               onError={e => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = "none";
@@ -145,8 +143,9 @@ export default function ProjectCard({
                   href={githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium flex items-center gap-2 tracking-wider uppercase transition-all duration-300 text-muted hover:text-accent hover:scale-105 font-en"
+                  className="font-medium flex items-center gap-2 tracking-wider uppercase transition-all duration-300 text-muted hover:text-accent font-en"
                   aria-label={`${title} GitHub 저장소 보기`}
+                  onClick={e => e.stopPropagation()}
                 >
                   <svg
                     className="w-4 h-4"
@@ -164,8 +163,9 @@ export default function ProjectCard({
                   href={liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium flex items-center gap-2 tracking-wider uppercase transition-all duration-300 text-muted hover:text-primary hover:scale-105 font-en"
+                  className="font-medium flex items-center gap-2 tracking-wider uppercase transition-all duration-300 text-muted hover:text-primary font-en"
                   aria-label={`${title} 라이브 데모 보기`}
+                  onClick={e => e.stopPropagation()}
                 >
                   <svg
                     className="w-4 h-4"
@@ -202,14 +202,11 @@ export default function ProjectCard({
         className="hidden md:block"
         whileHover={{
           y: -6,
-          scale: 1.02,
         }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
         <motion.div
-          className="relative overflow-hidden cursor-pointer"
-          onClick={handleImageClick}
-          whileHover={{ scale: 1.01 }}
+          className="relative overflow-hidden"
           transition={{ duration: 0.3 }}
         >
           {renderCard()}
