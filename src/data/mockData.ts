@@ -107,7 +107,7 @@ export const projectsData: ProjectItem[] = [
 ];
 
 export const contactData: ContactData = {
-  email: "hello@example.com",
+  email: "mail_0318@naver.com",
   message:
-    "새로운 기회와 흥미로운 프로젝트에 대해 언제든 이야기하고 싶습니다. 함께 멋진 것을 만들어보아요!",
+    "좋은 동료, 좋은 기회와 함께 성장할 수 있는 이야기를 나누고 싶습니다.!",
 };

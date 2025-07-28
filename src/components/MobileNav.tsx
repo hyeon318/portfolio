@@ -28,13 +28,13 @@ export default function MobileNav() {
         <div className="flex items-center justify-between">
           <a
             href="#"
-            className="text-lg font-bold text-foreground tracking-tight"
+            className="text-lg font-bold text-foreground tracking-tight font-kr"
             onClick={e => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            홍지<span className="text-primary">현</span>
+            안현<span className="text-primary">지</span>
           </a>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -95,10 +95,10 @@ export default function MobileNav() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
-                    <span className="font-mono text-sm text-primary/70 mr-3">
+                    <span className="font-mono text-sm text-primary/70 mr-3 font-en">
                       0{index + 1}.
                     </span>
-                    {item.name}
+                    <span className="font-en">{item.name}</span>
                   </motion.button>
                 ))}
               </div>
@@ -110,10 +110,10 @@ export default function MobileNav() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.4 }}
               >
-                <p className="text-secondary/80 text-base font-medium mb-2">
+                <p className="text-secondary/80 text-base font-medium mb-2 font-en">
                   Frontend Developer
                 </p>
-                <p className="text-secondary/60 text-sm leading-relaxed mb-6">
+                <p className="text-secondary/60 text-sm leading-relaxed mb-6 font-kr">
                   사용자 경험을 중심으로 생각하는 프론트엔드 개발자입니다.
                 </p>
                 <div className="flex space-x-6">
