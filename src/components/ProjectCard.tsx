@@ -11,6 +11,7 @@ interface ProjectCardProps {
   image?: string;
   githubUrl?: string;
   liveUrl?: string;
+  onCardClick?: () => void;
 }
 
 const gradientVariants = [
@@ -29,9 +30,12 @@ export default function ProjectCard({
   image,
   githubUrl,
   liveUrl,
+  onCardClick,
 }: ProjectCardProps) {
   const handleImageClick = () => {
-    if (liveUrl) {
+    if (onCardClick) {
+      onCardClick();
+    } else if (liveUrl) {
       window.open(liveUrl, "_blank");
     }
   };
@@ -45,6 +49,15 @@ export default function ProjectCard({
         <figure
           className="relative h-40 md:h-48 overflow-hidden cursor-pointer flex-shrink-0 bg-background-secondary"
           onClick={handleImageClick}
+          role="button"
+          tabIndex={0}
+          onKeyDown={e => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              handleImageClick();
+            }
+          }}
+          aria-label={`${title} 프로젝트 상세 보기`}
         >
           {image ? (
             <Image

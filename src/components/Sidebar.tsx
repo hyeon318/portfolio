@@ -21,9 +21,9 @@ const navigation: NavigationItem[] = [
 ];
 
 const socialLinks: SocialLink[] = [
-  { name: "GitHub", href: "https://github.com", icon: "github" },
+  { name: "GitHub", href: "https://github.com/hyeon318", icon: "github" },
   { name: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
-  { name: "Email", href: "mailto:hello@example.com", icon: "email" },
+  { name: "Email", href: "mailto:mail_0318@naver.com", icon: "email" },
 ];
 
 export default function TopNav() {
