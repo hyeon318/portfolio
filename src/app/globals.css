@@ -403,7 +403,7 @@ section {
 .prose-enhanced {
   line-height: 1.8;
   letter-spacing: -0.01em;
-  max-width: 65ch;
+  max-width: 120ch;
   margin-bottom: 1.5rem;
 }
 

@@ -74,11 +74,10 @@ export function StaggerText({
         {paragraphs.map((paragraph, index) => (
           <p
             key={index}
-            className="leading-relaxed text-base mb-6"
+            className="leading-relaxed text-base mb-6 "
             style={style}
-          >
-            {paragraph}
-          </p>
+            dangerouslySetInnerHTML={{ __html: paragraph }}
+          />
         ))}
       </div>
 
@@ -94,11 +93,10 @@ export function StaggerText({
           <motion.p
             key={index}
             variants={staggerItem}
-            className="leading-relaxed text-base mb-6"
+            className="leading-relaxed text-base md:text-md lg:text-lg mb-6"
             style={style}
-          >
-            {paragraph}
-          </motion.p>
+            dangerouslySetInnerHTML={{ __html: paragraph }}
+          />
         ))}
       </motion.div>
     </>

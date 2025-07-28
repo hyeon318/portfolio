@@ -145,7 +145,7 @@ export default function Home() {
               className="px-8 lg:px-12 flex items-center justify-center"
             >
               <SectionTitle number="01">About</SectionTitle>
-              <article className="text-left space-y-6 prose-enhanced max-w-4xl w-full">
+              <article className="text-left space-y-6 prose-enhanced max-w-6xl w-full">
                 <StaggerText
                   paragraphs={aboutData.intro}
                   className="text-base leading-relaxed space-y-6 font-kr"
@@ -186,7 +186,7 @@ export default function Home() {
               delay={0.4}
             >
               <SectionTitle number="03">Projects</SectionTitle>
-              <div className="mb-8 text-left prose-enhanced max-w-4xl w-full">
+              <div className="mb-8 text-left prose-enhanced w-full">
                 <p className="text-base leading-relaxed font-kr">
                   다양한 기술을 활용하여 구축한 프로젝트들입니다. 각 프로젝트는
                   <strong className="highlight">
@@ -248,12 +248,12 @@ export default function Home() {
         <Section className="pt-32 pb-16 px-6 md:px-8">
           <header className="max-w-4xl mx-auto text-center px-4 sm:px-6 space-y-6">
             <div className="space-y-3">
-              <p className="text-accent text-sm font-medium tracking-wider font-kr">
+              <p className="text-accent text-xl font-semibold tracking-wider font-kr">
                 안녕하세요! 👋
               </p>
 
-              <div className="space-y-2">
-                <p className="text-base font-bold leading-snug font-kr flex justify-center items-center gap-2">
+              <div className="space-y-2 pt-4">
+                <p className="text-3xl font-bold flex justify-center items-center gap-2">
                   <span className="text-foreground">저는 </span>
                   <span className="animate-liquidGlass px-2 py-0.5 rounded-full">
                     안현지
@@ -261,11 +261,11 @@ export default function Home() {
                   <span className="text-foreground"> 입니다</span>
                 </p>
 
-                <p className="text-sm font-bold leading-snug font-kr text-accent mt-1">
+                <p className="text-xl font-bold leading-snug font-kr text-accent mt-1">
                   프론트엔드와 백엔드를 균형 있게 다루는
                 </p>
 
-                <p className="text-xl font-bold flex justify-center items-center gap-2">
+                <p className="text-3xl font-bold flex justify-center items-center gap-2">
                   <span className="animate-liquidGlass px-2 py-0.5 rounded-full">
                     풀스택 개발자
                   </span>
@@ -274,7 +274,7 @@ export default function Home() {
               </div>
             </div>
 
-            <p className="text-sm sm:text-base md:text-lg font-medium text-muted tracking-wide font-kr leading-relaxed">
+            <p className="text-md sm:text-lg md:text-lg font-semibold text-muted tracking-wide font-kr leading-relaxed">
               <strong className="highlight">Java Spring (Boot)</strong> 기반의
               서버 개발부터
               <br />
