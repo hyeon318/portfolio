@@ -76,6 +76,7 @@ export const experienceData: ExperienceItem[] = [
 
 export const projectsData: ProjectItem[] = [
   {
+    slug: "anytoon",
     title: "애니툰 웹툰 플랫폼 리뉴얼",
     description:
       "기존 PHP 시스템을 Java Spring 기반으로 전환하여 콘텐츠 캐싱, 결제, 사용자 관리 등 전반적인 웹툰 서비스 기능을 설계 및 개발했습니다. Guava 캐싱과 DB 최적화를 통해 콘텐츠 로딩 속도를 약 75% 개선했습니다.",
@@ -84,6 +85,7 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "https://www.anytoon.co.kr/webtoon/main",
   },
   {
+    slug: "anytoon-translation",
     title: "웹툰 번역 및 식자 프로그램 개발",
     description:
       "웹 기반의 번역 및 식자 툴을 개발하여 PSD 파일을 이미지로 변환하고 텍스트 편집이 가능한 캔버스 기반 UI를 구현했습니다. 번역·식자 업무의 생산성을 높였습니다.",
@@ -92,6 +94,7 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "https://www.anytoon.co.kr/webtoon/main",
   },
   {
+    slug: "anytoon-global",
     title: "애니툰 글로벌 서비스 구축",
     description:
       "다국어 지원을 위한 i18n 시스템을 구축하고 OAuth 기반 글로벌 로그인 기능을 개발했습니다. SSR과 SSG를 활용하여 글로벌 사용자에 대한 성능을 최적화했습니다.",
@@ -100,6 +103,7 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "https://www.anytoon.co.kr/webtoon/main",
   },
   {
+    slug: "anytoon-cp",
     title: "CP 콘텐츠 관리 시스템",
     description:
       "CP(콘텐츠 제공자)가 웹툰/소설 콘텐츠를 직접 업로드하고 사용자 통계를 조회할 수 있도록 하는 내부 관리 시스템을 개발했습니다.",
@@ -108,6 +112,7 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "https://anycp.anytoon.co.kr/login",
   },
   {
+    slug: "anytoon-okcashbag",
     title: "OK캐시백 ASP 연동 서비스",
     description:
       "OK캐시백 사용자들이 포인트로 웹툰 콘텐츠를 구매할 수 있도록 연동 기능을 개발했습니다. 기존 PHP 시스템을 Java Spring 기반으로 재구축했습니다.",
@@ -116,6 +121,7 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "",
   },
   {
+    slug: "oshot",
     title: "문자 발송 솔루션 OShot",
     description:
       "400개 이상의 고객사를 위한 문자 발송 플랫폼을 개발했습니다. SMS/LMS/MMS 처리는 물론, 차이나모바일 연동 등 글로벌 통신 연동을 경험했습니다.",
@@ -124,6 +130,7 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "http://www.oshot.co.kr/",
   },
   {
+    slug: "netplay",
     title: "넷플레이 OTT 계정 공유 플랫폼",
     description:
       "사용자 간 OTT 계정을 안전하게 공유할 수 있도록 하는 기능을 개발 및 유지보수하며, 실 사용자 기반의 공유 서비스를 제공했습니다.",
@@ -132,12 +139,31 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "",
   },
   {
+    slug: "pc-off",
     title: "PC OFF & 근태 관리 시스템 (제이니스)",
     description:
       "Quartz Scheduler를 활용하여 연장근무, 휴일근무 통계를 자동 생성하고, MS SQL → PostgreSQL 마이그레이션을 수행했습니다. 유연근무제 오류 수정 및 자동화 프로세스를 개선했습니다.",
     tags: ["Java", "Spring", "PostgreSQL", "Quartz Scheduler", "MySQL"],
     githubUrl: "",
     liveUrl: "",
+  },
+  {
+    slug: "pc-off",
+    title: "PC OFF 알림 서비스",
+    description:
+      "PC 사용 시간을 모니터링하고 설정된 시간에 자동으로 종료 알림을 제공하는 데스크톱 애플리케이션을 개발했습니다. 사용자 건강 관리와 전력 절약에 기여합니다.",
+    tags: ["Electron", "Node.js", "JavaScript", "HTML/CSS"],
+    githubUrl: "",
+    liveUrl: "",
+  },
+  {
+    slug: "test",
+    title: "테스트 프로젝트 - 모든 요소 확인",
+    description:
+      "이 프로젝트는 모든 상세 정보 요소들이 어떻게 표시되는지 확인하기 위한 테스트 프로젝트입니다. 각 섹션의 스타일과 레이아웃을 확인할 수 있습니다.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Framer Motion"],
+    githubUrl: "https://github.com/test",
+    liveUrl: "https://test-project.com",
   },
 ];
 

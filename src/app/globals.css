@@ -493,14 +493,128 @@ h4 {
 
 /* 링크 스타일 */
 a {
-  color: var(--accent);
+  color: inherit;
   text-decoration: none;
   transition: all 0.2s ease;
+  position: relative;
 }
 
 a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* 특정 링크에 대한 스타일 */
+a[href^="http"]:not(.btn-primary):not(.btn-secondary):not(
+    .liquid-glass-button
+  ) {
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+a[href^="http"]:not(.btn-primary):not(.btn-secondary):not(
+    .liquid-glass-button
+  ):hover {
   color: var(--accent-light);
-  text-decoration: underline;
+  border-bottom-color: var(--accent-light);
+}
+
+/* 내부 링크 스타일 */
+a[href^="/"]:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button) {
+  color: var(--text-body);
+  transition: color 0.2s ease;
+}
+
+a[href^="/"]:not(.btn-primary):not(.btn-secondary):not(
+    .liquid-glass-button
+  ):hover {
+  color: var(--accent);
+}
+
+/* 버튼 스타일 링크는 기존 스타일 유지 */
+.btn-primary,
+.btn-secondary,
+.liquid-glass-button {
+  text-decoration: none;
+}
+
+/* 프로젝트 카드 내부 링크 스타일 */
+.project-card-link {
+  color: var(--muted);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.project-card-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* 모달 내부 링크 스타일 */
+.modal-link {
+  color: var(--text-body);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.modal-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* 네비게이션 링크 스타일 */
+.nav-link {
+  color: var(--text-body);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* 소셜 링크 스타일 */
+.social-link {
+  color: var(--muted);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* 기본 링크 스타일 재정의 */
+a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
+    .project-card-link
+  ):not(.modal-link):not(.nav-link):not(.social-link) {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
+    .project-card-link
+  ):not(.modal-link):not(.nav-link):not(.social-link):hover {
+  color: var(--accent-light);
+  text-decoration: none;
+}
+
+/* 라이브 데모 버튼 스타일 */
+.live-demo-button {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.live-demo-button:hover {
+  color: white !important;
+  text-decoration: none !important;
 }
 
 /* 텍스트 선택 */
