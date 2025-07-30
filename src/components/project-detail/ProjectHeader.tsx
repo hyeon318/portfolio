@@ -44,11 +44,11 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
                 className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${gradientClass}`}
               >
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-xl flex items-center justify-center bg-white/10 border border-white/20">
+                  {/* <div className="w-20 h-20 mx-auto mb-4 rounded-xl flex items-center justify-center bg-white/10 border border-white/20">
                     <ProjectIcon className="w-10 h-10 text-[var(--text-white)]" />
-                  </div>
-                  <p className="text-lg font-medium tracking-wider uppercase text-[var(--text-white)]">
-                    {projectData.title}
+                  </div> */}
+                  <p className="lg:text-2xl sm:text-xl font-bold tracking-wider uppercase text-[var(--text-white)]">
+                    {projectData.thumbnailTitle}
                   </p>
                 </div>
               </div>
@@ -59,10 +59,11 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
         {/* 프로젝트 정보 */}
         <div className="w-full lg:w-1/2 space-y-8">
           <div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-[var(--text-white)] mb-6 font-kr leading-tight">
+            <h1 className="text-3xl lg:text-4xl font-bold text-[var(--text-white)] mb-3 lg:mb-6 leading-tight whitespace-normal break-words font-kr">
               {projectData.title}
             </h1>
-            <p className="text-lg text-[var(--text-white)]/80 leading-relaxed font-kr">
+
+            <p className="text-md text-[var(--text-white)]/80 leading-relaxed font-kr">
               {projectData.description}
             </p>
           </div>

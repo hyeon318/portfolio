@@ -4,9 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import TechTag from "./TechTag";
 import { ProjectIcon, GitHubIcon, ExternalLinkIcon } from "./icons";
+import { renderToHTML } from "next/dist/server/render";
 
 interface ProjectCardProps {
   title: string;
+  thumbnailTitle?: string;
   description: string;
   tags: string[];
   image?: string;
@@ -30,6 +32,7 @@ export default function ProjectCard({
   tags,
   image,
   githubUrl,
+  thumbnailTitle,
   liveUrl,
   onCardClick,
 }: ProjectCardProps) {
@@ -80,11 +83,11 @@ export default function ProjectCard({
               className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${gradientClass} group-hover:from-accent/30 group-hover:to-primary/30 transition-all duration-500`}
             >
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-3 rounded-xl flex items-center justify-center bg-accent/10 group-hover:bg-accent/20 border border-accent/20 group-hover:border-accent/40 transition-all duration-300">
+                {/* <div className="w-16 h-16 mx-auto mb-3 rounded-xl flex items-center justify-center bg-accent/10 group-hover:bg-accent/20 border border-accent/20 group-hover:border-accent/40 transition-all duration-300">
                   <ProjectIcon className="w-8 h-8 text-accent group-hover:text-accent-light transition-colors duration-300" />
-                </div>
-                <p className="text-xs font-medium tracking-wider uppercase text-muted group-hover:text-accent transition-colors duration-300 font-en">
-                  View Project
+                </div> */}
+                <p className="lg:text-2xl sm:text-xl font-bold tracking-wider uppercase text-muted group-hover:text-accent transition-colors duration-300 font-en">
+                  {thumbnailTitle}
                 </p>
               </div>
             </div>

@@ -10,6 +10,7 @@ interface ProjectModalProps {
   project: {
     slug: string; // slug 필드 추가
     title: string;
+    thumbnailTitle?: string;
     description: string;
     tags: string[];
     image?: string;
@@ -52,11 +53,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${gradientClass}`}
           >
             <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-3 rounded-xl flex items-center justify-center bg-accent/10 border border-accent/20">
-                <ProjectIcon className="w-8 h-8 text-accent" />
-              </div>
-              <p className="text-sm font-medium tracking-wider uppercase text-[var(--text-white)]">
-                {project.title}
+              <p className="lg:text-2xl sm:text-xl font-bold tracking-wider uppercase text-[var(--text-white)]">
+                {project.thumbnailTitle}
               </p>
             </div>
           </div>

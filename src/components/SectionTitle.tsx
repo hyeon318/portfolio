@@ -12,7 +12,7 @@ export default function SectionTitle({
   className = "",
 }: SectionTitleProps) {
   return (
-    <header className={`mb-6 ${className}`}>
+    <header className={`mb-6 ${className} w-full`}>
       <div className="flex items-center gap-4 mb-6 group">
         {number && (
           <span

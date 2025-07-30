@@ -38,6 +38,7 @@ export interface ExperienceItem {
 export interface ProjectItem {
   slug: string; // 상세 페이지와 연결하기 위한 고유 식별자
   title: string;
+  thumbnailTitle?: string;
   description: string;
   tags: string[];
   image?: string;
@@ -61,6 +62,7 @@ export interface ProjectTimeline {
 
 export interface ProjectDetailData {
   title: string;
+  thumbnailTitle?: string;
   description: string;
   summary?: {
     list?: string[];
@@ -70,7 +72,7 @@ export interface ProjectDetailData {
   features: string[];
   techStack: string[];
   images?: {
-    thumbnail: string;
+    thumbnail?: string;
     preview?: string[];
   };
   githubUrl?: string;

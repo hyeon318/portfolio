@@ -26,72 +26,36 @@ export default function ProjectsSection() {
   };
   return (
     <>
-      {/* Desktop Projects Section */}
-      <div className="hidden lg:block">
-        <Section
-          id="projects"
-          className="px-8 lg:px-12 flex items-center justify-center"
-          delay={0.4}
+      <Section id="projects" delay={0.4}>
+        <SectionTitle number="03">Projects</SectionTitle>
+        <div className="mb-8 text-left prose-enhanced w-full">
+          <p className="text-sm lg:text-base leading-relaxed font-kr">
+            다양한 기술을 활용하여 구축한 프로젝트들입니다. 각 프로젝트는
+            <strong className="highlight"> 실제 문제를 해결</strong>하고{" "}
+            <strong className="highlight">사용자 경험을 개선</strong>하는 것에
+            중점을 두었습니다.
+          </p>
+        </div>
+        <section
+          className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8 max-w-5xl w-full"
+          aria-label="프로젝트 목록"
         >
-          <SectionTitle number="03">Projects</SectionTitle>
-          <div className="mb-8 text-left prose-enhanced w-full">
-            <p className="text-base leading-relaxed font-kr">
-              다양한 기술을 활용하여 구축한 프로젝트들입니다. 각 프로젝트는
-              <strong className="highlight"> 실제 문제를 해결</strong>하고{" "}
-              <strong className="highlight">사용자 경험을 개선</strong>하는 것에
-              중점을 두었습니다.
-            </p>
-          </div>
-          <section
-            className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-5xl w-full"
-            aria-label="프로젝트 목록"
-          >
-            {projectsData.map((project, index) => (
-              <AnimatedCard key={index} delay={index * 0.1}>
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                  tags={project.tags}
-                  image={project.image}
-                  githubUrl={project.githubUrl}
-                  liveUrl={project.liveUrl}
-                  onCardClick={() => handleProjectClick(project)}
-                />
-              </AnimatedCard>
-            ))}
-          </section>
-        </Section>
-      </div>
-
-      {/* Mobile Projects Section */}
-      <div className="lg:hidden">
-        <Section id="projects" className="py-10 px-6 md:px-8" delay={0.4}>
-          <SectionTitle number="03">Projects</SectionTitle>
-          <div className="mb-8 text-left prose-enhanced w-full">
-            <p className="text-sm leading-relaxed font-kr">
-              다양한 기술을 활용하여 구축한 프로젝트들입니다. 각 프로젝트는
-              <strong className="highlight"> 실제 문제를 해결</strong>하고{" "}
-              <strong className="highlight">사용자 경험을 개선</strong>하는 것에
-              중점을 두었습니다.
-            </p>
-          </div>
-          <section className="space-y-8 w-full" aria-label="프로젝트 목록">
-            {projectsData.map((project, index) => (
-              <AnimatedCard key={index} delay={index * 0.1}>
-                <ProjectCard
-                  title={project.title}
-                  description={project.description}
-                  tags={project.tags}
-                  image={project.image}
-                  githubUrl={project.githubUrl}
-                  liveUrl={project.liveUrl}
-                  onCardClick={() => handleProjectClick(project)}
-                />
-              </AnimatedCard>
-            ))}
-          </section>
-        </Section>
-      </div>
+          {projectsData.map((project, index) => (
+            <AnimatedCard key={index} delay={index * 0.1}>
+              <ProjectCard
+                title={project.title}
+                thumbnailTitle={project.thumbnailTitle}
+                description={project.description}
+                tags={project.tags}
+                image={project.image}
+                githubUrl={project.githubUrl}
+                liveUrl={project.liveUrl}
+                onCardClick={() => handleProjectClick(project)}
+              />
+            </AnimatedCard>
+          ))}
+        </section>
+      </Section>
 
       {/* Project Modal */}
       <Modal

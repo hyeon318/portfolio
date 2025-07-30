@@ -36,7 +36,7 @@ export const projectData: Record<string, ProjectDetailData> = {
       "Guava Caching",
     ],
     images: {
-      thumbnail: "/images/anytoon/thumbnail1.jpg",
+      thumbnail: "/images/anytoon/thumbnail2.jpg",
       preview: [
         "/images/anytoon/app1.webp",
         "/images/anytoon/app2.webp",
@@ -64,18 +64,25 @@ export const projectData: Record<string, ProjectDetailData> = {
   },
 
   "anytoon-translation": {
-    title: "웹툰 번역 및 식자 프로그램 개발",
+    title: "웹툰 번역 및 식자 프로그램(내부 프로젝트)",
+    thumbnailTitle: "웹툰(PSD) 번역 및 식자 프로그램",
     description:
-      "웹 기반의 번역 및 식자 툴을 개발하여 PSD 파일을 이미지로 변환하고 텍스트 편집이 가능한 캔버스 기반 UI를 구현했습니다. 번역·식자 업무의 생산성을 높였습니다.",
+      "웹 기반의 번역 및 식자 툴을 개발하여 PSD 파일을 이미지로 변환하고 텍스트 편집이 가능한 캔버스 기반 UI를 구현했습니다. 번역 및 식자 업무의 생산성을 높였습니다.",
     summary: {
-      text: "웹툰 번역 및 식자 업무의 생산성을 높이기 위한 웹 기반 도구 개발.",
+      text: "웹툰 번역 및 식자 업무의 생산성을 높이기 위한 웹 기반 프로그램을 개발하였습니다.",
+      list: [
+        "웹툰 번역 및 식자 업무의 생산성을 높이기 위한 웹 기반 도구 개발",
+        "PSD 파일을 이미지로 변환하고 json 파일을 통하여 텍스트 편집이 가능한 캔버스 기반 UI를 구현",
+        "번역 및 식자 업무의 생산성 증가 및 피로도 감소",
+      ],
     },
     background:
-      "기존 번역·식자 업무는 수동으로 진행되어 시간이 오래 걸리고 실수가 발생하는 문제가 있었음.",
+      "글로벌 서비스 런칭이 확정되면서, 웹툰 플랫폼뿐만 아니라 <strong className='highlight'>웹툰 번역을 위한 전용 툴</strong>도 필요하게 되었습니다.<br/>" +
+      "개발 이전에는 번역과 식자 작업을 PSD 파일로 수작업 처리했기 때문에 작업 및 검수에 많은 시간이 소요되고, 실수도 자주 발생했습니다.<br/>" +
+      "또한 해당 작업을 외주로 진행하던 중, 전체 작업 시간을 단축하기 위해 웹 기반 번역 툴을 직접 개발하게 되었습니다.",
     features: [
-      "PSD 파일을 이미지로 변환하는 기능",
-      "캔버스 기반 텍스트 편집 UI",
-      "번역·식자 작업 워크플로우 개선",
+      "PSD 파일에서 파싱된 파일을 Konva 라이브러리를 통하여 캔버스 기반 이미지 편집 기능을 개발",
+      "번역 및 식자 작업 워크플로우 개선",
     ],
     techStack: [
       "React",
@@ -86,109 +93,27 @@ export const projectData: Record<string, ProjectDetailData> = {
       "Python",
     ],
     images: {
-      thumbnail: "/images/애니툰메인화면.png",
-      preview: ["/images/애니툰메인화면.png"],
+      preview: ["/images/anytoon-translation/preview1.png"],
     },
     githubUrl: "",
     liveUrl: "https://www.anytoon.co.kr/webtoon/main",
-    period: "2024.09 - 2024.11",
-    setupInfo: {
-      github: "",
-      liveDemo: "https://www.anytoon.co.kr/webtoon/main",
-      deployment: "Vercel 기반",
-    },
-    roleAndTeam: "개인 프로젝트 (본인: 프론트엔드 100% 개발)",
+    period: "2024.08 - 2024.11",
+    roleAndTeam: "프론트엔드 100% + 프로세스 기획 : 100%)",
     reflection:
-      "캔버스 라이브러리 활용에 어려움이 있었지만, 문서화와 커뮤니티 도움으로 해결.",
+      "웹툰의 경우 작가마다 PSD 파일의 사용 방식이 매우 달라, 이미지나 효과 레이아웃에 <strong>공통된 구조를 찾기 어려웠습니다.</strong><br/>" +
+      "초기에는 이러한 다양성을 충분히 고려하지 못한 채 일부 파일로만 테스트를 진행했고, 이후 Photoshop 외에 Clip Studio 등으로 제작된 파일에서는 <strong>호환성 문제와 오류</strong>가 자주 발생했습니다.<br/>" +
+      "이런 문제를 해결하기 위해 Photoshop 매크로 프로그램을 별도로 개발하여, 일부 레이아웃을 사전 병합 처리 후 작업을 진행했습니다.<br/>" +
+      "또한, 프론트엔드 측면에서는, 웹툰 소재 이미지의 용량이 커 브라우저에서 과부하가 발생하는 문제가 있었습니다.<br/>" +
+      "당시에는 <strong>Konva canvas 라이브러리</strong>를 사용하고 있었는데, 초기에는 라이브러리 자체의 성능 이슈로 판단했으나, <strong>실제로는 이미지 크기로 인한 canvas 과부하</strong>임을 확인했습니다." +
+      "해당 문제는 처리하는 <strong>이미지 사이즈를 최적화</strong>하는 방식으로 해결했습니다.<br/>" +
+      "이번 프로젝트를 통해 <strong>이미지 처리 및 렌더링 최적화의 중요성</strong>, 그리고 그에 대한 <strong>실질적인 해결 경험</strong>을 쌓을 수 있었습니다.",
 
     // 프로젝트 일정
-    timeline: [
-      {
-        phase: "요구사항 분석",
-        duration: "2024.09",
-        description: "번역·식자 업무 프로세스 분석 및 요구사항 정의",
-        achievements: [
-          "기존 업무 프로세스 분석 완료",
-          "사용자 인터뷰 및 요구사항 수집",
-          "기술 스택 선정 및 아키텍처 설계",
-        ],
-      },
-      {
-        phase: "프론트엔드 개발",
-        duration: "2024.10",
-        description: "React 기반 웹 애플리케이션 개발",
-        achievements: [
-          "캔버스 기반 텍스트 편집 UI 구현",
-          "PSD 파일 파싱 및 이미지 변환 기능 개발",
-          "실시간 협업 기능 구현",
-        ],
-      },
-      {
-        phase: "테스트 및 배포",
-        duration: "2024.11",
-        description: "사용자 테스트 및 프로덕션 배포",
-        achievements: [
-          "사용자 테스트 및 피드백 수집",
-          "성능 최적화 및 버그 수정",
-          "프로덕션 환경 배포",
-        ],
-      },
-    ],
-
-    // 도전과제
-    challenges: [
-      "PSD 파일 파싱 및 이미지 처리",
-      "캔버스 기반 텍스트 편집 구현",
-      "실시간 협업 기능 구현",
-      "대용량 이미지 처리 최적화",
-    ],
-
-    // 결과물/성과
-    results: [
-      "번역·식자 업무 시간 50% 단축",
-      "작업 오류율 30% 감소",
-      "사용자 만족도 90% 달성",
-      "실시간 협업 기능으로 팀 효율성 향상",
-    ],
-
-    // 배운 점
-    lessons: [
-      "캔버스 라이브러리 활용 방법",
-      "이미지 처리 및 최적화 기법",
-      "실시간 협업 시스템 설계",
-      "사용자 중심 UI/UX 설계",
-    ],
-
-    // 다음 단계/개선점
-    nextSteps: [
-      "AI 기반 자동 번역 기능 추가",
-      "모바일 앱 개발",
-      "다국어 지원 확대",
-      "클라우드 기반 협업 기능 강화",
-    ],
-
-    cssClasses: {
-      summary: {
-        highlight: "번역·식자 업무",
-        gradient: "웹 기반 도구 개발",
-      },
-      background: {
-        highlight: "수동으로 진행",
-        gradient: "시간이 오래 걸리고 실수가 발생",
-      },
-      roleAndTeam: {
-        highlight: "개인 프로젝트",
-        gradient: "프론트엔드 100% 개발",
-      },
-      reflection: {
-        highlight: "캔버스 라이브러리 활용",
-        gradient: "문서화와 커뮤니티 도움",
-      },
-    },
   },
 
   "anytoon-global": {
     title: "애니툰 글로벌 서비스 구축",
+    thumbnailTitle: "애니툰 글로벌 서비스",
     description:
       "다국어 지원을 위한 i18n 시스템을 구축하고 OAuth 기반 글로벌 로그인 기능을 개발했습니다. SSR과 SSG를 활용하여 글로벌 사용자에 대한 성능을 최적화했습니다.",
     summary: {
@@ -211,32 +136,72 @@ export const projectData: Record<string, ProjectDetailData> = {
     roleAndTeam: "개인 프로젝트 (본인: 프론트엔드 100% 개발)",
     reflection:
       "다국어 시스템 설계에 어려움이 있었지만, i18next 라이브러리로 해결.",
-    cssClasses: {
-      summary: {
-        highlight: "다국어 지원",
-        gradient: "글로벌 사용자를 위한",
-      },
-      background: {
-        highlight: "한국어만 지원",
-        gradient: "글로벌 확장이 어려웠음",
-      },
-      roleAndTeam: {
-        highlight: "개인 프로젝트",
-        gradient: "프론트엔드 100% 개발",
-      },
-      reflection: {
-        highlight: "다국어 시스템 설계",
-        gradient: "i18next 라이브러리",
-      },
+    images: {
+      thumbnail: "/images/anytoon-global/thumbnail1.jpg",
+      preview: [
+        "/images/anytoon-global/preview2.png",
+        "/images/anytoon-global/preview1.png",
+        "/images/anytoon-global/preview3.png",
+      ],
     },
   },
 
   "anytoon-cp": {
     title: "CP 콘텐츠 관리 시스템",
+    thumbnailTitle: "CP 콘텐츠 관리 시스템",
     description:
       "CP(콘텐츠 제공자)가 웹툰/소설 콘텐츠를 직접 업로드하고 사용자 통계를 조회할 수 있도록 하는 내부 관리 시스템을 개발했습니다.",
     summary: {
       text: "CP(콘텐츠 제공자)가 직접 콘텐츠를 관리할 수 있는 웹 기반 관리 시스템 개발.",
+    },
+    background:
+      "기존에는 관리자가 모든 콘텐츠를 직접 관리해야 했지만, CP가 직접 관리할 수 있는 시스템이 필요했음.",
+    features: [
+      "콘텐츠 업로드 및 수정 기능",
+      "사용자 통계 조회 기능",
+      "권한 관리 시스템",
+    ],
+    techStack: ["React", "React Query", "Java", "Spring Boot", "JPA", "MySQL"],
+    githubUrl: "",
+    liveUrl: "https://anycp.anytoon.co.kr/login",
+    setupInfo: {
+      github: "",
+      liveDemo: "https://anycp.anytoon.co.kr/login",
+      deployment: "AWS EC2 기반",
+    },
+    roleAndTeam: "총 2인 구성 (본인: 프론트엔드 100% + 백엔드 API 일부 개발)",
+    reflection:
+      "권한 관리와 파일 업로드 로직 설계에 어려움이 있었지만, 설계 문서화를 통해 명확히 해결.",
+    cssClasses: {
+      summary: {
+        highlight: "CP(콘텐츠 제공자)",
+        gradient: "직접 콘텐츠를 관리할 수 있는",
+      },
+      background: {
+        highlight: "관리자가 모든 콘텐츠를 직접 관리",
+        gradient: "CP가 직접 관리할 수 있는 시스템",
+      },
+      roleAndTeam: {
+        highlight: "2인 구성",
+        gradient: "프론트엔드 100% + 백엔드 API 일부 개발",
+      },
+      reflection: {
+        highlight: "권한 관리와 파일 업로드 로직",
+        gradient: "설계 문서화",
+      },
+    },
+  },
+
+  "ok-cashbag": {
+    title: "OK 캐시백",
+    thumbnailTitle: "OK 캐시백",
+    description:
+      "CP(콘텐츠 제공자)가 웹툰/소설 콘텐츠를 직접 업로드하고 사용자 통계를 조회할 수 있도록 하는 내부 관리 시스템을 개발했습니다.",
+    summary: {
+      text: "CP(콘텐츠 제공자)가 직접 콘텐츠를 관리할 수 있는 웹 기반 관리 시스템 개발.",
+    },
+    images: {
+      thumbnail: "/images/okcashbag/thumbnail2.png",
     },
     background:
       "기존에는 관리자가 모든 콘텐츠를 직접 관리해야 했지만, CP가 직접 관리할 수 있는 시스템이 필요했음.",
