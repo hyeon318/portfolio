@@ -3,7 +3,7 @@ import { ProjectDetailData } from "@/types";
 // 프로젝트 데이터를 객체 형태로 정의
 export const projectData: Record<string, ProjectDetailData> = {
   anytoon: {
-    title: "애니툰 웹툰 플랫폼 리뉴얼",
+    title: "애니툰 웹툰 서비스",
     description:
       "기존 기존 PHP 기반의 대형 웹툰 서비스를 Java Spring 기반으로 전면 리뉴얼한 프로젝트입니다. 약 400만 명의 가입자와 주간 사용자 5만 명 규모의 플랫폼으로, 실시간 결제, 콘텐츠 제공, 사용자 관리, 외부 API 연동 등 핵심 기능을 설계부터 개발까지 담당했습니다.",
     summary: {
@@ -13,7 +13,7 @@ export const projectData: Record<string, ProjectDetailData> = {
         "PHP 기반 웹툰 서비스를 Java Spring 기반으로 전환하여 트래픽 안정성 확보 및 유지보수 효율성 개선",
         "Guava Caching, Lazy Loading 등 성능 최적화를 통해 콘텐츠 로딩 속도 4초 → 1초 미만으로 개선",
         "결제, 프로모션, 외부 API 연동 등 핵심 서비스 전반 설계 및 개발 주도",
-        " DB 구조 리팩토링 및 서비스 병목 개선을 통해 월 평균 결제 3.5억 원, WAU 5만 명의 안정적인 운영 지원",
+        "월 평균 결제 3.5억 원, WAU 5만 명의 안정적인 운영 지원",
       ],
     },
     background:
@@ -25,10 +25,30 @@ export const projectData: Record<string, ProjectDetailData> = {
       "사용자 접근 권한 설정 기능",
       "이미지 압축 및 서브 타이틀 자동 생성 기능",
     ],
-    techStack: ["Java", "Spring", "JSP", "MyBatis", "Guava Caching", "Oracle"],
-    image: null,
+    techStack: [
+      "Java",
+      "Spring",
+      "JSP",
+      "MyBatis",
+      "MySQL",
+      "JavaScript",
+      "jQuery",
+      "Guava Caching",
+    ],
+    images: {
+      thumbnail: "/images/anytoon/thumbnail1.jpg",
+      preview: [
+        "/images/anytoon/app1.webp",
+        "/images/anytoon/app2.webp",
+        "/images/anytoon/app3.webp",
+        "/images/anytoon/app4.webp",
+        "/images/anytoon/app5.webp",
+        "/images/anytoon/app6.webp",
+        "/images/anytoon/애니툰메인화면.png",
+      ],
+    },
     liveUrl: "https://www.anytoon.co.kr/webtoon/main",
-    period: "2024.07 - 2024.12",
+    period: "2021.07 - 2025.04",
     setupInfo: {
       github: "",
       liveDemo: "https://www.anytoon.co.kr/webtoon/main",
@@ -38,7 +58,7 @@ export const projectData: Record<string, ProjectDetailData> = {
     reflection:
       "짧은 개발 기간 안에 완성해야 했고, 기존 서비스의 문서화가 전혀 되어 있지 않아 리뉴얼 과정에서 많은 시행착오를 겪었습니다. 기존 사이트를 직접 분석하며 기능과 흐름을 파악해야 했고, 그 과정에서 예상치 못한 기능 누락 및 캐싱 관련 문제가 발생해 3차례 롤백을 진행하기도 했습니다." +
       "특히, 마케팅 기능 누락과 Guava 캐시의 메모리 공유 이슈는 프로젝트를 롤백하는데 큰 영향을 주었고, 당시에는 사내에서 사용 중이던 오래된 캐싱 라이브러리를 학습 없이 그대로 적용한 것이 큰 원인이었습니다. 이 경험을 통해 이후에는 라이브러리 도입 시 개발 시기와 사용자 규모를 먼저 확인하는 습관을 갖게 되었습니다." +
-      "비록 어려움이 많았지만, 프로젝트를 성공적으로 마무리한 후에는 다양한 프로모션 운영 경험을 통해 DB 구조와 서비스 흐름에 대한 이해도가 크게 향상되었습니다..",
+      "비록 어려움이 많았지만, 프로젝트를 성공적으로 마무리한 후에는 다양한 프로모션 운영 경험을 통해 DB 구조와 서비스 흐름에 대한 이해도가 크게 향상되었습니다.",
 
     // 프로젝트 일정
   },
@@ -65,7 +85,10 @@ export const projectData: Record<string, ProjectDetailData> = {
       "Fabric.js",
       "Python",
     ],
-    image: null,
+    images: {
+      thumbnail: "/images/애니툰메인화면.png",
+      preview: ["/images/애니툰메인화면.png"],
+    },
     githubUrl: "",
     liveUrl: "https://www.anytoon.co.kr/webtoon/main",
     period: "2024.09 - 2024.11",
@@ -178,7 +201,6 @@ export const projectData: Record<string, ProjectDetailData> = {
       "SSR/SSG 성능 최적화",
     ],
     techStack: ["Next.js", "React", "i18next", "OAuth", "TypeScript"],
-    image: null,
     githubUrl: "",
     liveUrl: "https://www.anytoon.co.kr/webtoon/main",
     setupInfo: {
@@ -224,7 +246,6 @@ export const projectData: Record<string, ProjectDetailData> = {
       "권한 관리 시스템",
     ],
     techStack: ["React", "React Query", "Java", "Spring Boot", "JPA", "MySQL"],
-    image: null,
     githubUrl: "",
     liveUrl: "https://anycp.anytoon.co.kr/login",
     setupInfo: {
@@ -277,7 +298,10 @@ export const projectData: Record<string, ProjectDetailData> = {
       "Next.js",
       "Framer Motion",
     ],
-    image: null,
+    images: {
+      thumbnail: "/images/애니툰메인화면.png",
+      preview: ["/images/애니툰메인화면.png"],
+    },
     githubUrl: "https://github.com/test",
     liveUrl: "https://test-project.com",
     period: "2024.01 - 2024.12",

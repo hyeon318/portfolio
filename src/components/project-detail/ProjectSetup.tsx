@@ -9,7 +9,7 @@ interface ProjectSetupProps {
 
 export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
   return (
-    <div className="space-y-4 text-lg text-white/80 font-kr">
+    <div className="space-y-4 text-lg text-[var(--text-white)]/80 font-kr">
       {setupInfo.github && (
         <div className="flex items-center gap-3">
           <span className="text-sky-400 font-semibold">Github:</span>
@@ -34,10 +34,14 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
           [링크]
         </a>
       </div>
-      <div className="flex items-center gap-3">
-        <span className="text-sky-400 font-semibold">배포:</span>
-        <span className="text-white/80">{setupInfo.deployment}</span>
-      </div>
+      {setupInfo.deployment && (
+        <div className="flex items-center gap-3">
+          <span className="text-sky-400 font-semibold">배포:</span>
+          <span className="text-[var(--text-white)]/80">
+            {setupInfo.deployment}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

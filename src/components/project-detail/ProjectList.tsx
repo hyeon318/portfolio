@@ -13,7 +13,7 @@ export default function ProjectList({
 }: ProjectListProps) {
   return (
     <ul
-      className={`list-disc list-inside space-y-4 text-lg text-white/80 font-kr ${className}`}
+      className={`list-disc list-inside space-y-4 text-lg text-[var(--text-white)]/80 font-kr ${className}`}
     >
       {items.map((item, index) => (
         <li

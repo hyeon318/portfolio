@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "pretendard/dist/web/static/pretendard.css";
 
 :root {
   /* Liquid Glass 컬러 팔레트 - iOS 16~17 스타일 */
@@ -33,13 +34,17 @@
   --text-accent: #ffd23f;
   --success: #10b981;
   --warning: #f59e0b;
+
+  --text-white: #e5e7eb;
+  --white: #e5e7eb;
+  --black: #0f0f0f;
 }
 
 /* 기본 폰트 설정 - Apple San Francisco 스타일 */
 body {
   background: var(--background);
   color: var(--text-body);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "SF Pro Display",
     "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
   line-height: 1.7;
   font-size: 16px;
@@ -53,21 +58,21 @@ body {
 .font-en {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
     "Helvetica Neue", system-ui, sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 /* 한글용 폰트 클래스 */
 .font-kr {
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "SF Pro Display",
     system-ui, sans-serif;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.001em;
 }
 
 /* 모노스페이스 폰트 */
 .font-mono {
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "SF Pro Display",
     system-ui, sans-serif;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
 }
 
 /* 스크롤 마진 조정 - 네비게이션 높이 고려 */
@@ -309,7 +314,7 @@ section {
   border-radius: 9999px;
   padding: 0.25rem 1rem;
   font-weight: 600;
-  color: white;
+  color: var(--white);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow: hidden;
   white-space: nowrap;
@@ -608,12 +613,12 @@ a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
 
 /* 라이브 데모 버튼 스타일 */
 .live-demo-button {
-  color: white !important;
+  color: var(--white) !important;
   text-decoration: none !important;
 }
 
 .live-demo-button:hover {
-  color: white !important;
+  color: var(--white) !important;
   text-decoration: none !important;
 }
 
@@ -716,6 +721,32 @@ a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
+}
+
+/* 커스텀 스크롤바 클래스 */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.scrollbar-thumb-white\/20::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* 다크모드 대응 */

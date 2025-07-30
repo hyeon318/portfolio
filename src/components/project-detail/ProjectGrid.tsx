@@ -22,7 +22,7 @@ export default function ProjectGrid({
           key={index}
           className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} p-4 rounded-xl border ${borderColor}`}
         >
-          <p className="text-lg text-white/90 font-kr">{item}</p>
+          <p className="text-lg text-[var(--text-white)]/90 font-kr">{item}</p>
         </div>
       ))}
     </div>

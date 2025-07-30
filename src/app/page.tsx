@@ -5,6 +5,7 @@ import Section from "@/components/animated/Section";
 import { StaggerText } from "@/components/animated/FadeInText";
 import AnimatedCard from "@/components/animated/AnimatedCard";
 import ProjectsSection from "@/components/ProjectsSection";
+import ScrollManager from "@/components/ScrollManager";
 import { aboutData, experienceData, contactData } from "@/data/mockData";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       className="min-h-screen"
       style={{ backgroundColor: "var(--background)" }}
     >
+      <ScrollManager />
       <TopNav />
 
       {/* Desktop Layout - 좌우 분할 */}

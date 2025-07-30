@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { ProjectDetailData } from "@/types";
 import { ArrowLeftIcon } from "./icons";
@@ -11,6 +11,7 @@ import ProjectList from "./project-detail/ProjectList";
 import ProjectGrid from "./project-detail/ProjectGrid";
 import ProjectSetup from "./project-detail/ProjectSetup";
 import StyledText from "./project-detail/StyledText";
+import ProjectGallery from "./project-detail/ProjectGallery";
 
 interface ProjectDetailPageProps {
   projectData: ProjectDetailData;
@@ -19,19 +20,40 @@ interface ProjectDetailPageProps {
 export default function ProjectDetailPage({
   projectData,
 }: ProjectDetailPageProps) {
+  // 뒤로가기 시 스크롤 위치 저장
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      sessionStorage.setItem(
+        "mainPageScrollPosition",
+        window.scrollY.toString()
+      );
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, []);
+
   return (
-    <div className="bg-[#0A0F1C] text-white/90 backdrop-blur-xl min-h-screen">
+    <div className="bg-[#0A0F1C] text-[var(--text-white)]/90 backdrop-blur-xl min-h-screen">
       {/* 헤더 */}
       <header className="sticky top-0 z-40 backdrop-blur-xl bg-white/5 border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             href="/"
-            className="text-lg font-semibold text-white hover:text-sky-400 transition-colors duration-300 flex items-center gap-2"
+            className="text-lg font-semibold text-[var(--text-white)] hover:text-sky-400 transition-colors duration-300 flex items-center gap-2"
+            onClick={() => {
+              sessionStorage.setItem(
+                "mainPageScrollPosition",
+                window.scrollY.toString()
+              );
+            }}
           >
             <ArrowLeftIcon className="w-5 h-5" />
             포트폴리오로 돌아가기
           </Link>
-          <div className="text-sm text-white/60 font-en">Project Detail</div>
+          <div className="text-sm text-[var(--text-white)]/60 font-en">
+            Project Detail
+          </div>
         </div>
       </header>
 
@@ -51,7 +73,7 @@ export default function ProjectDetailPage({
               />
             )}
             {projectData.summary?.list && (
-              <ul className="list-disc list-inside space-y-4 text-lg text-white/80 font-kr pt-4">
+              <ul className="list-disc list-inside space-y-4 text-lg text-[var(--text-white)]/80 font-kr pt-4">
                 {projectData.summary?.list?.map((feature, index) => (
                   <li key={index}>
                     <span className="bg-white/10 px-2 py-1 rounded-lg text-sm font-medium">
@@ -75,7 +97,7 @@ export default function ProjectDetailPage({
 
         {/* ✨ Main Features */}
         <ProjectSection title="Main Features" icon="✨">
-          <ul className="list-disc list-inside space-y-4 text-lg text-white/80 font-kr">
+          <ul className="list-disc list-inside space-y-4 text-lg text-[var(--text-white)]/80 font-kr">
             {projectData.features.map((feature, index) => (
               <li key={index}>
                 <span className="bg-white/10 px-2 py-1 rounded-lg text-sm font-medium">
@@ -92,7 +114,7 @@ export default function ProjectDetailPage({
             {projectData.techStack.map((tech, index) => (
               <span
                 key={index}
-                className="bg-white/10 px-3 py-2 rounded-lg text-sm text-white/90 font-medium backdrop-blur-sm"
+                className="bg-white/10 px-3 py-2 rounded-lg text-sm text-[var(--text-white)]/90 font-medium backdrop-blur-sm"
               >
                 {tech}
               </span>
@@ -133,7 +155,7 @@ export default function ProjectDetailPage({
         {projectData.period && (
           <ProjectSection title="프로젝트 기간" icon="📅">
             <div className="bg-white/5 px-6 py-4 rounded-xl border border-white/10">
-              <p className="text-lg font-medium text-white/90 font-kr">
+              <p className="text-lg font-medium text-[var(--text-white)]/90 font-kr">
                 {projectData.period}
               </p>
             </div>
@@ -181,6 +203,16 @@ export default function ProjectDetailPage({
               gradientFrom="from-purple-500/10"
               gradientTo="to-pink-500/10"
               borderColor="border-purple-500/20"
+            />
+          </ProjectSection>
+        )}
+
+        {/* 🖼️ 프로젝트 이미지 */}
+        {projectData.images && (
+          <ProjectSection title="프로젝트 이미지" icon="🖼️">
+            <ProjectGallery
+              images={projectData.images}
+              title={projectData.title}
             />
           </ProjectSection>
         )}

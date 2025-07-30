@@ -163,3 +163,45 @@ export const EmailIcon: React.FC<IconProps> = ({
     />
   </svg>
 );
+
+// ChevronDown 아이콘
+export const ChevronDownIcon: React.FC<IconProps> = ({
+  className = "w-4 h-4",
+  size,
+}) => (
+  <svg
+    className={className}
+    style={size ? { width: size, height: size } : undefined}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M19 9l-7 7-7-7"
+    />
+  </svg>
+);
+
+// ChevronUp 아이콘
+export const ChevronUpIcon: React.FC<IconProps> = ({
+  className = "w-4 h-4",
+  size,
+}) => (
+  <svg
+    className={className}
+    style={size ? { width: size, height: size } : undefined}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M5 15l7-7 7 7"
+    />
+  </svg>
+);

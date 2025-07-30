@@ -55,7 +55,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <div className="w-16 h-16 mx-auto mb-3 rounded-xl flex items-center justify-center bg-accent/10 border border-accent/20">
                 <ProjectIcon className="w-8 h-8 text-accent" />
               </div>
-              <p className="text-sm font-medium tracking-wider uppercase text-white">
+              <p className="text-sm font-medium tracking-wider uppercase text-[var(--text-white)]">
                 {project.title}
               </p>
             </div>

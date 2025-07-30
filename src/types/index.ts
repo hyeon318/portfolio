@@ -69,7 +69,10 @@ export interface ProjectDetailData {
   background: string;
   features: string[];
   techStack: string[];
-  image?: string | null;
+  images?: {
+    thumbnail: string;
+    preview?: string[];
+  };
   githubUrl?: string;
   liveUrl?: string;
   setupInfo?: ProjectSetupInfo;

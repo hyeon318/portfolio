@@ -13,7 +13,7 @@ export default function StyledText({
   text,
   highlight,
   gradient,
-  className = "text-lg leading-relaxed text-white/80 font-kr",
+  className = "text-lg leading-relaxed text-[var(--text-white)]/80 font-kr",
 }: StyledTextProps) {
   // CSS 스타일링이 필요하지 않은 경우 텍스트를 그대로 반환
   if (!highlight && !gradient) {
