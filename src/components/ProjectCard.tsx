@@ -42,8 +42,14 @@ export default function ProjectCard({
   const gradientIndex = title.length % gradientVariants.length;
   const gradientClass = gradientVariants[gradientIndex];
 
-  const renderCard = (isMobile: boolean = false) => {
-    const cardContent = (
+  return (
+    <motion.div
+      whileHover={{
+        y: -6,
+      }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="h-full"
+    >
       <article
         className="h-full flex flex-col project-glass-card group hover:glow transition-all duration-500 cursor-pointer"
         onClick={handleCardClick}
@@ -83,7 +89,7 @@ export default function ProjectCard({
               </div>
             </div>
           )}
-          {liveUrl && !isMobile && (
+          {liveUrl && (
             <motion.div
               className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100"
               style={{ backgroundColor: "rgba(10, 15, 28, 0)" }}
@@ -156,30 +162,6 @@ export default function ProjectCard({
           </footer>
         </div>
       </article>
-    );
-    return cardContent;
-  };
-
-  return (
-    <>
-      {/* Mobile version - no animations */}
-      <div className="md:hidden">{renderCard(true)}</div>
-
-      {/* Desktop version - with animations */}
-      <motion.div
-        className="hidden md:block"
-        whileHover={{
-          y: -6,
-        }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      >
-        <motion.div
-          className="relative overflow-hidden"
-          transition={{ duration: 0.3 }}
-        >
-          {renderCard()}
-        </motion.div>
-      </motion.div>
-    </>
+    </motion.div>
   );
 }

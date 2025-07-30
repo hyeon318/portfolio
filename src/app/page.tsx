@@ -153,14 +153,11 @@ export default function Home() {
             {/* Experience Section */}
             <Section
               id="experience"
-              className="px-8 lg:px-12 flex items-center justify-center"
+              className="px-6 md:px-8 lg:px-12 py-10 lg:py-16 flex items-center justify-center"
               delay={0.2}
             >
               <SectionTitle number="02">Experience</SectionTitle>
-              <section
-                className="space-y-8 max-w-5xl w-full"
-                aria-label="경력 사항"
-              >
+              <section className="space-y-8 w-full" aria-label="경력 사항">
                 {experienceData.map((item, index) => (
                   <AnimatedCard key={index} delay={index * 0.1}>
                     <TimelineItem
@@ -179,7 +176,7 @@ export default function Home() {
           </div>
 
           {/* Footer */}
-          <footer className="border-t border-border py-12 px-8 lg:px-12 mt-16">
+          <footer className="border-t border-border py-12 px-6 md:px-8 lg:px-12 mt-16">
             <div className="text-center space-y-3 max-w-2xl mx-auto">
               <p className="text-sm text-muted font-kr">
                 Designed & built by{" "}
@@ -250,7 +247,7 @@ export default function Home() {
         <main>
           <div className="max-w-6xl mx-auto space-y-16">
             {/* About Section */}
-            <Section id="about" className="py-10 px-6 w-full md:px-8">
+            <Section id="about" className="py-10 px-6 md:px-8">
               <SectionTitle number="01">About</SectionTitle>
               <article className="text-left space-y-6 prose-enhanced w-full">
                 <StaggerText

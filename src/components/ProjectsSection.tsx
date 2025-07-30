@@ -75,10 +75,7 @@ export default function ProjectsSection() {
               중점을 두었습니다.
             </p>
           </div>
-          <section
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full"
-            aria-label="프로젝트 목록"
-          >
+          <section className="space-y-8 w-full" aria-label="프로젝트 목록">
             {projectsData.map((project, index) => (
               <AnimatedCard key={index} delay={index * 0.1}>
                 <ProjectCard

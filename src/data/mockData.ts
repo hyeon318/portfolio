@@ -91,6 +91,7 @@ export const projectsData: ProjectItem[] = [
       "Guava Caching",
     ],
     githubUrl: "",
+    image: "/images/anytoon/thumbnail2.jpg",
     liveUrl: "https://www.anytoon.co.kr/webtoon/main",
   },
   {
