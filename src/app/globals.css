@@ -490,6 +490,12 @@ h4 {
   letter-spacing: -0.01em;
 }
 
+/* strong 태그 스타일 */
+strong {
+  font-weight: 700;
+  color: var(--text-white);
+}
+
 /* 포커스 상태 */
 *:focus {
   outline: 2px solid var(--accent);

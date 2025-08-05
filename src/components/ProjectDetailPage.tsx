@@ -76,9 +76,10 @@ export default function ProjectDetailPage({
               <ul className="list-disc list-inside space-y-4 text-lg text-[var(--text-white)]/80 font-kr pt-4">
                 {projectData.summary?.list?.map((feature, index) => (
                   <li key={index}>
-                    <span className="bg-white/10 px-2 py-1 rounded-lg text-sm font-medium">
-                      {feature}
-                    </span>
+                    <span
+                      className="bg-white/10 px-2 py-1 rounded-lg text-sm font-medium"
+                      dangerouslySetInnerHTML={{ __html: feature }}
+                    />
                   </li>
                 ))}
               </ul>
@@ -87,13 +88,26 @@ export default function ProjectDetailPage({
         </ProjectSection>
 
         {/* 📖 Background */}
-        <ProjectSection title="Background" icon="📖">
-          <StyledText
-            text={projectData.background}
-            highlight={projectData.cssClasses?.background?.highlight}
-            gradient={projectData.cssClasses?.background?.gradient}
-          />
-        </ProjectSection>
+        {projectData.background && (
+          <ProjectSection title="Background" icon="📖">
+            <StyledText
+              text={projectData.background}
+              highlight={projectData.cssClasses?.background?.highlight}
+              gradient={projectData.cssClasses?.background?.gradient}
+            />
+          </ProjectSection>
+        )}
+
+        {/* 💡 회고 */}
+        {projectData.reflection && (
+          <ProjectSection title="회고" icon="💡">
+            <StyledText
+              text={projectData.reflection}
+              highlight={projectData.cssClasses?.reflection?.highlight}
+              gradient={projectData.cssClasses?.reflection?.gradient}
+            />
+          </ProjectSection>
+        )}
 
         {/* ✨ Main Features */}
         <ProjectSection title="Main Features" icon="✨">
@@ -136,17 +150,6 @@ export default function ProjectDetailPage({
               text={projectData.roleAndTeam}
               highlight={projectData.cssClasses?.roleAndTeam?.highlight}
               gradient={projectData.cssClasses?.roleAndTeam?.gradient}
-            />
-          </ProjectSection>
-        )}
-
-        {/* 💡 회고 */}
-        {projectData.reflection && (
-          <ProjectSection title="회고" icon="💡">
-            <StyledText
-              text={projectData.reflection}
-              highlight={projectData.cssClasses?.reflection?.highlight}
-              gradient={projectData.cssClasses?.reflection?.gradient}
             />
           </ProjectSection>
         )}

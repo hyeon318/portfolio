@@ -63,9 +63,10 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
               {projectData.title}
             </h1>
 
-            <p className="text-md text-[var(--text-white)]/80 leading-relaxed font-kr">
-              {projectData.description}
-            </p>
+            <p
+              className="text-md text-[var(--text-white)]/80 leading-relaxed font-kr"
+              dangerouslySetInnerHTML={{ __html: projectData.description }}
+            />
           </div>
 
           {/* 기술 태그 */}

@@ -99,7 +99,7 @@ export const projectsData: ProjectItem[] = [
     title: "웹툰 번역 및 식자 프로그램(내부 프로젝트)",
     thumbnailTitle: "웹툰(PSD) 번역 및 식자 프로그램",
     description:
-      "웹 기반의 번역 및 식자 툴을 개발하여 PSD 파일을 이미지로 변환하고 텍스트 편집이 가능한 캔버스 기반 UI를 구현했습니다. 기존에 지연되던 번역 및 식자 업무의 생산성을 높였습니다.",
+      "웹 기반의 번역 및 식자 툴  을 개발하여 PSD 파일을 이미지로 변환하고 텍스트 편집이 가능한 캔버스 기반 UI를 구현했습니다. 기존에 지연되던 번역 및 식자 업무의 생산성을 높였습니다.",
     tags: [
       "React",
       "Next.js",
@@ -114,7 +114,7 @@ export const projectsData: ProjectItem[] = [
   },
   {
     slug: "anytoon-global",
-    title: "애니툰 글로벌 서비스(오픈 준비중)",
+    title: "애니툰 글로벌 서비스(오픈 예정)",
     thumbnailTitle: "애니툰 글로벌 서비스",
     description:
       "다국어 지원을 위한 i18n 시스템을 구축하고 OAuth 기반 글로벌 로그인 기능을 개발했습니다. SSR과 SSG를 활용하여 글로벌 사용자에 대한 성능을 최적화했습니다.",
@@ -138,7 +138,7 @@ export const projectsData: ProjectItem[] = [
     description:
       "OK캐시백 사용자들이 포인트로 웹툰 콘텐츠를 구매할 수 있도록 연동 기능을 개발했습니다. 기존 PHP 시스템을 Java Spring 기반으로 재구축했습니다.",
     tags: ["Java", "Spring", "JSP", "MongoDB", "MySQL", "jQuery"],
-    image: "/images/okcashbag/thumbnail2.png",
+    image: "/images/anytoon-okcashbag/thumbnail2.png",
     liveUrl:
       "https://play.google.com/store/apps/details?id=com.skmc.okcashbag.home_google&hl=ko",
   },

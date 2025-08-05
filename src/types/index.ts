@@ -48,9 +48,9 @@ export interface ProjectItem {
 
 // 프로젝트 상세 페이지 타입들
 export interface ProjectSetupInfo {
-  github: string;
-  liveDemo: string;
-  deployment: string;
+  github?: string;
+  liveDemo?: string;
+  deployment?: string;
 }
 
 export interface ProjectTimeline {
@@ -68,7 +68,7 @@ export interface ProjectDetailData {
     list?: string[];
     text?: string;
   };
-  background: string;
+  background?: string;
   features: string[];
   techStack: string[];
   images?: {
