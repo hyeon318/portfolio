@@ -1,4 +1,4 @@
-import TechTag from "./TechTag";
+import { TechTag } from "@/components";
 
 interface TimelineItemProps {
   company: string;
@@ -51,7 +51,10 @@ export default function TimelineItem({
                 >
                   ▸
                 </span>
-                <span className="leading-relaxed font-kr">{item}</span>
+                <span
+                  className="leading-relaxed font-kr"
+                  dangerouslySetInnerHTML={{ __html: item }}
+                />
               </li>
             ))}
           </ul>

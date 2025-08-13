@@ -3,8 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import TechTag from "./TechTag";
-import { ProjectIcon, GitHubIcon, ExternalLinkIcon, EyeIcon } from "./icons";
+import { TechTag, GitHubIcon, ExternalLinkIcon, EyeIcon } from "@/components";
 
 interface ProjectModalProps {
   project: {
@@ -67,9 +66,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {project.title}
         </h3>
 
-        <p className="text-base leading-relaxed text-text-body font-kr">
-          {project.description}
-        </p>
+        <p
+          className="text-base leading-relaxed text-text-body font-kr"
+          dangerouslySetInnerHTML={{ __html: project.description }}
+        />
 
         {/* 기술 태그 */}
         <div className="space-y-3">
@@ -114,14 +114,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
         {/* 상세보기 버튼 */}
         <div className="flex flex-col gap-3 pt-4">
-          <Link
-            href={`/projects/${project.slug}`}
-            className="liquid-glass-button btn-primary inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-kr"
-            aria-label={`${project.title} 상세보기 페이지로 이동`}
-          >
-            <EyeIcon className="w-4 h-4 mr-2" />
-            자세히 보기
-          </Link>
+          {project.slug && (
+            <Link
+              href={`/projects/${project.slug}`}
+              className="w-full px-6 py-3 text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 rounded-lg hover:bg-card-hover inline-flex items-center justify-center font-kr"
+              style={{ border: "1.5px solid rgba(255, 255, 255, 0.40)" }}
+              aria-label={`${project.title} 상세보기 페이지로 이동`}
+            >
+              <EyeIcon className="w-4 h-4 mr-2" />
+              자세히 보기
+            </Link>
+          )}
 
           {/* 닫기 버튼 */}
           <button

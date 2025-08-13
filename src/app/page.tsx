@@ -1,11 +1,13 @@
 import React from "react";
-import TopNav from "@/components/Sidebar";
-import ScrollManager from "@/components/ScrollManager";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import ContactSection from "@/components/ContactSection";
+import {
+  Sidebar as TopNav,
+  ScrollManager,
+  HeroSection,
+  AboutSection,
+  ExperienceSection,
+  ProjectsSection,
+  ContactSection,
+} from "@/components";
 
 export default function Home() {
   return (

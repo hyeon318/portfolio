@@ -3,15 +3,17 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { ProjectDetailData } from "@/types";
-import { ArrowLeftIcon } from "./icons";
-import ProjectHeader from "./project-detail/ProjectHeader";
-import ProjectSection from "./project-detail/ProjectSection";
-import ProjectTimeline from "./project-detail/ProjectTimeline";
-import ProjectList from "./project-detail/ProjectList";
-import ProjectGrid from "./project-detail/ProjectGrid";
-import ProjectSetup from "./project-detail/ProjectSetup";
-import StyledText from "./project-detail/StyledText";
-import ProjectGallery from "./project-detail/ProjectGallery";
+import {
+  ArrowLeftIcon,
+  ProjectHeader,
+  ProjectSection,
+  ProjectTimeline,
+  ProjectList,
+  ProjectGrid,
+  ProjectSetup,
+  StyledText,
+  ProjectGallery,
+} from "@/components";
 
 interface ProjectDetailPageProps {
   projectData: ProjectDetailData;
@@ -63,29 +65,31 @@ export default function ProjectDetailPage({
         <ProjectHeader projectData={projectData} />
 
         {/* 📌 Summary */}
-        <ProjectSection title="Summary" icon="📌">
-          <>
-            {projectData.summary?.text && (
-              <StyledText
-                text={projectData.summary.text}
-                highlight={projectData.cssClasses?.background?.highlight}
-                gradient={projectData.cssClasses?.background?.gradient}
-              />
-            )}
-            {projectData.summary?.list && (
-              <ul className="list-disc list-inside space-y-4 text-lg text-[var(--text-white)]/80 font-kr pt-4">
-                {projectData.summary?.list?.map((feature, index) => (
-                  <li key={index}>
-                    <span
-                      className="bg-white/10 px-2 py-1 rounded-lg text-sm font-medium"
-                      dangerouslySetInnerHTML={{ __html: feature }}
-                    />
-                  </li>
-                ))}
-              </ul>
-            )}
-          </>
-        </ProjectSection>
+        {projectData.summary && (
+          <ProjectSection title="Summary" icon="📌">
+            <>
+              {projectData.summary?.text && (
+                <StyledText
+                  text={projectData.summary.text}
+                  highlight={projectData.cssClasses?.background?.highlight}
+                  gradient={projectData.cssClasses?.background?.gradient}
+                />
+              )}
+              {projectData.summary?.list && (
+                <ul className="list-disc list-inside space-y-4 text-lg text-[var(--text-white)]/80 font-kr pt-4">
+                  {projectData.summary?.list?.map((feature, index) => (
+                    <li key={index}>
+                      <span
+                        className="bg-white/10 px-2 py-1 rounded-lg text-sm font-medium"
+                        dangerouslySetInnerHTML={{ __html: feature }}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
+          </ProjectSection>
+        )}
 
         {/* 📖 Background */}
         {projectData.background && (

@@ -76,6 +76,30 @@ export const experienceData: ExperienceItem[] = [
 
 export const projectsData: ProjectItem[] = [
   {
+    slug: "ocr-note",
+    title: "OCR 노트",
+    description:
+      "OCR Note는 이미지 속 텍스트를 추출(OCR)하고, 이를 자동으로 요약 및 정리하여 사용자가 메모 형태로 저장할 수 있게 도와주는 웹 애플리케이션입니다.<br/>" +
+      "주요 타겟은 학생, 수험생, 직장인, 교사 등이며, 손글씨 노트, 책, 간판, 명함 등 다양한 이미지를 활용해 텍스트 기반의 노트와 퀴즈로 확장할 수 있습니다.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Axios",
+      "FastAPI",
+      "Alembic",
+      "PostgreSQL",
+      "Google Cloud Vision API",
+      "OpenAI GPT-4o API",
+      "Docker / Docker Compose",
+      "AWS EC2 + Nginx + HTTPS",
+      "GCP / Vercel",
+    ],
+    githubUrl: "",
+    image: "/images/anytoon/thumbnail2.jpg",
+    liveUrl: "https://www.anytoon.co.kr/webtoon/main",
+  },
+  {
     slug: "anytoon",
     title: "애니툰 웹툰 플랫폼 리뉴얼",
     description:
@@ -147,12 +171,12 @@ export const projectsData: ProjectItem[] = [
     title: "문자 발송 솔루션 OShot",
     thumbnailTitle: "문자 발송 솔루션 OShot",
     description:
-      "400개 이상의 고객사를 위한 문자 발송 플랫폼을 개발했습니다. SMS/LMS/MMS 처리는 물론, 차이나모바일 연동 등 글로벌 통신 연동을 경험했습니다.",
-    tags: ["Java", "Oracle", "MySQL", "DB Procedure", "Trigger"],
+      "400개 이상의 고객사를 위한 문자 발송 플랫폼을 개발하였으며, SMS/LMS/MMS/KMS 송신 및 리포팅 기능을 구현했습니다. " +
+      "사용자 DB와 연동하여 메시지를 송수신하고, 수신 데이터를 파싱해 자동으로 DB에 저장하는 프로세스를 구축했습니다.",
+    tags: ["Java", "Spring Boot", "Oracle", "MySQL", "DB Procedure", "Trigger"],
     liveUrl: "http://www.oshot.co.kr/",
   },
   {
-    slug: "netplay",
     title: "넷플레이 OTT 계정 공유 플랫폼",
     thumbnailTitle: "넷플레이",
     description:
@@ -161,16 +185,14 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "https://netplay.co.kr/",
   },
   {
-    slug: "netplay",
     title: "넷플레이 관리자 사이트",
     thumbnailTitle: "넷플레이 관리자",
     description:
-      "사용자 간 OTT(netflix, tving, watcha, wavve) 계정을 안전하게 공유할 수 있도록 하는 기능을 개발 및 유지보수하며, B2B 기반의 공유 서비스를 제공했습니다.",
+      "OTT 계정 공유 서비스 운영을 위한 관리자 사이트를 개발하고, B2B 고객사가 계정 및 사용자 관리를 보다 편리하게 수행할 수 있도록 다양한 관리 기능을 구축 및 유지보수했습니다.",
     tags: ["Java", "Spring", "MySQL", "MyBatis", "w2ui", "JSP", "jQuery"],
     liveUrl: "https://netplay.co.kr/",
   },
   {
-    slug: "pc-off",
     title: "PC OFF & 근태 관리 시스템 (제이니스)",
     thumbnailTitle: "PC OFF & 근태 관리 시스템",
     description:
@@ -178,15 +200,15 @@ export const projectsData: ProjectItem[] = [
     tags: ["Java", "Spring", "PostgreSQL", "Quartz Scheduler", "MySQL"],
     liveUrl: "http://www.jness.co.kr/",
   },
-  {
-    slug: "test",
-    title: "테스트 프로젝트 - 모든 요소 확인",
-    description:
-      "이 프로젝트는 모든 상세 정보 요소들이 어떻게 표시되는지 확인하기 위한 테스트 프로젝트입니다. 각 섹션의 스타일과 레이아웃을 확인할 수 있습니다.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Framer Motion"],
-    githubUrl: "https://github.com/test",
-    liveUrl: "https://test-project.com",
-  },
+  // {
+  //   slug: "test",
+  //   title: "테스트 프로젝트 - 모든 요소 확인",
+  //   description:
+  //     "이 프로젝트는 모든 상세 정보 요소들이 어떻게 표시되는지 확인하기 위한 테스트 프로젝트입니다. 각 섹션의 스타일과 레이아웃을 확인할 수 있습니다.",
+  //   tags: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Framer Motion"],
+  //   githubUrl: "https://github.com/test",
+  //   liveUrl: "https://test-project.com",
+  // },
 ];
 
 export const contactData: ContactData = {

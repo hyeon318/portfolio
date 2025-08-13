@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ProjectDetailData } from "@/types";
-import { ProjectIcon, GitHubIcon, EyeIcon } from "../icons";
+import { GitHubIcon, EyeIcon } from "@/components";
 
 interface ProjectHeaderProps {
   projectData: ProjectDetailData;
@@ -71,7 +71,7 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
 
           {/* 기술 태그 */}
           <div>
-            <h3 className="text-sm font-semibold text-[var(--text-white)]/60 mb-4 font-kr">
+            <h3 className="text-sm font-semibold text-[var(--text-white)]/90 mb-4 font-kr">
               사용 기술
             </h3>
             <div className="flex flex-wrap gap-2">

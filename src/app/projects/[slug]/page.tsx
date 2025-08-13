@@ -1,6 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import ProjectDetailPage from "@/components/ProjectDetailPage";
+import { ProjectDetailPage } from "@/components";
 import { getProjectBySlug } from "@/data/projectDetails";
 
 export const dynamic = "force-dynamic";

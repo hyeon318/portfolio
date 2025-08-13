@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import TechTag from "./TechTag";
-import { ProjectIcon, GitHubIcon, ExternalLinkIcon } from "./icons";
-import { renderToHTML } from "next/dist/server/render";
+import { TechTag, GitHubIcon, ExternalLinkIcon } from "@/components";
 
 interface ProjectCardProps {
   title: string;
@@ -119,9 +117,10 @@ export default function ProjectCard({
             <h3 className="text-lg lg:text-xl font-bold leading-tight text-title group-hover:text-accent transition-colors duration-300 font-kr">
               {title}
             </h3>
-            <p className="text-sm leading-relaxed text-text-body group-hover:text-foreground-muted transition-colors duration-300 font-kr">
-              {description}
-            </p>
+            <p
+              className="text-sm leading-relaxed text-text-body group-hover:text-foreground-muted transition-colors duration-300 font-kr"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
           </header>
 
           <footer className="flex-1 flex flex-col justify-end space-y-4">

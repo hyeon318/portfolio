@@ -1,5 +1,5 @@
 import React from "react";
-import Section from "@/components/animated/Section";
+import { Section } from "@/components";
 import { contactData } from "@/data/mockData";
 
 export default function HeroSection() {

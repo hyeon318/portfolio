@@ -1,7 +1,5 @@
 import React from "react";
-import Section from "@/components/animated/Section";
-import SectionTitle from "@/components/SectionTitle";
-import AnimatedCard from "@/components/animated/AnimatedCard";
+import { Section, SectionTitle, AnimatedCard } from "@/components";
 import { contactData } from "@/data/mockData";
 
 export default function ContactSection() {

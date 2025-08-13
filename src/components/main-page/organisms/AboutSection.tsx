@@ -1,9 +1,7 @@
 "use client";
 
 import React from "react";
-import Section from "@/components/animated/Section";
-import SectionTitle from "@/components/SectionTitle";
-import { StaggerText } from "@/components/animated/FadeInText";
+import { Section, SectionTitle, StaggerText } from "@/components";
 import { aboutData } from "@/data/mockData";
 
 export default function AboutSection({ className }: { className?: string }) {

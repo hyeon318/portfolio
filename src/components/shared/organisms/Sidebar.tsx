@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { GitHubIcon, LinkedInIcon, EmailIcon } from "./icons";
+import { GitHubIcon, LinkedInIcon, EmailIcon } from "@/components";
 
 interface NavigationItem {
   name: string;

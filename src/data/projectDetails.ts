@@ -269,6 +269,45 @@ export const projectData: Record<string, ProjectDetailData> = {
 
     period: "2021.07 - 2021.12",
   },
+
+  oshot: {
+    title: "문자 발송 솔루션 OSHOT",
+    thumbnailTitle: "문자 발송 솔루션 OSHOT",
+    description:
+      "400개 이상의 고객사를 위한 문자 발송 플랫폼을 개발하였으며, SMS/LMS/MMS/KMS 송신 및 리포팅 기능을 구현했습니다. <br/>사용자 에이전트 연동을 통해 메시지를 송수신하고, 데이터 파일을 파싱하여 자동으로 DB에 적재하는 프로세스를 구축했습니다. <br/>차이나모바일 등 글로벌 통신망과의 연동 경험도 보유하고 있습니다.",
+    summary: {
+      text: "B2B 중심의 문자 발송 플랫폼 OShot을 개발하였으며, Java 기반 에이전트를 통해 SMS/LMS/MMS/KMS 송수신 및 리포팅 기능을 구현했습니다.<br/>메신저 ASP, 웹발송 PHP와 연동되는 구조 속에서 Java 백엔드 서버를 단독으로 관리하며, <strong>사용자 에이전트 연동·데이터 파싱·DB 자동 적재 등의 핵심 기능을 담당</strong>했습니다.<br/>차이나모바일 등 <strong>글로벌 통신망 연동</strong> 경험도 보유하고 있습니다.",
+    },
+    features: [
+      "Java Agent를 이용한 SMS/LMS/MMS 송수신 및 리포팅 기능 개발",
+      "패킷 데이터를 파일로 읽고 쓰며 DB에 처리하는 전송 프로세스 구축",
+      "Stored Procedure와 Trigger를 활용한 데이터 자동 적재",
+      "'차이나 모바일' 글로벌 발송망과 연동하는 RESTful API 기반 발송 에이전트 개발",
+    ],
+    images: {
+      preview: [
+        "/images/oshot/preview1.png",
+        "/images/oshot/preview2.png",
+        "/images/oshot/preview3.png",
+      ],
+    },
+    techStack: [
+      "Java",
+      "Spring Boot",
+      "Oracle",
+      "MySQL",
+      "DB Procedure",
+      "Trigger",
+    ],
+    githubUrl: "",
+    liveUrl: "http://www.oshot.co.kr/",
+    setupInfo: {
+      github: "",
+      liveDemo: "http://www.oshot.co.kr/",
+    },
+    roleAndTeam: "기능 개발 및 유지보수 50%",
+    period: "2021.09 - 2023.12",
+  },
   test: {
     title: "테스트 프로젝트 - 모든 요소 확인",
     description:

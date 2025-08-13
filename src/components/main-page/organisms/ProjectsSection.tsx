@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import Section from "@/components/animated/Section";
-import SectionTitle from "@/components/SectionTitle";
-import ProjectCard from "@/components/ProjectCard";
-import AnimatedCard from "@/components/animated/AnimatedCard";
-import Modal from "@/components/Modal";
-import ProjectModal from "@/components/ProjectModal";
+import {
+  Section,
+  SectionTitle,
+  AnimatedCard,
+  Modal,
+  ProjectCard,
+  ProjectModal,
+} from "@/components";
 import { projectsData } from "@/data/mockData";
 
 export default function ProjectsSection() {
