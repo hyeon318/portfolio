@@ -13,14 +13,30 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
       {setupInfo.github && (
         <div className="flex items-center gap-3">
           <span className="text-sky-400 font-semibold">Github:</span>
-          <a
-            href={setupInfo.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
-          >
-            [링크]
-          </a>
+          {Array.isArray(setupInfo.github) ? (
+            <div className="flex flex-wrap items-center gap-2">
+              {setupInfo.github.map((url, idx) => (
+                <a
+                  key={url}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
+                >
+                  [{idx + 1}]
+                </a>
+              ))}
+            </div>
+          ) : (
+            <a
+              href={setupInfo.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
+            >
+              [링크]
+            </a>
+          )}
         </div>
       )}
       <div className="flex items-center gap-3">

@@ -7,7 +7,7 @@ import { TechTag, GitHubIcon, ExternalLinkIcon, EyeIcon } from "@/components";
 
 interface ProjectModalProps {
   project: {
-    slug: string; // slug 필드 추가
+    slug?: string; // slug 필드 선택적 처리로 변경
     title: string;
     thumbnailTitle?: string;
     description: string;

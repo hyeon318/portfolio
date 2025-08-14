@@ -48,7 +48,7 @@ export interface ProjectItem {
 
 // 프로젝트 상세 페이지 타입들
 export interface ProjectSetupInfo {
-  github?: string;
+  github?: string | string[];
   liveDemo?: string;
   deployment?: string;
 }

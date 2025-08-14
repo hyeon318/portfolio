@@ -2,6 +2,82 @@ import { ProjectDetailData } from "@/types";
 
 // 프로젝트 데이터를 객체 형태로 정의
 export const projectData: Record<string, ProjectDetailData> = {
+  "ocr-note": {
+    title: "OCR Note WebApp",
+    description:
+      "OCR Note는 이미지 속 텍스트를 추출(OCR)하고, 이를 자동으로 요약 및 정리하여 사용자가 메모 형태로 저장할 수 있게 도와주는 웹 애플리케이션입니다. 문서 이미지를 업로드하면 자동으로 압축 → OCR → 메모화까지 이어지고, 폴더/북마크/휴지통 관리와 일정 리마인더까지 제공하는 Next.js 기반 웹앱입니다. OpenAPI 스펙으로 타입 안전한 API 클라이언트를 자동 생성하며, SSR-safe 에러 처리와 라이트/다크 테마를 지원합니다.",
+    summary: {
+      text: "이미지 업로드-압축-인식(OCR)-메모화-알림까지 한 흐름으로 연결한 개인 생산성 웹앱으로, API 자동생성과 SSR-safe 에러 처리, OAuth 연동, 캘린더/리마인더 등 핵심 기능을 구현했습니다.",
+      list: [
+        "OCR Note는 이미지 속 텍스트를 추출(OCR)하고, 이를 자동으로 요약 및 정리하여 사용자가 메모 형태로 저장할 수 있게 도와주는 웹 애플리케이션입니다.",
+        "이미지 자동 압축(WebP) → 다중 파일 업로드 → OCR 결과 수집 및 관리",
+        "메모/폴더/북마크/휴지통(복원/영구삭제) 워크플로우 완성",
+        "리마인더: 리스트/캘린더/오늘/다가오는 일정 조회 및 활성 토글",
+        "Google OAuth + NextAuth 세션 기반 인증 흐름 구축",
+        "OpenAPI 기반 타입 안전 클라이언트 자동 생성 파이프라인",
+        "SSR-safe 에러 처리 유틸로 서버/클라이언트 분기 대응",
+      ],
+    },
+    background:
+      "현재 많은 정보가 SNS를 통해 쉽게 접근 가능해지면서, 필요한 내용을 사진으로 스크린샷 하는 경우가 많아졌습니다. 하지만 이렇게 찍은 스크린샷들은 시간이 지나면서 계속 쌓이기만 할 뿐, 다시 찾아보는 경우가 거의 없었습니다.<br/>" +
+      "저의 경우에도 스크린샷을 했다는 사실 자체를 잊어버리거나, 막상 필요할 때 원하는 정보를 쉽게 찾지 못하는 경우가 많았습니다.<br/>" +
+      "이런 불편함을 해결하기 위해, <strong>사진 속 정보를 텍스트로 변환하고 여기에 메모를 추가</strong>할 수 있는 프로그램을 만들고자 했습니다.",
+    features: [
+      "이미지 업로드 시 자동 압축(WebP, 최대 1920×1080, 80% 품질, 500KB 이상만 대상)",
+      "OCR 결과 목록/상세 조회 및 삭제",
+      "메모: 생성/수정/삭제, 상세 조회, 북마크 토글",
+      "폴더: 생성/수정/삭제/이동, 하위 폴더/메모 조회",
+      "휴지통: 목록/복원/영구 삭제",
+      "리마인더: 생성/수정/삭제/상세, 오늘/다가오는 일정/기간 목록, 캘린더 뷰, 활성 토글",
+      "인증: 이메일/패스워드 + Google OAuth(NextAuth 세션)",
+      "테마: 다크/라이트, 시맨틱 컬러/중성 팔레트 적용",
+      "에러 처리: 401/403 리다이렉트, 404 notFound, 5xx 에러 바운더리 연동",
+    ],
+    techStack: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript 5",
+      "Tailwind CSS 4",
+      "Axios",
+      "OpenAPI(TypeScript client auto-gen)",
+      "NextAuth",
+      "date-fns",
+      "FullCalendar",
+      "lucide-react",
+      "@heroicons/react",
+      "Swiper",
+      "ESLint 9",
+      "Prettier 3",
+    ],
+    images: {
+      thumbnail: "/images/ocr-note/thumbnail2.png",
+      preview: [
+        "/images/ocr-note/preview1.JPG",
+        "/images/ocr-note/preview2.JPG",
+        "/images/ocr-note/preview3.JPG",
+        "/images/ocr-note/preview4.JPG",
+      ],
+    },
+    liveUrl: "",
+    period: "",
+    setupInfo: {
+      github: [
+        "https://github.com/hyeon318/ocr-note-fe",
+        "https://github.com/hyeon318/ocr-note-be",
+      ],
+      liveDemo: "https://www.dangilog.cloud",
+      deployment: "",
+    },
+    roleAndTeam: "",
+    reflection:
+      "이번 프로젝트는 기존과 달리 AI를 적극적으로 활용하여 개발 역량을 강화하는 것을 목표로 했습니다.<br/>" +
+      "Python 기반의 백엔드와 Next.js 서버 기반의 프론트엔드를 함께 개발했는데, Python은 익숙하지 않아 초기에는 어색함이 있었으나 Cursor를 병행 사용하며 컨벤션과 API 구조를 유지하기 위해 노력했습니다. " +
+      "프론트엔드는 Atomic 디자인 패턴을 기반으로 폴더 구조를 구성해 컴포넌트의 재사용성과 유지보수성을 높였습니다.<br/>" +
+      "개발 과정에서는 백엔드를 먼저 구축한 뒤, 프론트엔드에서 <strong>generate-api</strong> 라이브러리를 활용했습니다. 이 라이브러리는 백엔드 서버 코드를 기준으로 <strong>프론트엔드에 API 타입 정의</strong>와 <strong>axios 통신 코드를 자동 생성</strong>해주어, 수작업으로 타입을 작성하거나 요청 로직을 반복 작성할 필요를 줄였습니다. " +
+      "이를 통해 <strong>백엔드 API가 변경되더라도 타입과 요청 코드가 자동으로 갱신</strong>되어 프론트/백 간 불일치를 방지하고 개발 속도를 높일 수 있었습니다.<br/>" +
+      "또한 OpenAI와 연동하여 AI 프롬프트를 작성해보았으며, 응답의 일관성을 높이는 과정이 도전적이었습니다. 이를 해결하기 위해 JSON 형식으로 응답을 요청하고, 각 페르소나와 넘버링 규칙을 설정하여 OpenAI의 출력 품질과 만족도를 향상시켰습니다. " +
+      "AWS를 이용한 배포에서는 초기 설정에 어려움이 있었지만, 무사히 배포에 성공해 큰 성취감을 느꼈습니다. 다만 현재 서비스는 글로벌 확장 계획이 없고, 서버 운영 지식이 부족하다고 판단해 추후 홈서버로 마이그레이션할 예정입니다. ",
+  },
   anytoon: {
     title: "애니툰 웹툰 서비스",
     description:
