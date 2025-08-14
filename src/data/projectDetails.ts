@@ -225,7 +225,7 @@ export const projectData: Record<string, ProjectDetailData> = {
       "Next.js의 SSR, RSC, CSR이 혼재된 구조에서는 에러 발생 위치에 따라 다른 전략이 필요하며, 이를 유기적으로 연결시키는 것이 진정한 챌린지였습니다.",
     period: "2024.05 - 2025.01",
     images: {
-      thumbnail: "/images/anytoon-global/thumbnail1.jpg",
+      thumbnail: "/images/anytoon-global/thumbnai.jpg",
       preview: [
         "/images/anytoon-global/preview1.png",
         "/images/anytoon-global/preview2.png",

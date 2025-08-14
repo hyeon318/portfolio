@@ -143,7 +143,7 @@ export const projectsData: ProjectItem[] = [
     description:
       "다국어 지원을 위한 i18n 시스템을 구축하고 OAuth 기반 글로벌 로그인 기능을 개발했습니다. SSR과 SSG를 활용하여 글로벌 사용자에 대한 성능을 최적화했습니다.",
     tags: ["Next.js", "React", "i18next", "OAuth", "TypeScript"],
-    image: "/images/anytoon-global/thumbnail1.jpg",
+    image: "/images/anytoon-global/thumbnail.jpg",
   },
   {
     slug: "anytoon-cp",
