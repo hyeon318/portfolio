@@ -2,16 +2,10 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { TechTag, GitHubIcon, ExternalLinkIcon } from "@/components";
+import { TechTag, ExternalLinkIcon } from "@/components";
+import { ProjectItem } from "@/types";
 
-interface ProjectCardProps {
-  title: string;
-  thumbnailTitle?: string;
-  description: string;
-  tags: string[];
-  image?: string;
-  githubUrl?: string;
-  liveUrl?: string;
+interface ProjectCardProps extends ProjectItem {
   onCardClick?: () => void;
 }
 
@@ -29,7 +23,6 @@ export default function ProjectCard({
   description,
   tags,
   image,
-  githubUrl,
   thumbnailTitle,
   liveUrl,
   onCardClick,
@@ -134,19 +127,6 @@ export default function ProjectCard({
             </section>
 
             <nav className="flex gap-6 text-xs pt-3 border-t border-border/50 group-hover:border-accent/30 transition-colors duration-300">
-              {githubUrl && (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card-link font-medium flex items-center gap-2 tracking-wider uppercase transition-all duration-300 text-muted hover:text-accent font-en"
-                  aria-label={`${title} GitHub 저장소 보기`}
-                  onClick={e => e.stopPropagation()}
-                >
-                  <GitHubIcon className="w-4 h-4" />
-                  GitHub
-                </a>
-              )}
               {liveUrl && (
                 <a
                   href={liveUrl}

@@ -50,8 +50,8 @@ export default function ProjectsSection() {
                 description={project.description}
                 tags={project.tags}
                 image={project.image}
-                githubUrl={project.githubUrl}
                 liveUrl={project.liveUrl}
+                slug={project.slug}
                 onCardClick={() => handleProjectClick(project)}
               />
             </AnimatedCard>

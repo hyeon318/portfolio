@@ -36,13 +36,13 @@ export default function ProjectDetailPage({
   }, []);
 
   return (
-    <div className="bg-[#0A0F1C] text-[var(--text-white)]/90 backdrop-blur-xl min-h-screen">
+    <div className="backdrop-blur-xl min-h-screen">
       {/* 헤더 */}
       <header className="sticky top-0 z-40 backdrop-blur-xl bg-white/5 border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-[var(--primary)] hover:text-[var(--primary-light)] transition-colors duration-300">
           <Link
             href="/"
-            className="text-lg font-semibold text-[var(--text-white)] hover:text-sky-400 transition-colors duration-300 flex items-center gap-2"
+            className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2"
             onClick={() => {
               sessionStorage.setItem(
                 "mainPageScrollPosition",

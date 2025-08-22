@@ -85,19 +85,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
         {/* 액션 버튼들 */}
         <div className="flex flex-col sm:flex-row gap-3 pt-4">
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="liquid-glass-button btn-primary inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-en"
-              aria-label={`${project.title} GitHub 저장소 보기`}
-            >
-              <GitHubIcon className="w-4 h-4 mr-2" />
-              GitHub 보기
-            </a>
-          )}
-
           {project.liveUrl && (
             <a
               href={project.liveUrl}

@@ -59,26 +59,24 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
         {/* 프로젝트 정보 */}
         <div className="w-full lg:w-1/2 space-y-8">
           <div>
-            <h1 className="text-3xl lg:text-4xl font-bold text-[var(--text-white)] mb-3 lg:mb-6 leading-tight whitespace-normal break-words font-kr">
+            <h1 className="text-3xl lg:text-4xl font-bold mb-3 lg:mb-6 leading-tight whitespace-normal break-words font-kr">
               {projectData.title}
             </h1>
 
             <p
-              className="text-md text-[var(--text-white)]/80 leading-relaxed font-kr"
+              className="text-md leading-relaxed font-kr"
               dangerouslySetInnerHTML={{ __html: projectData.description }}
             />
           </div>
 
           {/* 기술 태그 */}
           <div>
-            <h3 className="text-sm font-semibold text-[var(--text-white)]/90 mb-4 font-kr">
-              사용 기술
-            </h3>
+            <h3 className="text-sm font-semibold mb-4 font-kr">사용 기술</h3>
             <div className="flex flex-wrap gap-2">
               {projectData.techStack.map((tech, index) => (
                 <span
                   key={index}
-                  className="bg-white/10 px-3 py-1 rounded-lg text-sm text-[var(--text-white)]/90 font-medium"
+                  className="bg-white/10 px-3 py-1 rounded-lg text-sm font-medium"
                 >
                   {tech}
                 </span>
@@ -106,7 +104,7 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
                 href={projectData.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="live-demo-button bg-gradient-to-r from-sky-400 to-blue-500 px-6 py-3 rounded-lg text-sm font-medium text-[var(--text-white)] hover:from-sky-500 hover:to-blue-600 transition-all duration-300 inline-flex items-center justify-center"
+                className="live-demo-button px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center"
                 aria-label={`${projectData.title} 라이브 데모 보기`}
               >
                 <EyeIcon className="w-4 h-4 mr-2" />

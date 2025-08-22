@@ -42,7 +42,6 @@ export interface ProjectItem {
   description: string;
   tags: string[];
   image?: string;
-  githubUrl?: string;
   liveUrl?: string;
 }
 
@@ -72,6 +71,7 @@ export interface ProjectDetailData {
   features: string[];
   techStack: string[];
   images?: {
+    listThumbnail?: string;
     thumbnail?: string;
     preview?: string[];
   };
@@ -112,7 +112,7 @@ export interface ProjectDetailData {
 
 export interface ContactData {
   email: string;
-  message: string;
+  message?: string;
 }
 
 // Navigation Types

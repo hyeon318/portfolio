@@ -1,64 +1,58 @@
-import { ProjectDetailData } from "@/types";
+import { ProjectDetailData, ProjectItem } from "@/types";
 
 // 프로젝트 데이터를 객체 형태로 정의
 export const projectData: Record<string, ProjectDetailData> = {
   "ocr-note": {
-    title: "OCR Note WebApp",
+    title: "OCR Note Web",
     description:
-      "OCR Note는 이미지 속 텍스트를 추출(OCR)하고, 이를 자동으로 요약 및 정리하여 사용자가 메모 형태로 저장할 수 있게 도와주는 웹 애플리케이션입니다. 문서 이미지를 업로드하면 자동으로 압축 → OCR → 메모화까지 이어지고, 폴더/북마크/휴지통 관리와 일정 리마인더까지 제공하는 Next.js 기반 웹앱입니다. OpenAPI 스펙으로 타입 안전한 API 클라이언트를 자동 생성하며, SSR-safe 에러 처리와 라이트/다크 테마를 지원합니다.",
+      "OCR Note는 이미지 속 Google Cloud Vision API를 통해 텍스트를 추출하고, OpenAI API를 통해 요약·정리하여 저장할 수 있는 웹 서비스입니다.<br/>" +
+      "또한 폴더, 북마크, 휴지통 관리와 일정 리마인더 기능을 제공해 흩어진 이미지 기반 정보를 체계적으로 관리할 수 있습니다.",
     summary: {
-      text: "이미지 업로드-압축-인식(OCR)-메모화-알림까지 한 흐름으로 연결한 개인 생산성 웹앱으로, API 자동생성과 SSR-safe 에러 처리, OAuth 연동, 캘린더/리마인더 등 핵심 기능을 구현했습니다.",
+      text: "OCR Note는 이미지 속 텍스트를 추출하고(OpenAI 기반 요약 포함), 이를 메모로 저장·관리할 수 있는 생산성 웹앱입니다.<br/>스크린샷이나 이미지 기반 정보를 체계적으로 정리하고, 메모/폴더/리마인더 기능까지 통합하여 개인 정보 관리 효율성을 높였습니다.",
       list: [
-        "OCR Note는 이미지 속 텍스트를 추출(OCR)하고, 이를 자동으로 요약 및 정리하여 사용자가 메모 형태로 저장할 수 있게 도와주는 웹 애플리케이션입니다.",
-        "이미지 자동 압축(WebP) → 다중 파일 업로드 → OCR 결과 수집 및 관리",
-        "메모/폴더/북마크/휴지통(복원/영구삭제) 워크플로우 완성",
-        "리마인더: 리스트/캘린더/오늘/다가오는 일정 조회 및 활성 토글",
-        "Google OAuth + NextAuth 세션 기반 인증 흐름 구축",
-        "OpenAPI 기반 타입 안전 클라이언트 자동 생성 파이프라인",
-        "SSR-safe 에러 처리 유틸로 서버/클라이언트 분기 대응",
+        "AWS를 통한 서비스 배포 및 초기 인프라 설정 경험",
+        "Google Cloud Vision API를 활용한 이미지 OCR 처리",
+        "OpenAI API를 통한 텍스트 요약 및 정리",
+        "NextAuth + Google OAuth 기반 인증 플로우 구축",
+        "generate-api 라이브러리를 활용한 타입 안전 API 클라이언트 자동 생성",
       ],
     },
     background:
-      "현재 많은 정보가 SNS를 통해 쉽게 접근 가능해지면서, 필요한 내용을 사진으로 스크린샷 하는 경우가 많아졌습니다. 하지만 이렇게 찍은 스크린샷들은 시간이 지나면서 계속 쌓이기만 할 뿐, 다시 찾아보는 경우가 거의 없었습니다.<br/>" +
-      "저의 경우에도 스크린샷을 했다는 사실 자체를 잊어버리거나, 막상 필요할 때 원하는 정보를 쉽게 찾지 못하는 경우가 많았습니다.<br/>" +
-      "이런 불편함을 해결하기 위해, <strong>사진 속 정보를 텍스트로 변환하고 여기에 메모를 추가</strong>할 수 있는 프로그램을 만들고자 했습니다.",
+      "현재 많은 정보가 SNS나 온라인을 통해 손쉽게 접할 수 있게 되면서, 필요한 내용을 사진으로 스크린샷해 두는 경우가 많아졌습니다. 하지만 이렇게 쌓인 스크린샷들은 시간이 지나면 정리되지 않은 채 방치되기 쉽고, 막상 다시 찾아보려 할 때 원하는 정보를 빠르게 찾지 못하는 경우가 많았습니다. 저 역시 스크린샷을 해두고도 그 사실조차 잊거나, 필요할 때 활용하지 못하는 불편함을 자주 겪었습니다.<br/><br/>" +
+      "이 문제를 해결하기 위해 <strong>이미지 속 정보를 텍스트로 변환하고, 요약·정리된 형태로 메모화할 수 있는 도구</strong>를 만들고자 했습니다. 특히 카드뉴스나 인포그래픽처럼 이미지에 담긴 정보는 구조적으로 관리하기 어렵기 때문에, 이를 OCR과 AI 요약을 결합한 웹 기반 노트 서비스로 구현했습니다.<br/><br/>",
     features: [
-      "이미지 업로드 시 자동 압축(WebP, 최대 1920×1080, 80% 품질, 500KB 이상만 대상)",
-      "OCR 결과 목록/상세 조회 및 삭제",
-      "메모: 생성/수정/삭제, 상세 조회, 북마크 토글",
-      "폴더: 생성/수정/삭제/이동, 하위 폴더/메모 조회",
-      "휴지통: 목록/복원/영구 삭제",
-      "리마인더: 생성/수정/삭제/상세, 오늘/다가오는 일정/기간 목록, 캘린더 뷰, 활성 토글",
-      "인증: 이메일/패스워드 + Google OAuth(NextAuth 세션)",
-      "테마: 다크/라이트, 시맨틱 컬러/중성 팔레트 적용",
-      "에러 처리: 401/403 리다이렉트, 404 notFound, 5xx 에러 바운더리 연동",
+      "이메일/패스워드 로그인 + Google OAuth(NextAuth 세션)",
+      "이미지 업로드 시 자동 압축(WebP 변환)",
+      "OCR 기반 텍스트 추출 및 OpenAI API를 활용한 자동 요약",
+      "메모 생성/수정/삭제, 상세 조회, 북마크 토글",
+      "폴더 생성/수정/삭제/이동 및 하위 메모 조회",
+      "리마인더 생성/수정/삭제, 상세 조회",
     ],
     techStack: [
-      "Next.js 15",
-      "React 19",
-      "TypeScript 5",
-      "Tailwind CSS 4",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
       "Axios",
-      "OpenAPI(TypeScript client auto-gen)",
-      "NextAuth",
-      "date-fns",
-      "FullCalendar",
-      "lucide-react",
-      "@heroicons/react",
-      "Swiper",
-      "ESLint 9",
-      "Prettier 3",
+      "Python",
+      "FastAPI",
+      "Alembic",
+      "PostgreSQL",
+      "Google Cloud Vision API",
+      "OpenAPI",
+      "Docker / Docker Compose",
+      "AWS",
     ],
     images: {
-      thumbnail: "/images/ocr-note/thumbnail2.png",
+      thumbnail: "/images/ocr-note/thumbnail3.png",
       preview: [
+        "/images/ocr-note/erd.JPG",
         "/images/ocr-note/preview1.JPG",
         "/images/ocr-note/preview2.JPG",
         "/images/ocr-note/preview3.JPG",
         "/images/ocr-note/preview4.JPG",
       ],
     },
-    liveUrl: "",
+    liveUrl: "https://www.dangilog.cloud/notes",
     period: "",
     setupInfo: {
       github: [
@@ -70,13 +64,12 @@ export const projectData: Record<string, ProjectDetailData> = {
     },
     roleAndTeam: "",
     reflection:
-      "이번 프로젝트는 기존과 달리 AI를 적극적으로 활용하여 개발 역량을 강화하는 것을 목표로 했습니다.<br/>" +
+      "이번 프로젝트는 AI 도구를 개발 파트너로 활용해 효율적인 개발 경험을 쌓는 것을 목표로 진행했습니다.<br/>" +
       "Python 기반의 백엔드와 Next.js 서버 기반의 프론트엔드를 함께 개발했는데, Python은 익숙하지 않아 초기에는 어색함이 있었으나 Cursor를 병행 사용하며 컨벤션과 API 구조를 유지하기 위해 노력했습니다. " +
-      "프론트엔드는 Atomic 디자인 패턴을 기반으로 폴더 구조를 구성해 컴포넌트의 재사용성과 유지보수성을 높였습니다.<br/>" +
-      "개발 과정에서는 백엔드를 먼저 구축한 뒤, 프론트엔드에서 <strong>generate-api</strong> 라이브러리를 활용했습니다. 이 라이브러리는 백엔드 서버 코드를 기준으로 <strong>프론트엔드에 API 타입 정의</strong>와 <strong>axios 통신 코드를 자동 생성</strong>해주어, 수작업으로 타입을 작성하거나 요청 로직을 반복 작성할 필요를 줄였습니다. " +
-      "이를 통해 <strong>백엔드 API가 변경되더라도 타입과 요청 코드가 자동으로 갱신</strong>되어 프론트/백 간 불일치를 방지하고 개발 속도를 높일 수 있었습니다.<br/>" +
-      "또한 OpenAI와 연동하여 AI 프롬프트를 작성해보았으며, 응답의 일관성을 높이는 과정이 도전적이었습니다. 이를 해결하기 위해 JSON 형식으로 응답을 요청하고, 각 페르소나와 넘버링 규칙을 설정하여 OpenAI의 출력 품질과 만족도를 향상시켰습니다. " +
-      "AWS를 이용한 배포에서는 초기 설정에 어려움이 있었지만, 무사히 배포에 성공해 큰 성취감을 느꼈습니다. 다만 현재 서비스는 글로벌 확장 계획이 없고, 서버 운영 지식이 부족하다고 판단해 추후 홈서버로 마이그레이션할 예정입니다. ",
+      "프론트엔드는 Atomic 디자인 패턴을 기반으로 폴더 구조를 구성해 컴포넌트의 재사용성과 유지보수성을 높였습니다.<br/><br/>" +
+      "개발 과정에서는 백엔드를 먼저 구축한 뒤, 프론트엔드에서 <strong>generate-api</strong> 라이브러리를 활용해 API 타입 정의와 axios 요청 코드를 자동 생성했습니다. 이를 통해 프론트/백 간 불일치를 방지하고, 반복적인 코드 작성 부담을 줄여 개발 속도를 높일 수 있었습니다.<br/>" +
+      "또한 OpenAI와 연동하여 다양한 프롬프트 실험을 진행했으며, 응답의 일관성을 확보하는 과정이 주요 과제 중 하나였습니다. 이를 해결하기 위해 <strong>JSON 형식 강제와 규칙 기반 프롬프트 설계(페르소나·넘버링 규칙 적용)</strong>를 통해 출력 품질과 활용 만족도를 높였습니다.<br/>" +
+      "AWS를 이용한 배포 과정에서는 초기 설정에 어려움이 있었지만, 무사히 배포를 완료하며 실전 경험을 쌓을 수 있었습니다. 현재는 개인 프로젝트 특성을 고려해, 효율적인 유지보수를 위해 추후 홈서버로 마이그레이션할 계획입니다. ",
   },
   anytoon: {
     title: "애니툰 웹툰 서비스",
@@ -384,125 +377,179 @@ export const projectData: Record<string, ProjectDetailData> = {
     roleAndTeam: "기능 개발 및 유지보수 50%",
     period: "2021.09 - 2023.12",
   },
-  test: {
-    title: "테스트 프로젝트 - 모든 요소 확인",
+  netplay: {
+    title: "넷플레이 OTT 계정 공유 플랫폼",
+    thumbnailTitle: "넷플레이",
     description:
-      "이 프로젝트는 모든 상세 정보 요소들이 어떻게 표시되는지 확인하기 위한 테스트 프로젝트입니다. 각 섹션의 스타일과 레이아웃을 확인할 수 있습니다.",
+      "사용자 간 OTT(netflix, tving, watcha, wavve) 계정을 안전하게 공유할 수 있도록 하는 기능을 개발 및 유지보수하며, B2B 기반의 공유 서비스를 제공했습니다.",
     summary: {
-      text: "모든 프로젝트 상세 정보 요소들을 포함한 테스트 프로젝트로, 각 섹션의 표시 방식을 확인할 수 있습니다.",
+      text: "OTT 계정 공유 플랫폼을 개발하여 사용자들이 안전하게 계정을 공유할 수 있는 B2B 서비스를 제공했습니다.",
     },
-    background:
-      "프로젝트 상세 페이지의 모든 요소들이 올바르게 표시되는지 확인하기 위해 생성된 테스트 프로젝트입니다.",
     features: [
-      "모든 섹션 표시 테스트",
-      "조건부 렌더링 확인",
-      "스타일링 검증",
-      "반응형 레이아웃 테스트",
+      "OTT 계정 공유 기능 개발",
+      "B2B 기반 공유 서비스 제공",
+      "계정 관리 및 보안 기능",
     ],
-    techStack: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Next.js",
-      "Framer Motion",
-    ],
-    images: {
-      thumbnail: "/images/애니툰메인화면.png",
-      preview: ["/images/애니툰메인화면.png"],
-    },
-    githubUrl: "https://github.com/test",
-    liveUrl: "https://test-project.com",
-    period: "2024.01 - 2024.12",
-    setupInfo: {
-      github: "https://github.com/test",
-      liveDemo: "https://test-project.com",
-      deployment: "Vercel + Docker 기반",
-    },
-    roleAndTeam: "개인 프로젝트 (본인: 프론트엔드 100% + 백엔드 50% 개발)",
-    reflection:
-      "테스트 프로젝트를 통해 모든 요소들이 올바르게 표시되는 것을 확인했습니다. 조건부 렌더링과 스타일링이 정상적으로 작동합니다.",
-
-    // 프로젝트 일정
-    timeline: [
-      {
-        phase: "기획 및 설계",
-        duration: "2024.01 - 2024.03",
-        description: "프로젝트 요구사항 분석 및 아키텍처 설계",
-        achievements: [
-          "요구사항 분석 완료",
-          "기술 스택 선정",
-          "아키텍처 설계 완료",
-        ],
-      },
-      {
-        phase: "개발",
-        duration: "2024.04 - 2024.09",
-        description: "프론트엔드 및 백엔드 개발",
-        achievements: [
-          "프론트엔드 개발 완료",
-          "백엔드 API 개발",
-          "데이터베이스 설계 및 구현",
-        ],
-      },
-      {
-        phase: "테스트 및 배포",
-        duration: "2024.10 - 2024.12",
-        description: "통합 테스트 및 프로덕션 배포",
-        achievements: ["단위 테스트 작성", "통합 테스트 완료", "프로덕션 배포"],
-      },
-    ],
-
-    // 도전과제
-    challenges: [
-      "복잡한 상태 관리 구현",
-      "성능 최적화",
-      "반응형 디자인 구현",
-      "접근성 고려사항 적용",
-    ],
-
-    // 결과물/성과
-    results: [
-      "사용자 만족도 95% 달성",
-      "페이지 로딩 속도 50% 개선",
-      "버그 발생률 80% 감소",
-      "개발 생산성 30% 향상",
-    ],
-
-    // 배운 점
-    lessons: [
-      "React 최신 기능 활용 방법",
-      "TypeScript 타입 안전성의 중요성",
-      "성능 최적화 기법",
-      "사용자 중심 설계의 중요성",
-    ],
-
-    // 다음 단계/개선점
-    nextSteps: [
-      "AI 기능 추가",
-      "모바일 앱 개발",
-      "마이크로서비스 아키텍처 도입",
-      "실시간 협업 기능 구현",
-    ],
-
-    cssClasses: {
-      summary: {
-        highlight: "모든 프로젝트 상세 정보 요소들",
-        gradient: "테스트 프로젝트",
-      },
-      background: {
-        highlight: "프로젝트 상세 페이지",
-        gradient: "모든 요소들이 올바르게 표시되는지 확인",
-      },
-      roleAndTeam: {
-        highlight: "개인 프로젝트",
-        gradient: "프론트엔드 100% + 백엔드 50% 개발",
-      },
-      reflection: {
-        highlight: "테스트 프로젝트를 통해",
-        gradient: "모든 요소들이 올바르게 표시되는 것을 확인",
-      },
-    },
+    techStack: ["Java", "Spring", "MySQL", "MyBatis", "JSP", "jQuery"],
+    liveUrl: "https://netplay.co.kr/",
+    period: "2020.10 - 2024.07",
+    roleAndTeam: "백엔드 개발 및 유지보수",
   },
+  "netplay-admin": {
+    title: "넷플레이 관리자 사이트",
+    thumbnailTitle: "넷플레이 관리자",
+    description:
+      "OTT 계정 공유 서비스 운영을 위한 관리자 사이트를 개발하고, B2B 고객사가 계정 및 사용자 관리를 보다 편리하게 수행할 수 있도록 다양한 관리 기능을 구축 및 유지보수했습니다.",
+    summary: {
+      text: "OTT 계정 공유 서비스의 관리자 사이트를 개발하여 B2B 고객사의 계정 및 사용자 관리를 지원했습니다.",
+    },
+    features: [
+      "관리자 사이트 개발",
+      "B2B 고객사 계정 관리",
+      "사용자 관리 기능",
+    ],
+    techStack: ["Java", "Spring", "MySQL", "MyBatis", "w2ui", "JSP", "jQuery"],
+    liveUrl: "https://netplay.co.kr/",
+    period: "2020.10 - 2024.07",
+    roleAndTeam: "백엔드 개발 및 유지보수",
+  },
+  "pc-off": {
+    title: "PC OFF & 근태 관리 시스템 (제이니스)",
+    thumbnailTitle: "PC OFF & 근태 관리 시스템",
+    description:
+      "Quartz Scheduler를 활용하여 연장근무, 휴일근무 통계를 자동 생성하고, 유연근무제 및 휴가 결재 오류 수정 및 자동화 프로세스를 개선했습니다.",
+    summary: {
+      text: "근태 관리 시스템을 개발하여 연장근무, 휴일근무 통계 자동 생성 및 휴가 결재 프로세스를 개선했습니다.",
+    },
+    features: [
+      "Quartz Scheduler를 활용한 통계 자동 생성",
+      "연장근무, 휴일근무 통계",
+      "유연근무제 및 휴가 결재 자동화",
+    ],
+    techStack: ["Java", "Spring", "PostgreSQL", "Quartz Scheduler", "MySQL"],
+    liveUrl: "http://www.jness.co.kr/",
+    period: "2019.09 - 2020.05",
+    roleAndTeam: "백엔드 개발",
+  },
+  // test: {
+  //   title: "테스트 프로젝트 - 모든 요소 확인",
+  //   description:
+  //     "이 프로젝트는 모든 상세 정보 요소들이 어떻게 표시되는지 확인하기 위한 테스트 프로젝트입니다. 각 섹션의 스타일과 레이아웃을 확인할 수 있습니다.",
+  //   summary: {
+  //     text: "모든 프로젝트 상세 정보 요소들을 포함한 테스트 프로젝트로, 각 섹션의 표시 방식을 확인할 수 있습니다.",
+  //   },
+  //   background:
+  //     "프로젝트 상세 페이지의 모든 요소들이 올바르게 표시되는지 확인하기 위해 생성된 테스트 프로젝트입니다.",
+  //   features: [
+  //     "모든 섹션 표시 테스트",
+  //     "조건부 렌더링 확인",
+  //     "스타일링 검증",
+  //     "반응형 레이아웃 테스트",
+  //   ],
+  //   techStack: [
+  //     "React",
+  //     "TypeScript",
+  //     "Tailwind CSS",
+  //     "Next.js",
+  //     "Framer Motion",
+  //   ],
+  //   images: {
+  //     thumbnail: "/images/애니툰메인화면.png",
+  //     preview: ["/images/애니툰메인화면.png"],
+  //   },
+  //   githubUrl: "https://github.com/test",
+  //   liveUrl: "https://test-project.com",
+  //   period: "2024.01 - 2024.12",
+  //   setupInfo: {
+  //     github: "https://github.com/test",
+  //     liveDemo: "https://test-project.com",
+  //     deployment: "Vercel + Docker 기반",
+  //   },
+  //   roleAndTeam: "개인 프로젝트 (본인: 프론트엔드 100% + 백엔드 50% 개발)",
+  //   reflection:
+  //     "테스트 프로젝트를 통해 모든 요소들이 올바르게 표시되는 것을 확인했습니다. 조건부 렌더링과 스타일링이 정상적으로 작동합니다.",
+
+  //   // 프로젝트 일정
+  //   timeline: [
+  //     {
+  //       phase: "기획 및 설계",
+  //       duration: "2024.01 - 2024.03",
+  //       description: "프로젝트 요구사항 분석 및 아키텍처 설계",
+  //       achievements: [
+  //         "요구사항 분석 완료",
+  //         "기술 스택 선정",
+  //         "아키텍처 설계 완료",
+  //       ],
+  //     },
+  //     {
+  //       phase: "개발",
+  //       duration: "2024.04 - 2024.09",
+  //       description: "프론트엔드 및 백엔드 개발",
+  //       achievements: [
+  //         "프론트엔드 개발 완료",
+  //         "백엔드 API 개발",
+  //         "데이터베이스 설계 및 구현",
+  //       ],
+  //     },
+  //     {
+  //       phase: "테스트 및 배포",
+  //       duration: "2024.10 - 2024.12",
+  //       description: "통합 테스트 및 프로덕션 배포",
+  //       achievements: ["단위 테스트 작성", "통합 테스트 완료", "프로덕션 배포"],
+  //     },
+  //   ],
+
+  //   // 도전과제
+  //   challenges: [
+  //     "복잡한 상태 관리 구현",
+  //     "성능 최적화",
+  //     "반응형 디자인 구현",
+  //     "접근성 고려사항 적용",
+  //   ],
+
+  //   // 결과물/성과
+  //   results: [
+  //     "사용자 만족도 95% 달성",
+  //     "페이지 로딩 속도 50% 개선",
+  //     "버그 발생률 80% 감소",
+  //     "개발 생산성 30% 향상",
+  //   ],
+
+  //   // 배운 점
+  //   lessons: [
+  //     "React 최신 기능 활용 방법",
+  //     "TypeScript 타입 안전성의 중요성",
+  //     "성능 최적화 기법",
+  //     "사용자 중심 설계의 중요성",
+  //   ],
+
+  //   // 다음 단계/개선점
+  //   nextSteps: [
+  //     "AI 기능 추가",
+  //     "모바일 앱 개발",
+  //     "마이크로서비스 아키텍처 도입",
+  //     "실시간 협업 기능 구현",
+  //   ],
+
+  //   cssClasses: {
+  //     summary: {
+  //       highlight: "모든 프로젝트 상세 정보 요소들",
+  //       gradient: "테스트 프로젝트",
+  //     },
+  //     background: {
+  //       highlight: "프로젝트 상세 페이지",
+  //       gradient: "모든 요소들이 올바르게 표시되는지 확인",
+  //     },
+  //     roleAndTeam: {
+  //       highlight: "개인 프로젝트",
+  //       gradient: "프론트엔드 100% + 백엔드 50% 개발",
+  //     },
+  //     reflection: {
+  //       highlight: "테스트 프로젝트를 통해",
+  //       gradient: "모든 요소들이 올바르게 표시되는 것을 확인",
+  //     },
+  //   },
+  // },
 };
 
 // slug로 프로젝트 데이터를 찾는 유틸리티 함수
@@ -513,6 +560,34 @@ export function getProjectBySlug(slug: string): ProjectDetailData | undefined {
 // 모든 프로젝트 slug 목록을 가져오는 함수
 export function getAllProjectSlugs(): string[] {
   return Object.keys(projectData);
+}
+
+// ProjectDetailData를 ProjectItem으로 변환하는 함수
+export function convertToProjectItem(
+  projectDetail: ProjectDetailData,
+  slug: string
+): ProjectItem {
+  // netplay, netplay-admin, pc-off는 slug를 undefined로 설정
+  const shouldHaveSlug = !["netplay", "netplay-admin", "pc-off"].includes(slug);
+
+  return {
+    slug: shouldHaveSlug ? slug : undefined,
+    title: projectDetail.title,
+    thumbnailTitle: projectDetail.thumbnailTitle,
+    description: projectDetail.description,
+    tags: projectDetail.techStack,
+    image: projectDetail.images?.listThumbnail
+      ? projectDetail.images?.listThumbnail
+      : projectDetail.images?.thumbnail,
+    liveUrl: projectDetail.liveUrl || projectDetail.setupInfo?.liveDemo,
+  };
+}
+
+// 메인 페이지용 프로젝트 데이터 생성 함수
+export function getProjectsForMainPage(): ProjectItem[] {
+  return Object.entries(projectData).map(([slug, projectDetail]) =>
+    convertToProjectItem(projectDetail, slug)
+  );
 }
 
 // 프로젝트 데이터 배열 (기존 호환성을 위해)

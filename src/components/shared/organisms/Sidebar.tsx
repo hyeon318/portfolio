@@ -23,10 +23,13 @@ const navigation: NavigationItem[] = [
 
 const socialLinks: SocialLink[] = [
   { name: "GitHub", href: "https://github.com/hyeon318", icon: "github" },
-  { name: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/hyeonji-ahn-91b684373/",
+    icon: "linkedin",
+  },
   { name: "Email", href: "mailto:mail_0318@naver.com", icon: "email" },
 ];
-
 export default function TopNav() {
   const [activeSection, setActiveSection] = useState("");
 
@@ -81,7 +84,7 @@ export default function TopNav() {
               }}
               aria-label="홈으로 이동"
             >
-              안현<strong className="text-accent highlight">지</strong>
+              <strong className="highlight">안현지</strong>
             </a>
           </motion.div>
 
@@ -126,7 +129,7 @@ export default function TopNav() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="social-link text-muted hover:text-accent transition-all duration-300 hover:scale-110"
+                      className={`social-link transition-all duration-300 hover:scale-110`}
                       aria-label={link.name}
                       initial={{ opacity: 0, y: -20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -148,7 +151,7 @@ export default function TopNav() {
 }
 
 function SocialIcon({ icon }: { icon: string }) {
-  const iconClass = "w-5 h-5";
+  const iconClass = "w-6 h-6 text-[var(--primary)] ";
 
   switch (icon) {
     case "github":

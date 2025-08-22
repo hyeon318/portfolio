@@ -12,7 +12,7 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
     <div className="space-y-4 text-lg text-[var(--text-white)]/80 font-kr">
       {setupInfo.github && (
         <div className="flex items-center gap-3">
-          <span className="text-sky-400 font-semibold">Github:</span>
+          <span className="font-semibold">Github:</span>
           {Array.isArray(setupInfo.github) ? (
             <div className="flex flex-wrap items-center gap-2">
               {setupInfo.github.map((url, idx) => (
@@ -21,7 +21,7 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
+                  className="text-[var(--primary)] underline underline-offset-2 hover:text-[var(--primary-light)] transition-colors"
                 >
                   [{idx + 1}]
                 </a>
@@ -32,7 +32,7 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
               href={setupInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
+              className="text-[var(--primary)] underline underline-offset-2 hover:text-[var(--primary-light)] transition-colors"
             >
               [링크]
             </a>
@@ -40,22 +40,20 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
         </div>
       )}
       <div className="flex items-center gap-3">
-        <span className="text-sky-400 font-semibold">Live Demo:</span>
+        <span className="font-semibold">Live Demo:</span>
         <a
           href={setupInfo.liveDemo}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors"
+          className="text-[var(--primary)] underline underline-offset-2 hover:text-[var(--primary-light)] transition-colors"
         >
           [링크]
         </a>
       </div>
       {setupInfo.deployment && (
         <div className="flex items-center gap-3">
-          <span className="text-sky-400 font-semibold">배포:</span>
-          <span className="text-[var(--text-white)]/80">
-            {setupInfo.deployment}
-          </span>
+          <span className="font-semibold">배포:</span>
+          <span className="text-[var(--primary)]">{setupInfo.deployment}</span>
         </div>
       )}
     </div>

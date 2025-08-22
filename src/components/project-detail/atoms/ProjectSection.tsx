@@ -17,7 +17,7 @@ export default function ProjectSection({
 }: ProjectSectionProps) {
   return (
     <section className={`mb-20 ${className}`}>
-      <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-white)]/90 mb-6 font-kr flex items-center gap-3">
+      <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-white)] mb-6 font-kr flex items-center gap-3">
         {icon} {title}
       </h2>
       {children}

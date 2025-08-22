@@ -145,22 +145,49 @@ export const LinkedInIcon: React.FC<IconProps> = ({
 
 // 이메일 아이콘
 export const EmailIcon: React.FC<IconProps> = ({
-  className = "w-5 h-5",
+  className = "w-6 h-6",
   size,
 }) => (
   <svg
     className={className}
     style={size ? { width: size, height: size } : undefined}
-    fill="none"
-    stroke="currentColor"
+    fill="currentColor" // 부모 color 상속
     viewBox="0 0 24 24"
+    aria-hidden="true"
   >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-    />
+    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+  </svg>
+);
+
+// 이력서 아이콘 (문서 모양)
+export const ResumeIcon: React.FC<IconProps> = ({
+  className = "w-6 h-6",
+  size,
+}) => (
+  <svg
+    className={`${className} text-[#4A9EFF]`}
+    style={size ? { width: size, height: size } : undefined}
+    fill="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zM16 18H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+  </svg>
+);
+
+// 포트폴리오 아이콘 (명함/ID 카드 형태)
+export const PortfolioIcon: React.FC<IconProps> = ({
+  className = "w-6 h-6",
+  size,
+}) => (
+  <svg
+    className={`${className} text-[#4A9EFF]`}
+    style={size ? { width: size, height: size } : undefined}
+    fill="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM9 8h6v2H9V8zm0 4h6v2H9v-2zm-2 6H4V6h16v12H7v-2z" />
   </svg>
 );
 

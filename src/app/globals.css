@@ -11,33 +11,45 @@
   --glass-shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
 
   /* Midnight Blue + Cream 컬러 팔레트 */
-  --primary: #ffd23f;
-  --primary-light: #ffdd6b;
+
+  --primary: #00cc5c; /* ffd23f */
+  --primary-light: #14e070; /*ffdd6b*/
+  --second: #770bea; /* ffd23f */
+  --second-light: #770bea; /*ffdd6b*/
   --accent: #4a9eff;
   --accent-light: #6bb0ff;
 
   /* 기존 컬러 팔레트 유지하면서 글래스 효과 추가 */
-  --background: #0a0f1c;
+  --background: #151515;
   --background-secondary: #151b2e;
   --foreground: #f7f3e9;
   --foreground-muted: #e8dcc6;
   --card: #1a1f2e;
   --card-hover: #232940;
-  --primary: #ffd23f;
-  --primary-light: #ffdd6b;
-  --accent: #4a9eff;
-  --accent-light: #6bb0ff;
   --muted: #8892b0;
   --border: #2a3441;
-  --text-body: #cbd5e1;
-  --text-title: #f7f3e9;
+  --text-body: #eaeaea;
+  --text-title: #eaeaea;
   --text-accent: #ffd23f;
   --success: #10b981;
   --warning: #f59e0b;
 
-  --text-white: #e5e7eb;
-  --white: #e5e7eb;
+  --text-white: #eaeaea;
+  --white: #eaeaea; /*e5e7eb*/
   --black: #0f0f0f;
+
+  --liquid-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+.grid-bg {
+  --size: 28px; /* 한 칸 크기 */
+  --line: 255 255 255 / 0.06; /* 선 색상(투명도 포함) */
+  background-image: linear-gradient(
+      to right,
+      rgb(var(--line)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(var(--line)) 1px, transparent 1px);
+  background-size: var(--size) var(--size);
 }
 
 /* 기본 폰트 설정 - Apple San Francisco 스타일 */
@@ -93,37 +105,6 @@ section {
   -webkit-backdrop-filter: blur(24px) saturate(200%);
   border: 1px solid var(--liquid-glass-border);
   box-shadow: var(--liquid-glass-shadow);
-  border-radius: 28px;
-  position: relative;
-  overflow: hidden;
-}
-
-.liquid-glass::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.6s ease;
-}
-
-.liquid-glass:hover::before {
-  left: 100%;
-}
-
-.liquid-glass-dark {
-  background: var(--liquid-glass-bg-dark);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border: 1px solid var(--liquid-glass-border-dark);
-  box-shadow: var(--liquid-glass-shadow-dark);
   border-radius: 28px;
   position: relative;
   overflow: hidden;
@@ -298,19 +279,23 @@ section {
   }
 }
 
+.liquid-green {
+  --start: #00cc5c;
+  --end: #00cc5c;
+}
+.liquid-purple {
+  --start: #770bea;
+  --end: #7b00ff;
+}
+
 /* Liquid Glass 하이라이트 효과 */
 .animate-liquidGlass {
   position: relative;
   display: inline-block;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 210, 63, 0.53) 0%,
-    rgba(74, 158, 255, 0.75) 100%
-  );
+  background: linear-gradient(135deg, var(--start) 0%, var(--end) 100%);
+  box-shadow: var(--liquid-glass-shadow);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 9999px;
   padding: 0.25rem 1rem;
   font-weight: 600;
@@ -353,15 +338,13 @@ section {
   transition: opacity 0.4s ease;
   border-radius: inherit;
 }
-
 .animate-liquidGlass:hover {
   background: linear-gradient(
     135deg,
-    rgba(255, 210, 63, 0.65) 0%,
-    rgba(74, 158, 255, 0.85) 100%
+    color-mix(in srgb, var(--start) 80%, white 20%),
+    color-mix(in srgb, var(--end) 80%, white 20%)
   );
   border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px) scale(1.02);
 }
 
@@ -451,7 +434,7 @@ section {
 }
 
 .section-number {
-  color: var(--accent);
+  color: var(--primary);
   font-weight: 700;
   font-family: "SF Mono", monospace;
 }
@@ -498,49 +481,18 @@ strong {
 
 /* 포커스 상태 */
 *:focus {
-  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 /* 링크 스타일 */
 a {
-  color: inherit;
   text-decoration: none;
   transition: all 0.2s ease;
   position: relative;
 }
 
 a:hover {
-  color: var(--accent);
   text-decoration: none;
-}
-
-/* 특정 링크에 대한 스타일 */
-a[href^="http"]:not(.btn-primary):not(.btn-secondary):not(
-    .liquid-glass-button
-  ) {
-  color: var(--accent);
-  border-bottom: 1px solid transparent;
-  transition: all 0.2s ease;
-}
-
-a[href^="http"]:not(.btn-primary):not(.btn-secondary):not(
-    .liquid-glass-button
-  ):hover {
-  color: var(--accent-light);
-  border-bottom-color: var(--accent-light);
-}
-
-/* 내부 링크 스타일 */
-a[href^="/"]:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button) {
-  color: var(--text-body);
-  transition: color 0.2s ease;
-}
-
-a[href^="/"]:not(.btn-primary):not(.btn-secondary):not(
-    .liquid-glass-button
-  ):hover {
-  color: var(--accent);
 }
 
 /* 버튼 스타일 링크는 기존 스타일 유지 */
@@ -584,13 +536,13 @@ a[href^="/"]:not(.btn-primary):not(.btn-secondary):not(
 }
 
 .nav-link:hover {
-  color: var(--accent);
+  color: var(--primary);
   text-decoration: none;
 }
 
 /* 소셜 링크 스타일 */
 .social-link {
-  color: var(--muted);
+  color: var(--second);
   transition: all 0.2s ease;
   text-decoration: none;
 }
@@ -601,30 +553,16 @@ a[href^="/"]:not(.btn-primary):not(.btn-secondary):not(
   transform: translateY(-1px);
 }
 
-/* 기본 링크 스타일 재정의 */
-a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
-    .project-card-link
-  ):not(.modal-link):not(.nav-link):not(.social-link) {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
-    .project-card-link
-  ):not(.modal-link):not(.nav-link):not(.social-link):hover {
-  color: var(--accent-light);
-  text-decoration: none;
-}
-
 /* 라이브 데모 버튼 스타일 */
 .live-demo-button {
-  color: var(--white) !important;
+  background: var(--primary);
+  color: var(--black) !important;
   text-decoration: none !important;
 }
 
 .live-demo-button:hover {
-  color: var(--white) !important;
+  background: var(--primary-light);
+  color: var(--black) !important;
   text-decoration: none !important;
 }
 
@@ -667,7 +605,7 @@ a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
   border: none;
   backdrop-filter: blur(16px) saturate(200%);
   -webkit-backdrop-filter: blur(16px) saturate(200%);
-  box-shadow: 0 6px 20px rgba(255, 210, 63, 0.3),
+  box-shadow: 0 6px 20px rgba(45, 194, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -675,7 +613,7 @@ a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
 
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--primary-light), var(--primary));
-  box-shadow: 0 8px 24px rgba(255, 210, 63, 0.4),
+  box-shadow: 0 8px 24px rgba(0, 95, 48, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
   transform: translateY(-2px) scale(1.05);
 }
@@ -706,7 +644,7 @@ a:not(.btn-primary):not(.btn-secondary):not(.liquid-glass-button):not(
 }
 
 .glow-yellow {
-  box-shadow: 0 0 20px rgba(255, 210, 63, 0.3), 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 20px rgba(63, 255, 111, 0.3), 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* 스크롤바 스타일 */
