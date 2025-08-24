@@ -137,7 +137,7 @@ export default function HeroSection() {
 
       {/* 모바일 Hero */}
       <div className="block lg:hidden">
-        <Section className="pt-32 pb-16 px-6 md:px-8">
+        <Section className="min-h-screen flex items-center justify-center px-6 md:px-8">
           <header className="max-w-4xl mx-auto text-center px-4 sm:px-6 space-y-6">
             <div className="space-y-3">
               <div className="space-y-2 pt-4">

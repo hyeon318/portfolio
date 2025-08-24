@@ -37,10 +37,10 @@ export const projectData: Record<string, ProjectDetailData> = {
       "FastAPI",
       "Alembic",
       "PostgreSQL",
-      "Google Cloud Vision API",
       "OpenAPI",
-      "Docker / Docker Compose",
       "AWS",
+      "Google Cloud Vision API",
+      "Docker / Docker Compose",
     ],
     images: {
       thumbnail: "/images/ocr-note/thumbnail3.png",

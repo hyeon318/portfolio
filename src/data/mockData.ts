@@ -21,7 +21,7 @@ export const experienceData: ExperienceItem[] = [
     period: "2024.06 - 2025.04",
     description: [
       "박스넷과 동일 회사",
-      "Next.js 기반 <strong>글로벌 서비스</strong> 개발",
+      "Next.js 기반 <strong>글로벌 웹툰 서비스</strong> 개발",
       "Next.js 기반 <strong>번역/식자 도구 웹</strong> 개발",
       "React를 사용한 <strong>CP(콘텐츠 제공자) 전용 웹사이트</strong> 개발로 콘텐츠 등록, 수정, 통계 확인 등 자체 관리 서비스 개발",
       "Java Spring Boot 기반의 <strong>애니툰 리뉴얼</strong> 및 유지보수",
