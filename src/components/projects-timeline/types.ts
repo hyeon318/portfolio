@@ -15,7 +15,7 @@ export interface ProjectItem {
 }
 
 export interface ParsedProjectItem {
-  slug: string;
+  slug?: string;
   title: string;
   period: ProjectPeriod;
   startIdx: number;

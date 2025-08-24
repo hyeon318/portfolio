@@ -70,7 +70,8 @@ export function parseProjectItems(items: ProjectItem[]): {
   let maxEndIdx = -Infinity;
 
   for (const item of items) {
-    if (!item.period.trim()) continue;
+    // period가 없거나 빈 문자열이면 건너뛰기
+    if (!item.period || !item.period.trim()) continue;
 
     try {
       const period = parsePeriod(item.period);
