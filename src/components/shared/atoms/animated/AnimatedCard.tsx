@@ -51,8 +51,6 @@ export default function AnimatedCard({
       className={className}
       initial="initial"
       animate={isInView ? "animate" : "initial"}
-      whileHover="hover"
-      whileTap="tap"
       variants={scaleInOut}
       transition={{
         duration: 0.3,

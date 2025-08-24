@@ -11,6 +11,7 @@ import {
   ProjectModal,
   EyeIcon,
   ExternalLinkIcon,
+  ProjectAnalyticsSection,
 } from "@/components";
 import { projectsData } from "@/data/mockData";
 
@@ -62,6 +63,9 @@ export default function ProjectsSection() {
           ))}
         </section>
       </Section>
+
+      {/* Project Analytics Section */}
+      <ProjectAnalyticsSection projects={projectsData} />
 
       {/* Project Modal */}
       {selectedProject && (

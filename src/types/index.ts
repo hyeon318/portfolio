@@ -43,6 +43,7 @@ export interface ProjectItem {
   tags: string[];
   image?: string;
   liveUrl?: string;
+  period?: string; // 프로젝트 진행 기간 "YYYY.MM - YYYY.MM" 형식
 }
 
 // 프로젝트 상세 페이지 타입들

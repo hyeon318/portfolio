@@ -4,3 +4,4 @@ export { default as ContactSection } from "./ContactSection";
 export { default as ExperienceSection } from "./ExperienceSection";
 export { default as HeroSection } from "./HeroSection";
 export { default as ProjectsSection } from "./ProjectsSection";
+export { default as ProjectAnalyticsSection } from "./ProjectAnalyticsSection";

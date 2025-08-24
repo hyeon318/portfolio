@@ -53,7 +53,7 @@ export const projectData: Record<string, ProjectDetailData> = {
       ],
     },
     liveUrl: "https://www.dangilog.cloud/notes",
-    period: "",
+    period: "2025.05 - 2025.07",
     setupInfo: {
       github: [
         "https://github.com/hyeon318/ocr-note-fe",
@@ -419,7 +419,7 @@ export const projectData: Record<string, ProjectDetailData> = {
       liveDemo: "http://www.oshot.co.kr/",
     },
     roleAndTeam: "기능 개발 및 유지보수 50%",
-    period: "2021.09 - 2023.12",
+    period: "2021.04 - 2023.12",
   },
   netplay: {
     title: "넷플레이 OTT 계정 공유 플랫폼",
@@ -623,6 +623,7 @@ export function convertToProjectItem(
       ? projectDetail.images?.listThumbnail
       : projectDetail.images?.thumbnail,
     liveUrl: projectDetail.liveUrl || projectDetail.setupInfo?.liveDemo,
+    period: projectDetail.period,
   };
 }
 
