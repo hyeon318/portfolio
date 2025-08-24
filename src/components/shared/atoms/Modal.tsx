@@ -32,12 +32,17 @@ export default function Modal({
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
       // 모달 열릴 때 body 스크롤 방지
+      const originalStyle = window.getComputedStyle(document.body).overflow;
       document.body.style.overflow = "hidden";
+
+      return () => {
+        document.removeEventListener("keydown", handleEscape);
+        document.body.style.overflow = originalStyle;
+      };
     }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose]);
 
@@ -162,7 +167,14 @@ export default function Modal({
             )}
 
             {/* 메인 컨텐츠 영역 - 스크롤 가능 */}
-            <div className="flex-1 overflow-y-auto p-4 lg:p-6 min-h-0">
+            <div
+              className="flex-1 overflow-y-auto p-4 lg:p-6 min-h-0 overscroll-contain"
+              style={{
+                scrollBehavior: "smooth",
+                WebkitOverflowScrolling: "touch",
+                transform: "translateZ(0)",
+              }}
+            >
               {children}
             </div>
 
