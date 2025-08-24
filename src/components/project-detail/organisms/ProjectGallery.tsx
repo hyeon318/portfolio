@@ -10,9 +10,14 @@ interface ProjectGalleryProps {
     preview?: string[];
   };
   title: string;
+  onImageDelete?: (index: number) => void; // 이미지 삭제 콜백 추가
 }
 
-export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
+export default function ProjectGallery({
+  images,
+  title,
+  onImageDelete,
+}: ProjectGalleryProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -65,6 +70,20 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
   const handleNextImage = () => {
     setCurrentImageIndex(prev => Math.min(allImages.length - 1, prev + 1));
   };
+
+  const handleDeleteImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onImageDelete) {
+      onImageDelete(currentImageIndex);
+      // 삭제 후 모달 닫기
+      setSelectedImage(null);
+      // 마지막 이미지가 삭제된 경우 인덱스 조정
+      if (currentImageIndex >= allImages.length - 1) {
+        setCurrentImageIndex(Math.max(0, allImages.length - 2));
+      }
+    }
+  };
+
   return (
     displayImages.length && (
       <div className="space-y-4">
@@ -118,7 +137,28 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
           >
             <div className="absolute inset-0 flex items-center justify-center p-4">
               <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex items-center justify-center">
-                <div className="relative w-full h-full max-w-full max-h-full overflow-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
+                {/* 이미지 컨테이너 */}
+
+                {/* 좌우 스와이프 버튼들 - 이미지 좌우에 고정 */}
+                {allImages.length > 1 && (
+                  <button
+                    onClick={e => {
+                      e.stopPropagation();
+                      handlePrevImage();
+                    }}
+                    className={`absolute left-2 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-300 z-20 ${
+                      currentImageIndex > 0
+                        ? "opacity-100"
+                        : "opacity-0 pointer-events-none"
+                    }`}
+                    disabled={currentImageIndex <= 0}
+                    title="이전 이미지"
+                  >
+                    ←
+                  </button>
+                )}
+
+                <div className="relative w-full h-full max-w-full max-h-full flex items-center justify-center">
                   <Image
                     src={allImages[currentImageIndex] || images.thumbnail || ""}
                     alt={`${title} 이미지 ${currentImageIndex + 1}`}
@@ -128,44 +168,39 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                   />
                 </div>
 
-                {/* 닫기 버튼 */}
-                <button
-                  onClick={() => setSelectedImage(null)}
-                  className="absolute top-4 right-4 w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors duration-300 z-10"
-                >
-                  ×
-                </button>
+                {/* 상단 우측 버튼들 */}
+                <div className="absolute top-4 right-4 flex gap-2 z-20">
+                  {/* 닫기 버튼 */}
+                  <button
+                    onClick={() => setSelectedImage(null)}
+                    className="w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors duration-300"
+                    title="닫기"
+                  >
+                    ×
+                  </button>
+                </div>
 
-                {/* 이전 이미지 버튼 */}
-                {allImages.length > 1 && currentImageIndex > 0 && (
+                {allImages.length > 1 && (
                   <button
                     onClick={e => {
                       e.stopPropagation();
-                      handlePrevImage();
+                      handleNextImage();
                     }}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors duration-300 z-10"
+                    className={`absolute right-2 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-300 z-20 ${
+                      currentImageIndex < allImages.length - 1
+                        ? "opacity-100"
+                        : "opacity-0 pointer-events-none"
+                    }`}
+                    disabled={currentImageIndex >= allImages.length - 1}
+                    title="다음 이미지"
                   >
-                    ←
+                    →
                   </button>
                 )}
 
-                {/* 다음 이미지 버튼 */}
-                {allImages.length > 1 &&
-                  currentImageIndex < allImages.length - 1 && (
-                    <button
-                      onClick={e => {
-                        e.stopPropagation();
-                        handleNextImage();
-                      }}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors duration-300 z-10"
-                    >
-                      →
-                    </button>
-                  )}
-
                 {/* 이미지 인디케이터 */}
                 {allImages.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
                     {allImages.map((_, index) => (
                       <button
                         key={index}
@@ -173,15 +208,21 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                           e.stopPropagation();
                           setCurrentImageIndex(index);
                         }}
-                        className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                        className={`w-3 h-3 rounded-full transition-colors duration-300 ${
                           index === currentImageIndex
                             ? "bg-white"
                             : "bg-white/50 hover:bg-white/70"
                         }`}
+                        title={`이미지 ${index + 1}`}
                       />
                     ))}
                   </div>
                 )}
+
+                {/* 이미지 정보 표시 */}
+                <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white/80 text-sm z-20">
+                  {currentImageIndex + 1} / {allImages.length}
+                </div>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ProjectDetailData } from "@/types";
 import {
@@ -22,6 +22,9 @@ interface ProjectDetailPageProps {
 export default function ProjectDetailPage({
   projectData,
 }: ProjectDetailPageProps) {
+  // 프로젝트 데이터 상태 관리
+  const [currentProjectData, setCurrentProjectData] = useState(projectData);
+
   // 뒤로가기 시 스크롤 위치 저장
   useEffect(() => {
     const handleBeforeUnload = () => {
@@ -38,7 +41,7 @@ export default function ProjectDetailPage({
   return (
     <div className="backdrop-blur-xl min-h-screen">
       {/* 헤더 */}
-      <header className="sticky top-0 z-40 backdrop-blur-xl bg-white/5 border-b border-white/10">
+      <header className="sticky top-0 z-40 backdrop-blur-xl bg-[var(--background)] border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-[var(--primary)] hover:text-[var(--primary-light)] transition-colors duration-300">
           <Link
             href="/"
@@ -62,22 +65,24 @@ export default function ProjectDetailPage({
       {/* 메인 컨텐츠 */}
       <main className="max-w-5xl mx-auto px-6 py-16">
         {/* 프로젝트 헤더 */}
-        <ProjectHeader projectData={projectData} />
+        <ProjectHeader projectData={currentProjectData} />
 
         {/* 📌 Summary */}
-        {projectData.summary && (
+        {currentProjectData.summary && (
           <ProjectSection title="Summary" icon="📌">
             <>
-              {projectData.summary?.text && (
+              {currentProjectData.summary?.text && (
                 <StyledText
-                  text={projectData.summary.text}
-                  highlight={projectData.cssClasses?.background?.highlight}
-                  gradient={projectData.cssClasses?.background?.gradient}
+                  text={currentProjectData.summary.text}
+                  highlight={
+                    currentProjectData.cssClasses?.background?.highlight
+                  }
+                  gradient={currentProjectData.cssClasses?.background?.gradient}
                 />
               )}
-              {projectData.summary?.list && (
+              {currentProjectData.summary?.list && (
                 <ul className="list-disc list-inside space-y-4 text-lg text-[var(--text-white)]/80 font-kr pt-4">
-                  {projectData.summary?.list?.map((feature, index) => (
+                  {currentProjectData.summary?.list?.map((feature, index) => (
                     <li key={index}>
                       <span
                         className="bg-white/10 px-2 py-1 rounded-lg text-sm font-medium"
@@ -92,23 +97,23 @@ export default function ProjectDetailPage({
         )}
 
         {/* 📖 Background */}
-        {projectData.background && (
+        {currentProjectData.background && (
           <ProjectSection title="Background" icon="📖">
             <StyledText
-              text={projectData.background}
-              highlight={projectData.cssClasses?.background?.highlight}
-              gradient={projectData.cssClasses?.background?.gradient}
+              text={currentProjectData.background}
+              highlight={currentProjectData.cssClasses?.background?.highlight}
+              gradient={currentProjectData.cssClasses?.background?.gradient}
             />
           </ProjectSection>
         )}
 
         {/* 💡 회고 */}
-        {projectData.reflection && (
+        {currentProjectData.reflection && (
           <ProjectSection title="회고" icon="💡">
             <StyledText
-              text={projectData.reflection}
-              highlight={projectData.cssClasses?.reflection?.highlight}
-              gradient={projectData.cssClasses?.reflection?.gradient}
+              text={currentProjectData.reflection}
+              highlight={currentProjectData.cssClasses?.reflection?.highlight}
+              gradient={currentProjectData.cssClasses?.reflection?.gradient}
             />
           </ProjectSection>
         )}
@@ -116,7 +121,7 @@ export default function ProjectDetailPage({
         {/* ✨ Main Features */}
         <ProjectSection title="Main Features" icon="✨">
           <ul className="list-disc list-inside space-y-4 text-lg text-[var(--text-white)]/80 font-kr">
-            {projectData.features.map((feature, index) => (
+            {currentProjectData.features.map((feature, index) => (
               <li key={index}>
                 <span className="bg-white/10 px-2 py-1 rounded-lg text-sm font-medium">
                   {feature}
@@ -129,7 +134,7 @@ export default function ProjectDetailPage({
         {/* 🧪 Tech Stack */}
         <ProjectSection title="Tech Stack" icon="🧪">
           <div className="flex flex-wrap gap-3">
-            {projectData.techStack.map((tech, index) => (
+            {currentProjectData.techStack.map((tech, index) => (
               <span
                 key={index}
                 className="bg-white/10 px-3 py-2 rounded-lg text-sm text-[var(--text-white)]/90 font-medium backdrop-blur-sm"
@@ -141,85 +146,90 @@ export default function ProjectDetailPage({
         </ProjectSection>
 
         {/* ⚙️ Setup & Usage */}
-        {projectData.setupInfo && (
+        {currentProjectData.setupInfo && (
           <ProjectSection title="Setup & Usage" icon="⚙️">
-            <ProjectSetup setupInfo={projectData.setupInfo} />
+            <ProjectSetup setupInfo={currentProjectData.setupInfo} />
           </ProjectSection>
         )}
 
         {/* 👥 Role & Team */}
-        {projectData.roleAndTeam && (
+        {currentProjectData.roleAndTeam && (
           <ProjectSection title="Role & Team" icon="👥">
             <StyledText
-              text={projectData.roleAndTeam}
-              highlight={projectData.cssClasses?.roleAndTeam?.highlight}
-              gradient={projectData.cssClasses?.roleAndTeam?.gradient}
+              text={currentProjectData.roleAndTeam}
+              highlight={currentProjectData.cssClasses?.roleAndTeam?.highlight}
+              gradient={currentProjectData.cssClasses?.roleAndTeam?.gradient}
             />
           </ProjectSection>
         )}
 
         {/* 📅 프로젝트 기간 */}
-        {projectData.period && (
+        {currentProjectData.period && (
           <ProjectSection title="프로젝트 기간" icon="📅">
             <div className="bg-white/5 px-6 py-4 rounded-xl border border-white/10">
               <p className="text-lg font-medium text-[var(--text-white)]/90 font-kr">
-                {projectData.period}
+                {currentProjectData.period}
               </p>
             </div>
           </ProjectSection>
         )}
 
         {/* 📋 프로젝트 일정 */}
-        {projectData.timeline && projectData.timeline.length > 0 && (
-          <ProjectSection title="프로젝트 일정" icon="📋">
-            <ProjectTimeline timeline={projectData.timeline} />
-          </ProjectSection>
-        )}
+        {currentProjectData.timeline &&
+          currentProjectData.timeline.length > 0 && (
+            <ProjectSection title="프로젝트 일정" icon="📋">
+              <ProjectTimeline timeline={currentProjectData.timeline} />
+            </ProjectSection>
+          )}
 
         {/* 🎯 도전과제 */}
-        {projectData.challenges && projectData.challenges.length > 0 && (
-          <ProjectSection title="도전과제" icon="🎯">
-            <ProjectList items={projectData.challenges} />
-          </ProjectSection>
-        )}
+        {currentProjectData.challenges &&
+          currentProjectData.challenges.length > 0 && (
+            <ProjectSection title="도전과제" icon="🎯">
+              <ProjectList items={currentProjectData.challenges} />
+            </ProjectSection>
+          )}
 
         {/* 🏆 결과물/성과 */}
-        {projectData.results && projectData.results.length > 0 && (
-          <ProjectSection title="결과물/성과" icon="🏆">
-            <ProjectGrid
-              items={projectData.results}
-              gradientFrom="from-green-500/10"
-              gradientTo="to-blue-500/10"
-              borderColor="border-green-500/20"
-            />
-          </ProjectSection>
-        )}
+        {currentProjectData.results &&
+          currentProjectData.results.length > 0 && (
+            <ProjectSection title="결과물/성과" icon="🏆">
+              <ProjectGrid
+                items={currentProjectData.results}
+                gradientFrom="from-green-500/10"
+                gradientTo="to-blue-500/10"
+                borderColor="border-green-500/20"
+              />
+            </ProjectSection>
+          )}
 
         {/* 📚 배운 점 */}
-        {projectData.lessons && projectData.lessons.length > 0 && (
-          <ProjectSection title="배운 점" icon="📚">
-            <ProjectList items={projectData.lessons} />
-          </ProjectSection>
-        )}
+        {currentProjectData.lessons &&
+          currentProjectData.lessons.length > 0 && (
+            <ProjectSection title="배운 점" icon="📚">
+              <ProjectList items={currentProjectData.lessons} />
+            </ProjectSection>
+          )}
 
         {/* 🚀 다음 단계/개선점 */}
-        {projectData.nextSteps && projectData.nextSteps.length > 0 && (
-          <ProjectSection title="다음 단계/개선점" icon="🚀">
-            <ProjectGrid
-              items={projectData.nextSteps}
-              gradientFrom="from-purple-500/10"
-              gradientTo="to-pink-500/10"
-              borderColor="border-purple-500/20"
-            />
-          </ProjectSection>
-        )}
+        {currentProjectData.nextSteps &&
+          currentProjectData.nextSteps.length > 0 && (
+            <ProjectSection title="다음 단계/개선점" icon="🚀">
+              <ProjectGrid
+                items={currentProjectData.nextSteps}
+                gradientFrom="from-purple-500/10"
+                gradientTo="to-pink-500/10"
+                borderColor="border-purple-500/20"
+              />
+            </ProjectSection>
+          )}
 
         {/* 🖼️ 프로젝트 이미지 */}
-        {projectData.images && (
+        {currentProjectData.images && (
           <ProjectSection title="프로젝트 이미지" icon="🖼️">
             <ProjectGallery
-              images={projectData.images}
-              title={projectData.title}
+              images={currentProjectData.images}
+              title={currentProjectData.title}
             />
           </ProjectSection>
         )}
