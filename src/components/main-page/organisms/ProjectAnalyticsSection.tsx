@@ -2,10 +2,10 @@
 
 import React, { useMemo } from "react";
 import { Section, SectionTitle, AnimatedCard } from "@/components";
-import MonthlyTimeline from "@/components/projects-timeline/MonthlyTimeline";
-import ProjectGantt from "@/components/projects-timeline/ProjectGantt";
-import { parseProjectItems } from "@/components/projects-timeline/time";
-import type { ProjectItem } from "@/components/projects-timeline/types";
+import MonthlyTimeline from "../../projects-timeline/MonthlyTimeline";
+import ProjectGantt from "../../projects-timeline/ProjectGantt";
+import { parseProjectItems } from "../../projects-timeline/time";
+import type { ProjectItem } from "../../projects-timeline/types";
 
 interface ProjectAnalyticsSectionProps {
   projects: ProjectItem[];

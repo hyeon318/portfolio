@@ -123,24 +123,41 @@ export default function TopNav() {
               aria-label="소셜 링크"
             >
               <ul className="flex items-center space-x-5">
-                {socialLinks.map((link, index) => (
-                  <li key={link.name}>
-                    <motion.a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`social-link transition-all duration-300 hover:scale-110`}
-                      aria-label={link.name}
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                      whileHover={{ scale: 1.15, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <SocialIcon icon={link.icon} />
-                    </motion.a>
-                  </li>
-                ))}
+                {socialLinks.map((link, index) => {
+                  const isMail = link.href?.toLowerCase().startsWith("mailto:");
+                  const gmailCompose = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+                    "mail_0318@naver.com"
+                  )}`;
+
+                  return (
+                    <li key={link.name}>
+                      <motion.a
+                        href={
+                          isMail &&
+                          link.href?.toLowerCase().startsWith("mailto:")
+                            ? gmailCompose
+                            : link.href
+                        }
+                        // Gmail Compose는 웹페이지라 새 탭 열어도 OK.
+                        {...(isMail &&
+                        link.href?.toLowerCase().startsWith("mailto:")
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : isMail
+                          ? {} // 순수 mailto:는 새 탭 금지
+                          : { target: "_blank", rel: "noopener noreferrer" })}
+                        className="social-link transition-all duration-300 hover:scale-110"
+                        aria-label={link.name}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                        whileHover={{ scale: 1.15, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <SocialIcon icon={link.icon} />
+                      </motion.a>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
           </div>

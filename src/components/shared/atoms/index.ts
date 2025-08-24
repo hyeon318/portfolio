@@ -3,6 +3,7 @@ export { default as TechTag } from "./TechTag";
 export { default as SectionTitle } from "./SectionTitle";
 export { default as Modal } from "./Modal";
 export { default as ScrollManager } from "./ScrollManager";
+export { default as ScrollToTop } from "./ScrollToTop";
 
 // Icons
 export * from "./icons";

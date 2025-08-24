@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import { Section, SectionTitle, AnimatedCard } from "@/components";
 import { contactData } from "@/data/mockData";
+import { handleEmailClick } from "@/lib/emailUtils";
 
 export default function ContactSection() {
   return (
@@ -22,19 +24,29 @@ export default function ContactSection() {
               {contactData.message}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-3">
-              <a
-                href={`mailto:${contactData.email}`}
-                className="liquid-glass-button btn-primary inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium font-kr"
+              <button
+                onClick={() => handleEmailClick(contactData.email)}
+                className="liquid-glass-button btn-primary clickable inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium font-kr"
                 aria-label="이메일로 연락하기"
+                style={{
+                  position: "relative",
+                  zIndex: 100,
+                  pointerEvents: "auto",
+                }}
               >
                 이메일 보내기
-              </a>
+              </button>
               <a
                 href="https://github.com/hyeon318"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="liquid-glass-button btn-secondary inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium font-en"
+                className="liquid-glass-button btn-secondary clickable inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium font-en"
                 aria-label="Github에서 연결하기"
+                style={{
+                  position: "relative",
+                  zIndex: 100,
+                  pointerEvents: "auto",
+                }}
               >
                 Github에서 연결하기
               </a>

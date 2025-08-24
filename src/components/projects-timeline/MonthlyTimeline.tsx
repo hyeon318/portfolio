@@ -200,12 +200,12 @@ export default function MonthlyTimeline({
             </div>
 
             {/* 통계 정보 */}
-            <div className="text-xs text-muted font-kr">
+            {/* <div className="text-xs text-muted font-kr">
               <span className="text-foreground font-medium">
                 {totalProjects}
               </span>{" "}
               projects in the last months
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -8,6 +8,3 @@ export * from "./main-page";
 
 // Project Detail Components - 프로젝트 상세 페이지 관련 컴포넌트들
 export * from "./project-detail";
-
-// Project Timeline Components - 프로젝트 타임라인 시각화 컴포넌트들
-export { default as ProjectsTimeline } from "./projects-timeline";

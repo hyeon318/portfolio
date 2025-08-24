@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import { Section } from "@/components";
 import { contactData } from "@/data/mockData";
+import { handleEmailClick } from "@/lib/emailUtils";
 
 export default function HeroSection() {
   return (
@@ -92,13 +94,13 @@ export default function HeroSection() {
                   {contactData.message}
                 </p>
                 <div className="flex flex-col gap-2">
-                  <a
-                    href={`mailto:${contactData.email}`}
-                    className="liquid-glass-button btn-primary inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs tracking-wider font-medium font-kr"
+                  <button
+                    onClick={() => handleEmailClick(contactData.email)}
+                    className="liquid-glass-button btn-primary clickable inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs tracking-wider font-medium font-kr"
                     aria-label="이메일로 연락하기"
                   >
                     이메일 보내기
-                  </a>
+                  </button>
                   <a
                     href="https://github.com/hyeon318"
                     target="_blank"
@@ -178,13 +180,13 @@ export default function HeroSection() {
 
             {/* 모바일 버튼들 */}
             <div className="flex flex-col gap-3 pt-6">
-              <a
-                href={`mailto:${contactData.email}`}
-                className="liquid-glass-button  btn-primary inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-kr"
+              <button
+                onClick={() => handleEmailClick(contactData.email)}
+                className="liquid-glass-button btn-primary clickable inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-kr"
                 aria-label="이메일로 연락하기"
               >
                 이메일 보내기
-              </a>
+              </button>
               <a
                 href="https://github.com/hyeon318"
                 target="_blank"

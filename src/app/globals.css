@@ -98,6 +98,61 @@ section {
   }
 }
 
+/* 모바일 더블클릭 확대 방지 - 인터랙티브 요소 제외 */
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 텍스트 선택이 필요한 요소들 */
+input,
+textarea,
+pre,
+code,
+[contenteditable] {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* 클릭/터치가 필요한 인터랙티브 요소들 */
+button,
+a,
+[role="button"],
+[tabindex],
+.clickable {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: auto;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+/* 모바일 줌 방지 - 인터랙티브 요소 제외 */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* 기본 터치 동작 설정 */
+body {
+  touch-action: manipulation;
+}
+
 /* VisionOS Liquid Glass 컴포넌트 스타일 */
 .liquid-glass {
   background: var(--liquid-glass-bg);
@@ -165,6 +220,8 @@ section {
   );
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .liquid-glass-card::after,
@@ -186,6 +243,8 @@ section {
   animation: liquidRotate 8s linear infinite;
   opacity: 0;
   transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .liquid-glass-card:hover,
@@ -234,6 +293,8 @@ section {
     transparent
   );
   transition: left 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .liquid-glass-button:hover {

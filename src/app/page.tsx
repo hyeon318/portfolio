@@ -2,6 +2,7 @@ import React from "react";
 import {
   Sidebar as TopNav,
   ScrollManager,
+  ScrollToTop,
   HeroSection,
   AboutSection,
   ExperienceSection,
@@ -45,6 +46,9 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </div>
   );
 }

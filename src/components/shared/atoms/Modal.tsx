@@ -137,12 +137,12 @@ export default function Modal({
                   borderBottom: "1.5px solid rgba(255, 255, 255, 0.40)",
                 }}
               >
-                <h2
+                <h3
                   id="modal-title"
-                  className="text-lg lg:text-xl font-bold text-title font-kr"
+                  className="text-sm lg:text-xl font-bold text-title font-kr"
                 >
                   {title}
-                </h2>
+                </h3>
                 <button
                   onClick={onClose}
                   className="p-1.5 lg:p-2 text-muted hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-card-hover"
