@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
+import { isIOSSafari, getModalStyles, getScrollStyles } from "@/lib/animations";
 
 interface ModalProps {
   isOpen: boolean;
@@ -95,7 +96,7 @@ export default function Modal({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 border-1 border-gray-900/15"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 border-1 border-gray-900/15"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -104,24 +105,38 @@ export default function Modal({
           role="dialog"
           aria-modal="true"
           aria-labelledby={title ? "modal-title" : undefined}
+          style={getModalStyles()}
         >
-          {/* 배경 오버레이 */}
+          {/* 배경 오버레이 - iOS Safari에서는 backdrop-filter 제거 */}
           <motion.div
-            className="absolute inset-0 bg-[var(--background)]/85 backdrop-blur-xl"
+            className={`absolute inset-0 ${
+              isIOSSafari()
+                ? "bg-[var(--background)]/95"
+                : "bg-[var(--background)]/85 backdrop-blur-xl"
+            }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
+            style={{
+              // iOS Safari에서 backdrop-filter 대신 solid background 사용
+              ...(isIOSSafari() && {
+                backgroundColor: "rgba(21, 21, 21, 0.95)",
+              }),
+            }}
           />
 
           {/* 모달 컨텐츠 */}
           <motion.div
             ref={modalRef}
-            className="relative w-full max-w-2xl max-h-[90vh] lg:max-h-[90vh] xl:max-h-[85vh] bg-background rounded-2xl shadow-2xl flex flex-col"
+            className="relative w-full max-w-2xl max-h-[90vh] lg:max-h-[90vh] xl:max-h-[85vh] bg-background rounded-2xl shadow-2xl flex flex-col modal-content"
             style={{
               border: "1.5px solid rgba(255, 255, 255, 0.40)",
               boxShadow:
                 "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)",
+              // iOS Safari에서 z-index 문제 해결
+              zIndex: 10000,
+              position: "relative",
             }}
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -169,11 +184,7 @@ export default function Modal({
             {/* 메인 컨텐츠 영역 - 스크롤 가능 */}
             <div
               className="flex-1 overflow-y-auto p-4 lg:p-6 min-h-0 overscroll-contain"
-              style={{
-                scrollBehavior: "smooth",
-                WebkitOverflowScrolling: "touch",
-                transform: "translateZ(0)",
-              }}
+              style={getScrollStyles()}
             >
               {children}
             </div>

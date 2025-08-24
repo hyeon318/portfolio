@@ -40,6 +40,38 @@
 
   --liquid-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
+
+/* iOS Safari backdrop-filter 지원 여부 감지 */
+@supports not (backdrop-filter: blur(1px)) {
+  .liquid-glass,
+  .liquid-glass-nav,
+  .liquid-glass-card,
+  .project-glass-card,
+  .liquid-glass-button {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* iOS Safari 전용 스타일 */
+@supports (-webkit-touch-callout: none) {
+  .liquid-glass,
+  .liquid-glass-nav,
+  .liquid-glass-card,
+  .project-glass-card,
+  .liquid-glass-button {
+    /* iOS Safari에서는 backdrop-filter 대신 solid background 사용 */
+    background: rgba(21, 21, 21, 0.95) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* iOS Safari에서 모달 z-index 문제 해결 */
+  .modal-content {
+    z-index: 10000 !important;
+    position: relative !important;
+  }
+}
 .grid-bg {
   --size: 28px; /* 한 칸 크기 */
   --line: 255 255 255 / 0.06; /* 선 색상(투명도 포함) */
