@@ -9,6 +9,7 @@ interface ModalProps {
   onClose: () => void;
   children: React.ReactNode;
   title?: string;
+  footer?: React.ReactNode;
 }
 
 export default function Modal({
@@ -16,6 +17,7 @@ export default function Modal({
   onClose,
   children,
   title,
+  footer,
 }: ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -110,7 +112,7 @@ export default function Modal({
           {/* 모달 컨텐츠 */}
           <motion.div
             ref={modalRef}
-            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-background rounded-2xl shadow-2xl"
+            className="relative w-full max-w-2xl max-h-[90vh] lg:max-h-[90vh] xl:max-h-[85vh] bg-background rounded-2xl shadow-2xl flex flex-col"
             style={{
               border: "1.5px solid rgba(255, 255, 255, 0.40)",
               boxShadow:
@@ -125,25 +127,25 @@ export default function Modal({
             {/* 헤더 */}
             {title && (
               <div
-                className="flex items-center justify-between p-6 "
+                className="flex-shrink-0 flex items-center justify-between p-4 lg:p-6"
                 style={{
                   borderBottom: "1.5px solid rgba(255, 255, 255, 0.40)",
                 }}
               >
                 <h2
                   id="modal-title"
-                  className="text-xl font-bold text-title font-kr"
+                  className="text-lg lg:text-xl font-bold text-title font-kr"
                 >
                   {title}
                 </h2>
                 <button
                   onClick={onClose}
-                  className="p-2 text-muted hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-card-hover"
+                  className="p-1.5 lg:p-2 text-muted hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-card-hover"
                   style={{ border: "1.5px solid rgba(255, 255, 255, 0.40)" }}
                   aria-label="모달 닫기"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 lg:w-5 lg:h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -159,8 +161,17 @@ export default function Modal({
               </div>
             )}
 
-            {/* 컨텐츠 */}
-            <div className="p-6">{children}</div>
+            {/* 메인 컨텐츠 영역 - 스크롤 가능 */}
+            <div className="flex-1 overflow-y-auto p-4 lg:p-6 min-h-0">
+              {children}
+            </div>
+
+            {/* 하단 버튼 고정 영역 */}
+            {footer && (
+              <div className="flex-shrink-0 border-t border-border/50 bg-background/95 backdrop-blur-sm p-4 lg:p-6">
+                {footer}
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}

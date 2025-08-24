@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   Section,
   SectionTitle,
@@ -8,6 +9,8 @@ import {
   Modal,
   ProjectCard,
   ProjectModal,
+  EyeIcon,
+  ExternalLinkIcon,
 } from "@/components";
 import { projectsData } from "@/data/mockData";
 
@@ -26,6 +29,7 @@ export default function ProjectsSection() {
     setIsModalOpen(false);
     setSelectedProject(null);
   };
+
   return (
     <>
       <Section id="projects" delay={0.4}>
@@ -60,15 +64,54 @@ export default function ProjectsSection() {
       </Section>
 
       {/* Project Modal */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        title={selectedProject?.title}
-      >
-        {selectedProject && (
+      {selectedProject && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          title={selectedProject.title}
+          footer={
+            <div className="flex-shrink-0 space-y-3 pt-4">
+              {selectedProject.slug && (
+                <Link
+                  href={`/projects/${selectedProject.slug}`}
+                  className="w-full px-4 lg:px-6 py-2 lg:py-3 text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 rounded-lg hover:bg-card-hover inline-flex items-center justify-center font-kr"
+                  style={{ border: "1.5px solid rgba(255, 255, 255, 0.40)" }}
+                  aria-label={`${selectedProject.title} 상세보기 페이지로 이동`}
+                >
+                  <EyeIcon className="w-4 h-4 mr-2" />
+                  자세히 보기
+                </Link>
+              )}
+
+              {/* 라이브 데모 버튼 */}
+              {selectedProject.liveUrl && (
+                <a
+                  href={selectedProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-4 lg:px-6 py-2 lg:py-3 text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 rounded-lg hover:bg-card-hover inline-flex items-center justify-center font-en"
+                  style={{ border: "1.5px solid rgba(255, 255, 255, 0.40)" }}
+                  aria-label={`${selectedProject.title} 라이브 데모 보기`}
+                >
+                  <ExternalLinkIcon className="w-4 h-4 mr-2" />
+                  라이브 데모
+                </a>
+              )}
+
+              {/* 닫기 버튼 */}
+              <button
+                onClick={handleCloseModal}
+                className="w-full px-4 lg:px-6 py-2 lg:py-3 text-sm font-medium text-muted hover:text-foreground transition-colors duration-200 rounded-lg hover:bg-card-hover"
+                style={{ border: "1.5px solid rgba(255, 255, 255, 0.40)" }}
+              >
+                닫기
+              </button>
+            </div>
+          }
+        >
           <ProjectModal project={selectedProject} onClose={handleCloseModal} />
-        )}
-      </Modal>
+        </Modal>
+      )}
     </>
   );
 }
