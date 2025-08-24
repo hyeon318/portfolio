@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <>
       {/* PC Hero - 좌측 고정 */}
-      <aside className="hidden lg:block lg:w-2/5 xl:w-1/3 lg:sticky lg:top-24 lg:h-[calc(100vh-6rem)] lg:items-center lg:justify-center lg:pl-12 xl:pl-16">
+      <aside className="hidden lg:block lg:w-2/5 xl:w-1/3 lg:sticky lg:top-24 lg:h-[calc(100vh-6rem)] lg:flex lg:items-center lg:justify-center lg:pl-12 xl:pl-16">
         <Section className="py-8 pr-6 xl:pr-8 w-full">
           <header className="text-left space-y-6">
             <div className="space-y-4">
