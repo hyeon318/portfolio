@@ -180,6 +180,14 @@ html {
   text-size-adjust: 100%;
 }
 
+/* 모달 오픈 시 스크롤 락 */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 /* 기본 터치 동작 설정 */
 body {
   touch-action: manipulation;

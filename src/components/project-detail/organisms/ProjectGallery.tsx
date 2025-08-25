@@ -2,7 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 import { ChevronDownIcon, ChevronUpIcon } from "@/components";
+import { isIOSSafari } from "@/lib/animations";
 
 interface ProjectGalleryProps {
   images: {
@@ -26,19 +28,23 @@ export default function ProjectGallery({
   const allImages = images.preview || [];
   const displayImages = isExpanded ? allImages : [allImages[0]];
 
-  // 스크롤 위치 저장 및 메인 스크롤 방지
+  // 스크롤 락 - body 클래스 토글 방식
   useEffect(() => {
     if (selectedImage) {
       setScrollPosition(window.scrollY);
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
     } else {
-      document.body.style.overflow = "unset";
+      document.body.classList.remove("modal-open");
+      // 스크롤 위치 복원
+      setTimeout(() => {
+        window.scrollTo(0, scrollPosition);
+      }, 0);
     }
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.classList.remove("modal-open");
     };
-  }, [selectedImage]);
+  }, [selectedImage, scrollPosition]);
 
   // 키보드 이벤트 처리
   useEffect(() => {
@@ -82,6 +88,122 @@ export default function ProjectGallery({
         setCurrentImageIndex(Math.max(0, allImages.length - 2));
       }
     }
+  };
+
+  // 모달 렌더링 함수
+  const renderModal = () => {
+    if (!selectedImage || typeof window === "undefined") return null;
+
+    return createPortal(
+      <div
+        className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+        onClick={() => setSelectedImage(null)}
+      >
+        {/* 배경 오버레이 */}
+        <div
+          className={`absolute inset-0 ${
+            isIOSSafari() ? "bg-black/90" : "bg-black/80 backdrop-blur-sm"
+          }`}
+        />
+
+        {/* 모달 컨테이너 */}
+        <div className="relative w-full h-full flex items-center justify-center">
+          <div className="relative w-full h-full max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+            {/* 좌우 스와이프 버튼들 */}
+            {allImages.length > 1 && (
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  handlePrevImage();
+                }}
+                className={`absolute left-2 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-300 z-20 ${
+                  currentImageIndex > 0
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
+                }`}
+                disabled={currentImageIndex <= 0}
+                title="이전 이미지"
+              >
+                ←
+              </button>
+            )}
+
+            {/* 이미지 컨테이너 */}
+            <div className="relative w-full h-full flex items-center justify-center">
+              <Image
+                src={allImages[currentImageIndex] || images.thumbnail || ""}
+                alt={`${title} 이미지 ${currentImageIndex + 1}`}
+                width={1200}
+                height={800}
+                className="object-contain rounded-lg"
+                style={{
+                  maxWidth: "90vw",
+                  maxHeight: "90vh",
+                  width: "auto",
+                  height: "auto",
+                }}
+              />
+            </div>
+
+            {allImages.length > 1 && (
+              <button
+                onClick={e => {
+                  e.stopPropagation();
+                  handleNextImage();
+                }}
+                className={`absolute right-2 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-300 z-20 ${
+                  currentImageIndex < allImages.length - 1
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
+                }`}
+                disabled={currentImageIndex >= allImages.length - 1}
+                title="다음 이미지"
+              >
+                →
+              </button>
+            )}
+
+            {/* 상단 우측 닫기 버튼 */}
+            <div className="absolute top-4 right-4 flex gap-2 z-20">
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors duration-300"
+                title="닫기"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* 이미지 인디케이터 */}
+            {allImages.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                {allImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={e => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(index);
+                    }}
+                    className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                      index === currentImageIndex
+                        ? "bg-white"
+                        : "bg-white/50 hover:bg-white/70"
+                    }`}
+                    title={`이미지 ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* 이미지 정보 표시 */}
+            <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white/80 text-sm z-20">
+              {currentImageIndex + 1} / {allImages.length}
+            </div>
+          </div>
+        </div>
+      </div>,
+      document.body
+    );
   };
 
   return (
@@ -128,105 +250,8 @@ export default function ProjectGallery({
           </button>
         )}
 
-        {/* 이미지 오버레이 */}
-        {selectedImage && (
-          <div
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
-            onClick={() => setSelectedImage(null)}
-            style={{ top: scrollPosition + "px", height: "100vh" }}
-          >
-            <div className="absolute inset-0 flex items-center justify-center p-4">
-              <div className="relative w-full h-full max-w-4xl max-h-[90vh] flex items-center justify-center">
-                {/* 이미지 컨테이너 */}
-
-                {/* 좌우 스와이프 버튼들 - 이미지 좌우에 고정 */}
-                {allImages.length > 1 && (
-                  <button
-                    onClick={e => {
-                      e.stopPropagation();
-                      handlePrevImage();
-                    }}
-                    className={`absolute left-2 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-300 z-20 ${
-                      currentImageIndex > 0
-                        ? "opacity-100"
-                        : "opacity-0 pointer-events-none"
-                    }`}
-                    disabled={currentImageIndex <= 0}
-                    title="이전 이미지"
-                  >
-                    ←
-                  </button>
-                )}
-
-                <div className="relative w-full h-full max-w-full max-h-full flex items-center justify-center">
-                  <Image
-                    src={allImages[currentImageIndex] || images.thumbnail || ""}
-                    alt={`${title} 이미지 ${currentImageIndex + 1}`}
-                    width={1200}
-                    height={800}
-                    className="object-contain w-full h-full rounded-lg"
-                  />
-                </div>
-
-                {/* 상단 우측 버튼들 */}
-                <div className="absolute top-4 right-4 flex gap-2 z-20">
-                  {/* 닫기 버튼 */}
-                  <button
-                    onClick={() => setSelectedImage(null)}
-                    className="w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors duration-300"
-                    title="닫기"
-                  >
-                    ×
-                  </button>
-                </div>
-
-                {allImages.length > 1 && (
-                  <button
-                    onClick={e => {
-                      e.stopPropagation();
-                      handleNextImage();
-                    }}
-                    className={`absolute right-2 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-all duration-300 z-20 ${
-                      currentImageIndex < allImages.length - 1
-                        ? "opacity-100"
-                        : "opacity-0 pointer-events-none"
-                    }`}
-                    disabled={currentImageIndex >= allImages.length - 1}
-                    title="다음 이미지"
-                  >
-                    →
-                  </button>
-                )}
-
-                {/* 이미지 인디케이터 */}
-                {allImages.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-                    {allImages.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={e => {
-                          e.stopPropagation();
-                          setCurrentImageIndex(index);
-                        }}
-                        className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                          index === currentImageIndex
-                            ? "bg-white"
-                            : "bg-white/50 hover:bg-white/70"
-                        }`}
-                        title={`이미지 ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                {/* 이미지 정보 표시 */}
-                <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white/80 text-sm z-20">
-                  {currentImageIndex + 1} / {allImages.length}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* 모달 렌더링 */}
+        {renderModal()}
       </div>
     )
   );
