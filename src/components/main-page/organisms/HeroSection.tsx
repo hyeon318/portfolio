@@ -182,7 +182,7 @@ export default function HeroSection() {
             <div className="flex flex-col gap-3 pt-6">
               <button
                 onClick={() => handleEmailClick(contactData.email)}
-                className="liquid-glass-button btn-primary clickable inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-kr"
+                className="btn-primary clickable inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-kr"
                 aria-label="이메일로 연락하기"
               >
                 이메일 보내기
