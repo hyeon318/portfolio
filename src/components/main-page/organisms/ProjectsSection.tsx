@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Section,
   SectionTitle,
@@ -16,12 +17,23 @@ import {
 import { projectsData } from "@/data/mockData";
 
 export default function ProjectsSection() {
+  const router = useRouter();
   const [selectedProject, setSelectedProject] = useState<
     (typeof projectsData)[0] | null
   >(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleProjectClick = (project: (typeof projectsData)[0]) => {
+    if (project.slug) {
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem(
+          "mainPageScrollPosition",
+          window.scrollY.toString()
+        );
+      }
+      router.push(`/projects/${project.slug}`);
+      return;
+    }
     setSelectedProject(project);
     setIsModalOpen(true);
   };

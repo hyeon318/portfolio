@@ -26,17 +26,6 @@ export default function ProjectDetailPage({
   const [currentProjectData, setCurrentProjectData] = useState(projectData);
 
   // 뒤로가기 시 스크롤 위치 저장
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      sessionStorage.setItem(
-        "mainPageScrollPosition",
-        window.scrollY.toString()
-      );
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  }, []);
 
   return (
     <div className="backdrop-blur-xl min-h-screen">
@@ -46,12 +35,7 @@ export default function ProjectDetailPage({
           <Link
             href="/"
             className="text-lg font-semibold transition-colors duration-300 flex items-center gap-2"
-            onClick={() => {
-              sessionStorage.setItem(
-                "mainPageScrollPosition",
-                window.scrollY.toString()
-              );
-            }}
+            scroll={false}
           >
             <ArrowLeftIcon className="w-5 h-5" />
             포트폴리오로 돌아가기

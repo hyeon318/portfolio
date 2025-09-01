@@ -26,7 +26,7 @@ export default function ProjectAnalyticsSection({
   }
 
   return (
-    <Section delay={0.6}>
+    <Section id="project-analytics" delay={0.6}>
       <SectionTitle number="04">Project Analytics</SectionTitle>
       <div className="mb-8 text-left prose-enhanced w-full">
         <p className="text-sm lg:text-base leading-relaxed font-kr">

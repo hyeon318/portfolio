@@ -18,6 +18,7 @@ const navigation: NavigationItem[] = [
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
+  { name: "Project Analytics", href: "#project-analytics" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -55,9 +56,28 @@ export default function TopNav() {
   }, []);
 
   const handleNavClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const candidates = Array.from(
+      document.querySelectorAll(href)
+    ) as HTMLElement[];
+
+    // 현재 화면에서 보이는 요소 우선 선택 (display/visibility/offsetParent 기준)
+    const visible = candidates.find(el => {
+      const style = window.getComputedStyle(el);
+      const notHidden =
+        style.display !== "none" && style.visibility !== "hidden";
+      const hasLayout = el.offsetParent !== null;
+      const rect = el.getBoundingClientRect();
+      const hasSize = rect.width > 0 || rect.height > 0;
+      return notHidden && hasLayout && hasSize;
+    });
+
+    const target = visible ?? candidates[0] ?? null;
+
+    if (target) {
+      const headerOffset = 100;
+      const y =
+        target.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
     }
   };
 
@@ -91,30 +111,32 @@ export default function TopNav() {
           {/* Navigation Links */}
           <div className="flex items-center space-x-10">
             <ul className="flex items-center space-x-10" role="menubar">
-              {navigation.map((item, index) => (
-                <li key={item.name} role="none">
-                  <motion.button
-                    onClick={() => handleNavClick(item.href)}
-                    className={`nav-link relative text-base font-medium transition-all duration-300 group ${
-                      activeSection === item.href
-                        ? "text-accent font-semibold"
-                        : "text-muted hover:text-accent"
-                    }`}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    role="menuitem"
-                    aria-label={`${item.name} 섹션으로 이동`}
-                  >
-                    {item.name}
-                    <span
-                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full ${
-                        activeSection === item.href ? "w-full" : ""
+              {navigation
+                .filter(item => item.name !== "Contact")
+                .map((item, index) => (
+                  <li key={item.name} role="none">
+                    <motion.button
+                      onClick={() => handleNavClick(item.href)}
+                      className={`nav-link relative text-base font-medium transition-all duration-300 group ${
+                        activeSection === item.href
+                          ? "text-accent font-semibold"
+                          : "text-muted hover:text-accent"
                       }`}
-                    />
-                  </motion.button>
-                </li>
-              ))}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      role="menuitem"
+                      aria-label={`${item.name} 섹션으로 이동`}
+                    >
+                      {item.name}
+                      <span
+                        className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full ${
+                          activeSection === item.href ? "w-full" : ""
+                        }`}
+                      />
+                    </motion.button>
+                  </li>
+                ))}
             </ul>
 
             {/* Social Links */}
