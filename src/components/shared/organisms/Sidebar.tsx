@@ -2,6 +2,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GitHubIcon, LinkedInIcon, EmailIcon } from "@/components";
+import {
+  trackSidebarMenuClick,
+  trackGithubClick,
+  trackEmailClick,
+} from "@/lib/gtag";
 
 interface NavigationItem {
   name: string;
@@ -55,7 +60,10 @@ export default function TopNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (href: string, menuName: string) => {
+    // GA 추적: 사이드바 메뉴 클릭
+    trackSidebarMenuClick(menuName);
+
     const candidates = Array.from(
       document.querySelectorAll(href)
     ) as HTMLElement[];
@@ -116,7 +124,7 @@ export default function TopNav() {
                 .map((item, index) => (
                   <li key={item.name} role="none">
                     <motion.button
-                      onClick={() => handleNavClick(item.href)}
+                      onClick={() => handleNavClick(item.href, item.name)}
                       className={`nav-link relative text-base font-medium transition-all duration-300 group ${
                         activeSection === item.href
                           ? "text-accent font-semibold"
@@ -167,6 +175,13 @@ export default function TopNav() {
                           : isMail
                           ? {} // 순수 mailto:는 새 탭 금지
                           : { target: "_blank", rel: "noopener noreferrer" })}
+                        onClick={() => {
+                          if (link.name === "GitHub") {
+                            trackGithubClick("hero_pc");
+                          } else if (link.name === "Email") {
+                            trackEmailClick("hero_pc");
+                          }
+                        }}
                         className="social-link transition-all duration-300 hover:scale-110"
                         aria-label={link.name}
                         initial={{ opacity: 0, y: -20 }}

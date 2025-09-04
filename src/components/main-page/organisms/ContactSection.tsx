@@ -3,8 +3,20 @@ import React from "react";
 import { Section, SectionTitle, AnimatedCard } from "@/components";
 import { contactData } from "@/data/mockData";
 import { handleEmailClick } from "@/lib/emailUtils";
+import { trackEmailClick, trackGithubClick } from "@/lib/gtag";
 
 export default function ContactSection() {
+  // 이메일 클릭 핸들러
+  const handleEmailClickWithTracking = () => {
+    trackEmailClick("contact");
+    handleEmailClick(contactData.email);
+  };
+
+  // GitHub 클릭 핸들러
+  const handleGithubClickWithTracking = () => {
+    trackGithubClick("contact");
+  };
+
   return (
     <Section id="contact" delay={0.6}>
       <SectionTitle number="05">Contact</SectionTitle>
@@ -24,7 +36,7 @@ export default function ContactSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-3">
             <button
-              onClick={() => handleEmailClick(contactData.email)}
+              onClick={handleEmailClickWithTracking}
               className="liquid-glass-button btn-primary clickable inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium font-kr"
               aria-label="이메일로 연락하기"
               style={{
@@ -39,6 +51,7 @@ export default function ContactSection() {
               href="https://github.com/hyeon318"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleGithubClickWithTracking}
               className="liquid-glass-button btn-secondary clickable inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium font-en"
               aria-label="Github에서 연결하기"
               style={{

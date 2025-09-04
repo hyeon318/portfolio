@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { ProjectDetailData } from "@/types";
 import { GitHubIcon, EyeIcon } from "@/components";
+import { trackProjectGitHub, trackProjectLiveDemo } from "@/lib/gtag";
 
 interface ProjectHeaderProps {
   projectData: ProjectDetailData;
@@ -21,6 +22,14 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
 
   const gradientIndex = projectData.title.length % gradientVariants.length;
   const gradientClass = gradientVariants[gradientIndex];
+
+  const handleGitHubClick = () => {
+    trackProjectGitHub(projectData.title, "detail");
+  };
+
+  const handleLiveDemoClick = () => {
+    trackProjectLiveDemo(projectData.title, "detail");
+  };
 
   return (
     <div className="mb-20">
@@ -91,6 +100,7 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
                 href={projectData.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleGitHubClick}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-lg text-sm font-medium text-[var(--text-white)] hover:bg-white/20 transition-all duration-300 inline-flex items-center justify-center"
                 aria-label={`${projectData.title} GitHub 저장소 보기`}
               >
@@ -104,6 +114,7 @@ export default function ProjectHeader({ projectData }: ProjectHeaderProps) {
                 href={projectData.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleLiveDemoClick}
                 className="live-demo-button px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center"
                 aria-label={`${projectData.title} 라이브 데모 보기`}
               >

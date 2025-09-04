@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUpIcon } from "@/components";
+import { trackScrollToTopClick } from "@/lib/gtag";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,6 +28,7 @@ export default function ScrollToTop() {
   }, []);
 
   const scrollToTop = () => {
+    trackScrollToTopClick();
     window.scrollTo({
       top: 0,
       behavior: "smooth",

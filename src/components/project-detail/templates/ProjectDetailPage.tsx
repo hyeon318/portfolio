@@ -14,14 +14,22 @@ import {
   StyledText,
   ProjectGallery,
 } from "@/components";
+import { trackProjectDetailView } from "@/lib/gtag";
 
 interface ProjectDetailPageProps {
   projectData: ProjectDetailData;
+  projectSlug?: string;
 }
 
 export default function ProjectDetailPage({
   projectData,
+  projectSlug,
 }: ProjectDetailPageProps) {
+  // 프로젝트 상세 페이지 진입 추적
+  useEffect(() => {
+    trackProjectDetailView(projectData.title);
+  }, [projectData.title]);
+
   // 프로젝트 데이터 상태 관리
   const [currentProjectData, setCurrentProjectData] = useState(projectData);
 

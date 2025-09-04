@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { TechTag, ExternalLinkIcon } from "@/components";
 import { ProjectItem } from "@/types";
+import { trackProjectLiveDemo } from "@/lib/gtag";
 
 interface ProjectCardProps extends ProjectItem {
   onCardClick?: () => void;
@@ -134,7 +135,10 @@ export default function ProjectCard({
                   rel="noopener noreferrer"
                   className="project-card-link font-medium flex items-center gap-2 tracking-wider uppercase transition-all duration-300 text-muted hover:text-primary font-en"
                   aria-label={`${title} 라이브 데모 보기`}
-                  onClick={e => e.stopPropagation()}
+                  onClick={e => {
+                    e.stopPropagation();
+                    trackProjectLiveDemo(title, "main");
+                  }}
                 >
                   <ExternalLinkIcon className="w-4 h-4" />
                   Live Demo

@@ -3,6 +3,7 @@ import {
   Sidebar as TopNav,
   ScrollManager,
   ScrollToTop,
+  ScrollTracker,
   HeroSection,
   AboutSection,
   ExperienceSection,
@@ -18,6 +19,7 @@ export default function Home() {
       style={{ backgroundColor: "var(--background)" }}
     >
       <ScrollManager />
+      <ScrollTracker />
       <TopNav />
 
       {/* Desktop Layout - 좌우 분할 */}

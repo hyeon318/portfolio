@@ -2,12 +2,23 @@
 
 import React from "react";
 import { ProjectSetupInfo } from "@/types";
+import { trackExternalLink } from "@/lib/gtag";
 
 interface ProjectSetupProps {
   setupInfo: ProjectSetupInfo;
 }
 
 export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
+  // GitHub 링크 클릭 핸들러
+  const handleGitHubClick = (url: string) => {
+    trackExternalLink(url, "project_setup_github");
+  };
+
+  // Live Demo 링크 클릭 핸들러
+  const handleLiveDemoClick = (url: string) => {
+    trackExternalLink(url, "project_setup_live_demo");
+  };
+
   return (
     <div className="space-y-4 text-lg text-[var(--text-white)]/80 font-kr">
       {setupInfo.github && (
@@ -21,6 +32,7 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => handleGitHubClick(url)}
                   className="text-[var(--primary)] underline underline-offset-2 hover:text-[var(--primary-light)] transition-colors"
                 >
                   [{idx + 1}]
@@ -32,6 +44,7 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
               href={setupInfo.github}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => handleGitHubClick(setupInfo.github as string)}
               className="text-[var(--primary)] underline underline-offset-2 hover:text-[var(--primary-light)] transition-colors"
             >
               [링크]
@@ -45,6 +58,9 @@ export default function ProjectSetup({ setupInfo }: ProjectSetupProps) {
           href={setupInfo.liveDemo}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() =>
+            setupInfo.liveDemo && handleLiveDemoClick(setupInfo.liveDemo)
+          }
           className="text-[var(--primary)] underline underline-offset-2 hover:text-[var(--primary-light)] transition-colors"
         >
           [링크]

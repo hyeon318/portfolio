@@ -24,5 +24,5 @@ export default async function ProjectSlugPage({
     notFound();
   }
 
-  return <ProjectDetailPage projectData={projectData} />;
+  return <ProjectDetailPage projectData={projectData} projectSlug={slug} />;
 }

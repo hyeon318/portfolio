@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_KR, JetBrains_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -51,6 +52,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         {children}
+        <GoogleAnalytics gaId="G-5X9RPLWSNB" />
       </body>
     </html>
   );

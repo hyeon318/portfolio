@@ -4,6 +4,7 @@ export { default as SectionTitle } from "./SectionTitle";
 export { default as Modal } from "./Modal";
 export { default as ScrollManager } from "./ScrollManager";
 export { default as ScrollToTop } from "./ScrollToTop";
+export { default as ScrollTracker } from "./ScrollTracker";
 
 // Icons
 export * from "./icons";

@@ -15,6 +15,11 @@ import {
   ProjectAnalyticsSection,
 } from "@/components";
 import { projectsData } from "@/data/mockData";
+import {
+  trackProjectCardClick,
+  trackProjectLiveDemo,
+  trackModalAction,
+} from "@/lib/gtag";
 
 export default function ProjectsSection() {
   const router = useRouter();
@@ -24,6 +29,9 @@ export default function ProjectsSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleProjectClick = (project: (typeof projectsData)[0]) => {
+    // GA 추적: 프로젝트 카드 클릭
+    trackProjectCardClick(project.title);
+
     if (project.slug) {
       if (typeof window !== "undefined") {
         sessionStorage.setItem(
@@ -34,11 +42,18 @@ export default function ProjectsSection() {
       router.push(`/projects/${project.slug}`);
       return;
     }
+
+    // GA 추적: 모달 열기
+    trackModalAction("open", project.title);
     setSelectedProject(project);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
+    // GA 추적: 모달 닫기
+    if (selectedProject) {
+      trackModalAction("close", selectedProject.title);
+    }
     setIsModalOpen(false);
     setSelectedProject(null);
   };
@@ -105,6 +120,9 @@ export default function ProjectsSection() {
                   href={selectedProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackProjectLiveDemo(selectedProject.title, "main")
+                  }
                   className="w-full px-4 lg:px-6 py-2 lg:py-3 text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 rounded-lg hover:bg-card-hover inline-flex items-center justify-center font-en"
                   style={{ border: "1.5px solid rgba(255, 255, 255, 0.40)" }}
                   aria-label={`${selectedProject.title} 라이브 데모 보기`}

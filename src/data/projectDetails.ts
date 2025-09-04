@@ -82,7 +82,7 @@ export const projectData: Record<string, ProjectDetailData> = {
         "PHP 기반 웹툰 서비스를 Java Spring 기반으로 전환하여 트래픽 안정성 확보 및 유지보수 효율성 개선",
         "Guava Caching, Lazy Loading 등 성능 최적화를 통해 콘텐츠 로딩 속도 4초 → 1초 미만으로 개선",
         "결제, 프로모션, 외부 API 연동 등 핵심 서비스 전반 설계 및 개발 주도",
-        "월 평균 결제 3.5억 원, WAU 5만 명의 안정적인 운영 지원",
+        "월 평균 결제 3.5억 원, MAU 32만 명의 안정적인 운영 지원",
       ],
     },
     background:

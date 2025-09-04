@@ -3,8 +3,43 @@ import React from "react";
 import { Section } from "@/components";
 import { contactData } from "@/data/mockData";
 import { handleEmailClick } from "@/lib/emailUtils";
+import {
+  trackEmailClick,
+  trackGithubClick,
+  trackResumeDownload,
+  trackPortfolioDownload,
+} from "@/lib/gtag";
 
 export default function HeroSection() {
+  // 이메일 클릭 핸들러
+  const handleEmailClickWithTracking = (
+    location: "hero_pc" | "hero_mobile"
+  ) => {
+    trackEmailClick(location);
+    handleEmailClick(contactData.email);
+  };
+
+  // GitHub 클릭 핸들러
+  const handleGithubClickWithTracking = (
+    location: "hero_pc" | "hero_mobile"
+  ) => {
+    trackGithubClick(location);
+  };
+
+  // 이력서 다운로드 핸들러
+  const handleResumeDownloadWithTracking = (
+    location: "hero_pc" | "hero_mobile"
+  ) => {
+    trackResumeDownload("개발자_안현지_이력서.pdf", location);
+  };
+
+  // 포트폴리오 다운로드 핸들러
+  const handlePortfolioDownloadWithTracking = (
+    location: "hero_pc" | "hero_mobile"
+  ) => {
+    trackPortfolioDownload("개발자_안현지_포트폴리오.pdf", location);
+  };
+
   return (
     <>
       {/* PC Hero - 좌측 고정 */}
@@ -95,7 +130,7 @@ export default function HeroSection() {
                 </p>
                 <div className="flex flex-col gap-2">
                   <button
-                    onClick={() => handleEmailClick(contactData.email)}
+                    onClick={() => handleEmailClickWithTracking("hero_pc")}
                     className="liquid-glass-button btn-primary clickable inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs tracking-wider font-medium font-kr"
                     aria-label="이메일로 연락하기"
                   >
@@ -105,6 +140,7 @@ export default function HeroSection() {
                     href="https://github.com/hyeon318"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => handleGithubClickWithTracking("hero_pc")}
                     className="liquid-glass-button btn-secondary inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs tracking-wider font-medium font-en"
                     aria-label="Github에서 연결하기"
                   >
@@ -115,6 +151,9 @@ export default function HeroSection() {
                       href="/images/resume/개발자_안현지_이력서.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        handleResumeDownloadWithTracking("hero_pc")
+                      }
                       className="liquid-glass-button btn-outline inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs tracking-wider font-medium font-kr flex-1"
                       aria-label="이력서 다운로드"
                     >
@@ -124,6 +163,9 @@ export default function HeroSection() {
                       href="images/resume/개발자_안현지_포트폴리오.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() =>
+                        handlePortfolioDownloadWithTracking("hero_pc")
+                      }
                       className="liquid-glass-button btn-outline inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs tracking-wider font-medium font-kr flex-1"
                       aria-label="포트폴리오 보기"
                     >
@@ -181,7 +223,7 @@ export default function HeroSection() {
             {/* 모바일 버튼들 */}
             <div className="flex flex-col gap-3 pt-6">
               <button
-                onClick={() => handleEmailClick(contactData.email)}
+                onClick={() => handleEmailClickWithTracking("hero_mobile")}
                 className="btn-primary clickable inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-kr"
                 aria-label="이메일로 연락하기"
               >
@@ -191,6 +233,7 @@ export default function HeroSection() {
                 href="https://github.com/hyeon318"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => handleGithubClickWithTracking("hero_mobile")}
                 className="liquid-glass-button btn-secondary inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm tracking-wider font-medium font-en"
                 aria-label="Github에서 연결하기"
               >
@@ -201,6 +244,9 @@ export default function HeroSection() {
                   href="/images/resume/2025_안현지_이력서.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    handleResumeDownloadWithTracking("hero_mobile")
+                  }
                   className="liquid-glass-button btn-outline inline-flex items-center justify-center px-4 py-3 rounded-lg text-sm tracking-wider font-medium font-kr flex-1"
                   aria-label="이력서 다운로드"
                 >
@@ -210,6 +256,9 @@ export default function HeroSection() {
                   href="https://www.canva.com/design/DAGwlpyde7o/3l36YcftN3WMdnQddFgGXA/view?utm_content=DAGwlpyde7o&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8305192aba"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    handlePortfolioDownloadWithTracking("hero_mobile")
+                  }
                   className="liquid-glass-button btn-outline inline-flex items-center justify-center px-4 py-3 rounded-lg text-sm tracking-wider font-medium font-kr flex-1"
                   aria-label="포트폴리오 보기"
                 >
