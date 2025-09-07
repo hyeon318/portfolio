@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter, Noto_Sans_KR, JetBrains_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
@@ -28,8 +28,8 @@ const baseUrl =
 
 export const metadata: Metadata = {
   title: {
-    default: "Ahn HyeonJi | Frontend & Backend Developer Portfolio",
-    template: "%s | Ahn HyeonJi's Portfolio",
+    default: "HyeonJi Ahn | Frontend & Backend Developer Portfolio",
+    template: "%s | HyeonJi Ahn Portfolio",
   },
   description:
     "사용자 경험을 중심으로 생각하는 프론트엔드 & 백엔드 개발자 안현지의 포트폴리오입니다. React, Next.js, TypeScript, Java Spring Boot를 활용한 6년차 풀스택 개발자의 프로젝트를 확인해보세요.",
@@ -65,22 +65,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     url: baseUrl,
-    title: "Ahn HyeonJi | Frontend & Backend Developer Portfolio",
+    title: "HyeonJi Ahn | Frontend & Backend Developer Portfolio",
     description:
       "사용자 경험을 중심으로 생각하는 프론트엔드 개발자 안현지의 포트폴리오입니다. React, Next.js, TypeScript, Java Spring Boot를 활용한 6년차 풀스택 개발자의 프로젝트를 확인해보세요.",
-    siteName: "Ahn HyeonJi's Portfolio",
+    siteName: "HyeonJi Ahn Portfolio",
     images: [
       {
-        url: "/images/tabby-mansion/thumbnail1.png",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ahn HyeonJi's Portfolio - Frontend & Backend Developer",
+        alt: "HyeonJi Ahn Portfolio - Frontend & Backend Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ahn HyeonJi | Frontend & Backend Developer Portfolio",
+    title: "HyeonJi Ahn | Frontend & Backend Developer Portfolio",
     description:
       "사용자 경험을 중심으로 생각하는 프론트엔드 & 백엔드 개발자 안현지의 포트폴리오입니다.",
     images: ["/images/tabby-mansion/thumbnail1.png"],
@@ -98,6 +98,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 

@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   const { title, description, techStack, images } = projectData;
   const projectUrl = `${baseUrl}/projects/${slug}`;
-  const ogImage = images?.thumbnail || "/images/tabby-mansion/thumbnail1.png";
+  const ogImage = images?.thumbnail || "/images/og-image.png";
 
   return {
     title: title,
@@ -40,8 +40,8 @@ export async function generateMetadata({
       "안현지",
       "프로젝트",
       "포트폴리오",
-      "Ahn HyeonJi",
-      "Ahn HyeonJi's Portfolio",
+      "Hyeonji Ahn Portfolio",
+      "HyeonJi Ahn Portfolio",
       "개발자",
       "Developer",
       "Frontend Developer",
@@ -61,21 +61,21 @@ export async function generateMetadata({
       type: "article",
       locale: "ko_KR",
       url: projectUrl,
-      title: `${title} | Ahn HyeonJi's Portfolio`,
+      title: `${title} | Hyeonji Ahn Portfolio`,
       description: description,
-      siteName: "Ahn HyeonJi's Portfolio",
+      siteName: "Hyeonji Ahn Portfolio",
       images: [
         {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${title} - Ahn HyeonJi's Project`,
+          alt: `${title} - Hyeonji Ahn Project`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | Ahn HyeonJi's Portfolio`,
+      title: `${title} | Hyeonji Ahn Portfolio`,
       description: description,
       images: [ogImage],
     },

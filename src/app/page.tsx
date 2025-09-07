@@ -12,18 +12,107 @@ import {
   ContactSection,
 } from "@/components";
 import Footer from "@/components/main-page/atom/footer";
-import { aboutData, experienceData } from "@/data/mockData";
+import { experienceData } from "@/data/mockData";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL ||
   "https://since1994-oasis-portfolio.vercel.app/";
 
 export default function Home() {
+  // Person Structured Data
+  const personStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "안현지",
+    alternateName: "Hyeonji Ahn",
+    jobTitle: "Frontend & Backend Developer",
+    description: "사용자 경험을 중심으로 생각하는 프론트엔드 & 백엔드 개발자",
+    url: `${baseUrl}`,
+    image: `${baseUrl}/images/tabby-mansion/thumbnail1.png`,
+    email: "mail_0318@naver.com",
+    knowsAbout: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Java",
+      "Spring Boot",
+      "Frontend Development",
+      "Backend Development",
+      "Web Development",
+    ],
+    worksFor: experienceData.map(exp => ({
+      "@type": "Organization",
+      name: exp.company,
+      description: exp.description.join(", "),
+    })),
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Frontend Developer",
+      occupationLocation: {
+        "@type": "Country",
+        name: "South Korea",
+      },
+      skills: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Java",
+        "Spring Boot",
+        "MySQL",
+        "PostgreSQL",
+      ],
+    },
+  };
+
+  // Website Structured Data
+  const websiteStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "HyeonJi Ahn Portfolio",
+    alternateName: "Hyeonji Ahn Portfolio",
+    description:
+      "Frontend & Backend Developer Portfolio - 사용자 경험을 중심으로 생각하는 프론트엔드 & 백엔드 개발자 안현지의 포트폴리오",
+    url: baseUrl,
+    inLanguage: "ko-KR",
+    author: {
+      "@type": "Person",
+      name: "안현지",
+      alternateName: "Hyeonji Ahn",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${baseUrl}/projects?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <div
       className="min-h-screen"
       style={{ backgroundColor: "var(--background)" }}
     >
+      <Script
+        id="person-structured-data"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(personStructuredData),
+        }}
+      />
+      <Script
+        id="website-structured-data"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteStructuredData),
+        }}
+      />
+
       <ScrollManager />
       <ScrollTracker />
       <TopNav />
