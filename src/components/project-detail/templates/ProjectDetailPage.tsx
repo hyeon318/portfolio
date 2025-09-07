@@ -59,13 +59,8 @@ export default function ProjectDetailPage({
     return () => observer.disconnect();
   }, []);
 
-  const projectUrl = `${baseUrl}/projects/${projectSlug}`;
-  const imageUrl =
-    projectData.images?.thumbnail ||
-    `${baseUrl}/images/tabby-mansion/thumbnail1.png`;
-
   // 프로젝트 데이터 상태 관리
-  const [currentProjectData, setCurrentProjectData] = useState(projectData);
+  const [currentProjectData] = useState(projectData);
 
   // 뒤로가기 시 스크롤 위치 저장
 

@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     title: "HyeonJi Ahn | Frontend & Backend Developer Portfolio",
     description:
       "사용자 경험을 중심으로 생각하는 프론트엔드 & 백엔드 개발자 안현지의 포트폴리오입니다.",
-    images: ["/images/tabby-mansion/thumbnail1.png"],
+    images: ["/images/og-image.png"],
   },
   robots: {
     index: true,

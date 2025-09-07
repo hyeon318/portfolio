@@ -28,7 +28,7 @@ export default function Home() {
     jobTitle: "Frontend & Backend Developer",
     description: "사용자 경험을 중심으로 생각하는 프론트엔드 & 백엔드 개발자",
     url: `${baseUrl}`,
-    image: `${baseUrl}/images/tabby-mansion/thumbnail1.png`,
+    image: `${baseUrl}/images/og-image.png`,
     email: "mail_0318@naver.com",
     knowsAbout: [
       "React",

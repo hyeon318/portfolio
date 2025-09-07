@@ -29,9 +29,10 @@ export async function generateMetadata({
     };
   }
 
-  const { title, description, techStack, images } = projectData;
+  const { title, description, techStack } = projectData;
   const projectUrl = `${baseUrl}/projects/${slug}`;
-  const ogImage = images?.thumbnail || "/images/og-image.png";
+
+  const ogImage = `${baseUrl}/images/og-image.png`;
 
   return {
     title: title,
