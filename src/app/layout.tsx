@@ -22,10 +22,83 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  "https://https://since1994-oasis-portfolio.vercel.app";
+
 export const metadata: Metadata = {
-  title: "안현지 | Frontend Developer",
+  title: {
+    default: "Ahn HyeonJi | Frontend & Backend Developer Portfolio",
+    template: "%s | Ahn HyeonJi's Portfolio",
+  },
   description:
-    "사용자 경험을 중심으로 생각하는 프론트엔드 개발자 안현지의 포트폴리오입니다.",
+    "사용자 경험을 중심으로 생각하는 프론트엔드 & 백엔드 개발자 안현지의 포트폴리오입니다. React, Next.js, TypeScript, Java Spring Boot를 활용한 6년차 풀스택 개발자의 프로젝트를 확인해보세요.",
+  keywords: [
+    "안현지",
+    "프론트엔드 개발자",
+    "풀스택 개발자",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Java",
+    "Spring Boot",
+    "웹 개발",
+    "포트폴리오",
+    "Frontend Developer",
+    "Fullstack Developer",
+    "웹툰 플랫폼",
+    "애니툰",
+  ],
+  authors: [{ name: "안현지", url: baseUrl }],
+  creator: "안현지",
+  publisher: "안현지",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL(baseUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: baseUrl,
+    title: "Ahn HyeonJi | Frontend & Backend Developer Portfolio",
+    description:
+      "사용자 경험을 중심으로 생각하는 프론트엔드 개발자 안현지의 포트폴리오입니다. React, Next.js, TypeScript, Java Spring Boot를 활용한 6년차 풀스택 개발자의 프로젝트를 확인해보세요.",
+    siteName: "Ahn HyeonJi's Portfolio",
+    images: [
+      {
+        url: "/images/tabby-mansion/thumbnail1.png",
+        width: 1200,
+        height: 630,
+        alt: "Ahn HyeonJi's Portfolio - Frontend & Backend Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ahn HyeonJi | Frontend & Backend Developer Portfolio",
+    description:
+      "사용자 경험을 중심으로 생각하는 프론트엔드 & 백엔드 개발자 안현지의 포트폴리오입니다.",
+    images: ["/images/tabby-mansion/thumbnail1.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({

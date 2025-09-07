@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -21,6 +21,10 @@ interface ProjectDetailPageProps {
   projectSlug?: string;
 }
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  "https://since1994-oasis-portfolio.vercel.app/";
+
 export default function ProjectDetailPage({
   projectData,
   projectSlug,
@@ -29,6 +33,36 @@ export default function ProjectDetailPage({
   useEffect(() => {
     trackProjectDetailView(projectData.title);
   }, [projectData.title]);
+
+  const [currentSection, setCurrentSection] = useState("overview");
+
+  // 섹션 스크롤 추적
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setCurrentSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    // 모든 섹션을 관찰 대상에 추가
+    const sections = ["overview", "gallery", "technical", "timeline"];
+    sections.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const projectUrl = `${baseUrl}/projects/${projectSlug}`;
+  const imageUrl =
+    projectData.images?.thumbnail ||
+    `${baseUrl}/images/tabby-mansion/thumbnail1.png`;
 
   // 프로젝트 데이터 상태 관리
   const [currentProjectData, setCurrentProjectData] = useState(projectData);

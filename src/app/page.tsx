@@ -1,4 +1,5 @@
-import React from "react";
+﻿import React from "react";
+import Script from "next/script";
 import {
   Sidebar as TopNav,
   ScrollManager,
@@ -11,6 +12,11 @@ import {
   ContactSection,
 } from "@/components";
 import Footer from "@/components/main-page/atom/footer";
+import { aboutData, experienceData } from "@/data/mockData";
+
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  "https://since1994-oasis-portfolio.vercel.app/";
 
 export default function Home() {
   return (
