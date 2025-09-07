@@ -2,6 +2,60 @@ import { ProjectDetailData, ProjectItem } from "@/types";
 
 // 프로젝트 데이터를 객체 형태로 정의
 export const projectData: Record<string, ProjectDetailData> = {
+  "tabby-mansion": {
+    title: "Tabby Mansion - Timer & Tracker",
+    description:
+      "집중 작업과 코딩 테스트를 위한 타이머 및 탭 활동 추적 Chrome 확장 프로그램입니다. 실시간으로 탭 전환을 추적하고 사이트별 사용 패턴을 분석하여 생산성 향상을 도와줍니다.",
+    summary: {
+      text: "생산성 향상을 위한 종합적인 시간 관리 도구로, 공유 타이머와 탭 활동 추적 기능을 제공하는 Chrome 확장 프로그램입니다.",
+      list: [
+        "백그라운드에서 지속되는 공유 타이머로 모든 탭에서 동일한 시간 추적",
+        "실시간 탭 전환 기록 및 사이트별 상세 사용 통계 제공",
+      ],
+    },
+    background:
+      "개발자와 집중 작업이 필요한 사용자들이 시간을 효율적으로 관리하고 자신의 웹 사용 패턴을 파악할 수 있도록 도와주는 도구입니다. 특히 코딩 테스트나 업무 집중이 필요한 상황에서 시간 추적과 사용 패턴 분석을 통해 생산성을 높일 수 있습니다.",
+    features: [
+      "공유 타이머: 모든 탭과 확장 컨텍스트에서 동기화되는 단일 타이머",
+      "플로팅 타이머: 웹페이지에 드래그 가능한 타이머 오버레이",
+      "탭 활동 추적: 실시간 탭 전환 기록 및 사이트별 사용 시간 분석",
+      "차트 시각화: 시간별/일별 사용 패턴을 차트로 표시",
+      "다국어 지원: 한국어, 영어, 일본어 지원",
+      "데이터 내보내기: 사용 통계 데이터 내보내기 기능",
+      "실시간 동기화: 탭 새로고침, 브라우저 재시작 후에도 상태 유지",
+    ],
+    techStack: [
+      "Chrome Extension (Manifest V3)",
+      "Service Worker",
+      "Chart.js",
+      "date-fns",
+      "date-fns-tz",
+      "Webpack",
+      "Babel",
+      "HTML5/CSS3/JavaScript",
+      "chrome.storage API",
+      "Chrome Tabs API",
+    ],
+    images: {
+      thumbnail: "/images/tabby-mansion/thumbnail1.png",
+      preview: [
+        "/images/tabby-mansion/1.png",
+        "/images/tabby-mansion/2.png",
+        "/images/tabby-mansion/3.png",
+        "/images/tabby-mansion/4.png",
+      ],
+    },
+    liveUrl: "",
+    period: "2025.08",
+    setupInfo: {
+      github: ["https://github.com/hyeon318/tabby-mansion-extension"],
+      liveDemo:
+        "https://chromewebstore.google.com/detail/tabby-mansion-timer-track/iedbfghbcalhhgodomebhddjhaebbfhn",
+    },
+    roleAndTeam: "개인 프로젝트 - 풀스택 개발 (기획, 설계, 개발, 테스트, 배포)",
+    reflection:
+      "Manifest V3 기반의 Chrome 확장 프로그램을 개발하면서 Service Worker의 생명주기와 상태 관리의 복잡성을 깊이 이해하게 되었습니다. 특히 백그라운드에서 지속적인 타이머 상태를 유지하면서도 성능을 최적화하는 방법과, 다국어 지원을 통한 사용자 경험 개선의 중요성을 배웠습니다. Chrome storage API를 활용한 데이터 영속성과 실시간 동기화 구현을 통해 브라우저 확장 프로그램의 아키텍처 설계 역량을 크게 향상시킬 수 있었습니다.",
+  },
   "ocr-note": {
     title: "OCR Note Web",
     description:
@@ -74,7 +128,7 @@ export const projectData: Record<string, ProjectDetailData> = {
   anytoon: {
     title: "애니툰 웹툰 서비스",
     description:
-      "기존 기존 PHP 기반의 대형 웹툰 서비스를 Java Spring 기반으로 전면 리뉴얼한 프로젝트입니다. 약 400만 명의 가입자와 주간 사용자 5만 명 규모의 플랫폼으로, 실시간 결제, 콘텐츠 제공, 사용자 관리, 외부 API 연동 등 핵심 기능을 설계부터 개발까지 담당했습니다.",
+      "기존 기존 PHP 기반의 대형 웹툰 서비스를 Java Spring 기반으로 전면 리뉴얼한 프로젝트입니다. 약 400만 명의 가입자와 월간 사용자 32만 명 규모의 플랫폼으로, 실시간 결제, 콘텐츠 제공, 사용자 관리, 외부 API 연동 등 핵심 기능을 설계부터 개발까지 담당했습니다.",
     summary: {
       text: "400만 회원을 대상으로 한 웹툰 서비스를 PHP에서 Java Spring 기반으로 리뉴얼하여, 성능 및 유지보수성을 획기적으로 개선한 프로젝트입니다.",
       list: [
