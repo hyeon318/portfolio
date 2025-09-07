@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL ||
-  "https://https://since1994-oasis-portfolio.vercel.app";
+  "https://since1994-oasis-portfolio.vercel.app";
 
 export const metadata: Metadata = {
   title: {
