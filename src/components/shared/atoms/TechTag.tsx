@@ -55,9 +55,6 @@ const TECH_BRAND_COLORS: { [key: string]: string } = {
   // Authentication
   OAuth: "text-gray-400",
 
-  // Caching
-  "Guava Caching": "text-emerald-400",
-
   // Scheduling
   "Quartz Scheduler": "text-amber-400",
 
@@ -104,7 +101,6 @@ const TECH_ACCENT_COLORS: { [key: string]: string } = {
   "Fabric.js": "border-yellow-400/40 hover:border-yellow-400/60",
   i18next: "border-indigo-400/40 hover:border-indigo-400/60",
   OAuth: "border-gray-400/40 hover:border-gray-400/60",
-  "Guava Caching": "border-emerald-400/40 hover:border-emerald-400/60",
   "Quartz Scheduler": "border-amber-400/40 hover:border-amber-400/60",
   "DB Procedure": "border-slate-400/40 hover:border-slate-400/60",
   Trigger: "border-slate-400/40 hover:border-slate-400/60",
@@ -144,7 +140,6 @@ const TECH_SOFT_COLORS: { [key: string]: string } = {
   "Fabric.js": "bg-yellow-600/5 hover:bg-yellow-600/10",
   i18next: "bg-indigo-500/5 hover:bg-indigo-500/10",
   OAuth: "bg-gray-600/5 hover:bg-gray-600/10",
-  "Guava Caching": "bg-emerald-600/5 hover:bg-emerald-600/10",
   "Quartz Scheduler": "bg-amber-600/5 hover:bg-amber-600/10",
   "DB Procedure": "bg-slate-600/5 hover:bg-slate-600/10",
   Trigger: "bg-slate-700/5 hover:bg-slate-700/10",
